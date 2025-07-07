@@ -1,20 +1,117 @@
 @import url("../../styles.scss");
 
-
-.content{
+.content {
+  display: flex;
+  .header-and-content {
     display: flex;
-    .header-and-content{
+    flex-direction: column;
+    width: 100%;
+    .contacts {
+      display: flex;
+      .adem {
+        width: 40%;
+      }
+      .mohammad {
+        width: 60%;
+        height: 100vh;
         display: flex;
         flex-direction: column;
-        width: 100%;
-        .contacts{
-            display: flex;
-            .adem{
-                width: 40%;
-            }
-            .mohammad{
-                width: 60%;
-            }
+        padding-left: 30px;
+
+        background-color: rgb(246, 247, 248);
+
+        #header {
+          margin-top: 206px;
+          width: 569px;
+          height: 73px;
+          display: flex;
+          align-items: center;
+          gap: 30px;
+
+          h1 {
+            font-size: 61px;
+            font-style: bold;
+          }
+
+          #line {
+            background-color: #29abe2;
+            height: 59px;
+            width: 1px;
+          }
+
+          span {
+            font-size: 27px;
+          }
         }
+
+        #info {
+          width: 452px;
+          height: 364px;
+
+          #contact-title {
+            width: 452px;
+            display: flex;
+            align-items: center;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 54px;
+
+            h1 {
+              font-size: 47px;
+            }
+
+            img {
+              margin-top: 30px;
+              width: 100px;
+              height: 100px;
+            }
+          }
+
+          #icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 150px;
+            margin-top: -20px;
+
+            img {
+              width: 24px;
+              height: 24px;
+
+              &:hover {
+                color: #29abe2;
+              }
+            }
+
+            p {
+              margin: 0;
+
+              &:hover {
+                color: #29abe2;
+              }
+            }
+
+            div {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+            }
+          }
+
+          #contact-information {
+            margin-top: 40px;
+            margin-bottom: 40px;
+            font-size: 20px;
+          }
+
+          #mail-phone {
+            p {
+              margin-bottom: 20px;
+              margin-top: 20px;
+            }
+          }
+        }
+      }
     }
+  }
 }

@@ -36,3 +36,36 @@ header{
         }
     }
 }
+.overlay{
+    position: absolute;
+    top: 97px; 
+    right: 20px; 
+    width: 150px;
+    height: 150px;
+    background-color: #2a3647;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    a{
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        width: 98%;
+        height: 48px;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        padding-left: 16px;
+        &:hover{
+            background: #3c4a5f;
+        }
+    }
+}
+.d-none {
+    display: none;
+}

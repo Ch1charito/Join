@@ -1,5 +1,38 @@
 header{
-    background-color: aqua;
     height: 96px;
     width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 120px;
+    padding-right: 40px;
+    p{
+        font-size: 20px;
+    }
+    .help-and-menu{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 104px;
+        height: 56px;
+        img{
+            width: 32px;
+            height: 32px;
+        }
+        button{
+            border-radius: 50%;
+            border: 3.5px solid black;
+            background: transparent;
+            height: 56px;
+            width: 56px;
+            color: #29ABE2;
+            font-weight: 400;
+            font-size: 20px;
+            &:hover{
+                background: #bbb6b6c2;
+                cursor: pointer;
+            }
+        }
+    }
 }

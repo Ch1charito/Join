@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  showOverlay = false;
 
+  toggleOverlay() {
+    this.showOverlay = !this.showOverlay;
+  }
 }

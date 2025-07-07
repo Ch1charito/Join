@@ -1,6 +1,110 @@
-.side-bar{
-    background: lightgrey;
+section {
     width: 232px;
     height: 100dvh;
-    
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 64px 0px;
+
+    background: #2A3647;
+
+    .side-bar {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        gap: 100px;
+
+        width: 100%;
+
+        >img {
+            width: 100.03px;
+            height: 121.97px;
+        }
+    }
+
+    #menu {
+        
+
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            width: auto;
+            gap: 15px;
+        }
+
+        .header-links {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        a {
+            height: 46px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            cursor: pointer;
+
+            .default-icon {
+                display: flex;
+            }
+
+            .active-icon {
+                display: none;
+            }
+
+            span {
+                // font-family: 'Inter';
+                font-weight: 400;
+                font-size: 16px;
+                color: #CDCDCD;
+            }
+
+            &.active {
+                background: #091931;
+
+                .default-icon {
+                    display: none;
+                }
+
+                .active-icon {
+                    display: flex;
+                }
+
+                span {
+                    color: #FFFFFF;
+                }
+            }
+
+            &:hover {
+                background: #2A3D59;
+            }
+        }
+    }
+
+    #policies {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        a {
+            span {
+                // font-family: 'Inter';
+                font-weight: 400;
+                font-size: 16px;
+                color: #CDCDCD;
+
+                &:hover {
+                    font-weight: 700;
+                    color: #29ABE2;
+                }
+            }
+        }
+    }
 }

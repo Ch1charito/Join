@@ -1,0 +1,11 @@
+@import url("../../styles.scss");
+
+
+.content{
+    display: flex;
+    .header-and-content{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}

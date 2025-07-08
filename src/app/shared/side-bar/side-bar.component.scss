@@ -9,6 +9,9 @@ section {
     padding: 64px 0px;
 
     background: #2A3647;
+    @media(max-width: 1030px){
+        display: none;
+    }
 
     .side-bar {
         display: flex;

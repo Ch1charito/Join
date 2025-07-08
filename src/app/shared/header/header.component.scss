@@ -20,6 +20,9 @@ header{
         img{
             width: 32px;
             height: 32px;
+            @media(max-width: 1200px){
+                display: none;
+            }
         }
         button{
             border-radius: 50%;

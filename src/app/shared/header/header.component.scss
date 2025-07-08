@@ -8,8 +8,20 @@ header{
     padding-left: 120px;
     padding-right: 40px;
     z-index: 1;
+    @media(max-width: 1030px){
+        padding-left: 40px;
+    }
     p{
         font-size: 20px;
+        @media(max-width: 550px){
+            display: none;
+        }
+    }
+    #logo-resp{
+        display: none;
+        @media(max-width: 550px){
+            display: flex;
+        }
     }
     .help-and-menu{
         display: flex;
@@ -17,6 +29,12 @@ header{
         justify-content: space-between;
         width: 104px;
         height: 56px;
+        @media(max-width: 1200px){
+            justify-content: center;
+        }
+        @media(max-width: 550px){
+            width: auto;
+        }
         img{
             width: 32px;
             height: 32px;

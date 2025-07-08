@@ -6,23 +6,33 @@
       <div class="contacts">
         <div class="contact-sidebar">
           <div class="new-contact-btn">
-            <a href=""
-              >Add new contact <img src="./assets/icons/person_add.png" alt=""
-            /></a>
+            <a href="">
+              Add new contact
+              <img src="./assets/icons/person_add.png" alt="" />
+            </a>
           </div>
+
+          @for (contact of contacts; let i = $index; track contact.id) { @if (i
+          === 0 || contact.name.charAt(0).toUpperCase() !== contacts[i -
+          1].name.charAt(0).toUpperCase()) {
           <div class="contact-letter">
-            <span>A</span>
+            <span>{{ contact.name.charAt(0).toUpperCase() }}</span>
             <hr class="brake-line" />
           </div>
+          }
+
           <div class="contact-list">
-            <div class="initials">AM</div>
+            <div class="initials" [style.background-color]="contact.color">
+              {{ getInitials(contact.name) }}
+            </div>
             <ul>
-              <li>Anton Mayer</li>
+              <li>{{ contact.name }}</li>
               <li>
-                <a href="">antom&#64;gmail.com</a>
+                <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
               </li>
             </ul>
           </div>
+          }
         </div>
 
         <div class="mohammad">

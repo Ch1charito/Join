@@ -1,19 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-*{
-    padding: 0;
-    margin: 0;
-    position: relative;
-    box-sizing: border-box;
-    text-decoration: none;
-    scroll-behavior: smooth;
+* {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  font-family: "intern", "sans-serif";
 }
 
 section {
   width: 100%;
   display: flex;
   justify-content: center;
-  .content{
+  .content {
     width: 100%;
     max-width: 1920px;
   }
+}
+@font-face {
+  font-family: "intern";
+  src: url("../public/assets/fonts/inter-v19-latin/inter-v19-latin-regular.woff2");
+}
+.intern {
+  font-family: "intern";
 }

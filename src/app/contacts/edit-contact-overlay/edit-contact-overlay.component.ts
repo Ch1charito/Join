@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-edit-contact-overlay',
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class EditContactOverlayComponent {
 
+  @Output() close = new EventEmitter<void>();
+
+  onCloseClick() {
+    this.close.emit();
+  }
 }

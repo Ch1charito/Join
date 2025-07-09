@@ -17,11 +17,15 @@ import { Contact } from './../../app/interfaces/contact.interface';
   styleUrl: './contacts.component.scss',
 })
 export class ContactsComponent {
-  // @ViewChild('addContact') private addContact!: AddContactOverlayComponent;
   showOverlay: boolean = false;
+  showEditOverlay: boolean = false;
 
   openAddContact() {
     this.showOverlay = !this.showOverlay;
+  }
+
+  openEditContact(){
+    this.showEditOverlay = !this.showEditOverlay;
   }
 
   contacts: Contact[] = [

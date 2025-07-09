@@ -110,7 +110,7 @@
 
 
         </div> -->
-        <app-add-contact-overlay [class.d-none]="!showOverlay"></app-add-contact-overlay>
+        <app-add-contact-overlay [class.d-none]="!showOverlay" (close)="openAddContact()"></app-add-contact-overlay>
         <app-edit-contact-overlay> </app-edit-contact-overlay>
         
         <!-- <div id="overlay-edit-contact">

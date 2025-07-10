@@ -5,11 +5,18 @@
       <app-header></app-header>
       <div class="contacts">
         <div class="contact-sidebar">
-          <button id="new-contact-btn-resp"><img src="/assets/images/resp-btn/new-contact-btn-resp.png" alt=""></button>
+          <button id="new-contact-btn-resp">
+            <img
+              src="/assets/images/resp-btn/new-contact-btn-resp.png"
+              alt=""
+            />
+          </button>
           <div class="new-contact-btn">
-            <button (click)="openAddContact()">Add new contact <img src="./assets/icons/person_add.png" alt="" /></button>
+            <button (click)="openAddContact()">
+              Add new contact <img src="./assets/icons/person_add.png" alt="" />
+            </button>
           </div>
-
+          <!-- 
           @for (contact of contacts; let i = $index; track contact.id) { @if (i
           === 0 || contact.name.charAt(0).toUpperCase() !== contacts[i -
           1].name.charAt(0).toUpperCase()) {
@@ -30,7 +37,40 @@
               </li>
             </ul>
           </div>
-          }
+          } -->
+          <div>
+            <section>
+              <h2>Vocabulary List</h2>
+              @for (item of firebaseService.contactList; track $index) {
+              @if(!isEdited) {
+              <p>
+                {{ item.name }} - {{ item.email }}
+                <button (click)="editContact($index)">Edit</button
+                ><button (click)="deleteContact($index)">Delete</button>
+              </p>
+              } } @if(isEdited && selectedContactIndex !== null) {
+              <form (ngSubmit)="saveEdit()">
+                <input
+                  type="text"
+                  [(ngModel)]="editedContact.name"
+                  name="name"
+                />
+                <input
+                  type="text"
+                  [(ngModel)]="editedContact.email"
+                  name="email"
+                />
+                <button
+                  type="submit"
+                  [disabled]="!editedContact.name || !editedContact.email"
+                >
+                  Save
+                </button>
+                <button type="button" (click)="cancelEdit()">Cancel</button>
+              </form>
+              }
+            </section>
+          </div>
         </div>
 
         <div class="mohammad">
@@ -54,7 +94,6 @@
                 <img src="assets/images/delete.png" alt="delete" />
                 <p>delete</p>
               </button>
-              
             </div>
             <div id="contact-information">
               <p>Contact Information</p>
@@ -68,11 +107,14 @@
           </div>
         </div>
 
-        
-        <app-add-contact-overlay [class.d-none]="!showOverlay" (close)="openAddContact()"></app-add-contact-overlay>
-        <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"></app-edit-contact-overlay>
-        
-        
+        <app-add-contact-overlay
+          [class.d-none]="!showOverlay"
+          (close)="openAddContact()"
+        ></app-add-contact-overlay>
+        <app-edit-contact-overlay
+          [class.d-none]="!showEditOverlay"
+          (close)="openEditContact()"
+        ></app-edit-contact-overlay>
       </div>
     </div>
   </div>

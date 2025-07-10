@@ -14,36 +14,36 @@
           <button class="new-contact-btn" (click)="openAddContact()">
             Add new contact <img src="./assets/icons/person_add.png" alt="" />
           </button>
-          <!-- 
-          @for (contact of contacts; let i = $index; track contact.id) { @if (i
+          
+          @for (item of firebaseService.contactList; let i = $index; track $index) {<!--  @if (i
           === 0 || contact.name.charAt(0).toUpperCase() !== contacts[i -
           1].name.charAt(0).toUpperCase()) {
           <div class="contact-letter">
             <span>{{ contact.name.charAt(0).toUpperCase() }}</span>
             <hr class="brake-line" />
           </div>
-          }
+          } -->
 
-          <div class="contact-list">
-            <div class="initials" [style.background-color]="contact.color">
+          <div class="contact-list" (click)="openSelectedContact(i)">
+            <!-- <div class="initials" [style.background-color]="contact.color">
               {{ getInitials(contact.name) }}
-            </div>
+            </div> -->
             <ul>
-              <li>{{ contact.name }}</li>
+              <li>{{ item.name }}</li>
               <li>
-                <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                <a href="mailto:{{ item.email }}">{{ item.email }}</a>
               </li>
             </ul>
           </div>
-          } -->
-          <div>
+          }
+          <!-- <div>
             <section>
               @for (item of firebaseService.contactList; track $index) {
               @if(!isEdited) {
               <p>
                 {{ item.name }} - {{ item.email }}
-                <button (click)="editContact($index)">Edit</button
-                ><button (click)="deleteContact($index)">Delete</button>
+                <button (click)="editContact($index)">Edit</button>
+                <button (click)="deleteContact($index)">Delete</button>
               </p>
               } } @if(isEdited && selectedContactIndex !== null) {
               <form (ngSubmit)="saveEdit()">
@@ -67,7 +67,7 @@
               </form>
               }
             </section>
-          </div>
+          </div> -->
         </div>
 
         <div class="mohammad">
@@ -77,10 +77,11 @@
             <span>Better with a team</span>
           </div>
 
-          <div id="info">
+          @if (showSelectedContact){
+            <div id="info">
             <div id="contact-title">
               <img src="/assets/images/name-info.png" alt="name-info" />
-              <h1>Tatjana Wolf</h1>
+              <h1>{{selectedContact.name}}</h1>
             </div>
             <div id="icons">
               <button (click)="openEditContact()">
@@ -97,11 +98,13 @@
             </div>
             <div id="mail-phone">
               <h3>Email</h3>
-              <p>info&#64;info.de</p>
+              <p>{{selectedContact.email}}</p>
               <h3>Phone</h3>
-              <p>+49 123456</p>
+              <p>{{selectedContact.phone}}</p>
             </div>
           </div>
+          }
+          
         </div>
 
         <app-add-contact-overlay

@@ -67,6 +67,13 @@ export class ContactsComponent {
   //#region Overlay
   showOverlay: boolean = false;
   showEditOverlay: boolean = false;
+  showSelectedContact: boolean = false;
+
+  selectedContact: any;
+  openSelectedContact(index:number){
+    this.selectedContact = this.firebaseService.contactList[index];
+    this.showSelectedContact = true;
+  }
 
   openAddContact() {
     this.showOverlay = !this.showOverlay;

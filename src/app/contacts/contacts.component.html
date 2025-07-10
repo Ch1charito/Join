@@ -6,15 +6,12 @@
       <div class="contacts">
         <div class="contact-sidebar">
           <button id="new-contact-btn-resp">
-            <img
-              src="/assets/images/resp-btn/new-contact-btn-resp.png"
-              alt=""
-            />
+            <img src="/assets/images/resp-btn/new-contact-btn-resp.png" alt="" />
           </button>
           <button class="new-contact-btn" (click)="openAddContact()">
             Add new contact <img src="./assets/icons/person_add.png" alt="" />
           </button>
-          
+
           @for (item of firebaseService.contactList; let i = $index; track $index) {<!--  @if (i
           === 0 || contact.name.charAt(0).toUpperCase() !== contacts[i -
           1].name.charAt(0).toUpperCase()) {
@@ -78,16 +75,17 @@
           </div>
 
           @if (showSelectedContact){
-            <div id="info">
+          <div id="info">
             <div id="contact-title">
               <img src="/assets/images/name-info.png" alt="name-info" />
               <h1>{{selectedContact.name}}</h1>
             </div>
             <div id="icons">
-              <button (click)="openEditContact()">
-                <img src="assets/images/edit.png" alt="edit" />
-                <p>Edit</p>
-              </button>
+              <button (click)="editContact(selectedContactIndex ?? 0)">
+  <img src="assets/images/edit.png" alt="edit" />
+  <p>Edit</p>
+</button>
+
               <button>
                 <img src="assets/images/delete.png" alt="delete" />
                 <p>Delete</p>
@@ -104,17 +102,13 @@
             </div>
           </div>
           }
-          
+
         </div>
 
-        <app-add-contact-overlay
-          [class.d-none]="!showOverlay"
-          (close)="openAddContact()"
-        ></app-add-contact-overlay>
-        <app-edit-contact-overlay
-          [class.d-none]="!showEditOverlay"
-          (close)="openEditContact()"
-        ></app-edit-contact-overlay>
+        <app-add-contact-overlay [class.d-none]="!showOverlay" (close)="openAddContact()"></app-add-contact-overlay>
+        <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"
+          [name]="editedContact.name" [email]="editedContact.email"
+          [phone]="editedContact.phone"></app-edit-contact-overlay>
       </div>
     </div>
   </div>

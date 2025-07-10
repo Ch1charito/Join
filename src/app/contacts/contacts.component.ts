@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
 export class ContactsComponent {
   firebaseService = inject(FirebaseService);
   isEdited = false;
-  selectedContactIndex: number | null = null;
+  selectedContactIndex: number | null = 0;
   contactId?: string = '';
   editedContact = {
     name: '',
@@ -33,13 +33,16 @@ export class ContactsComponent {
   editContact(index: number) {
     this.isEdited = true;
     this.selectedContactIndex = index;
-    this.contactId = this.firebaseService.contactList[index].id;
+    const contact = this.firebaseService.contactList[index];
+    this.contactId = contact.id;
     this.editedContact = {
-      name: this.firebaseService.contactList[index].name,
-      email: this.firebaseService.contactList[index].email,
-      phone: this.firebaseService.contactList[index].phone,
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone,
     };
+    this.showEditOverlay = true; // öffnet das Overlay
   }
+
 
   saveEdit() {
     if (this.contactId) {
@@ -70,10 +73,11 @@ export class ContactsComponent {
   showSelectedContact: boolean = false;
 
   selectedContact: any;
-  openSelectedContact(index:number){
-    this.selectedContact = this.firebaseService.contactList[index];
-    this.showSelectedContact = true;
-  }
+  openSelectedContact(index: number) {
+  this.selectedContact = this.firebaseService.contactList[index];
+  this.selectedContactIndex = index;
+  this.showSelectedContact = true;
+}
 
   openAddContact() {
     this.showOverlay = !this.showOverlay;

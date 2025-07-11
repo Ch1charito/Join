@@ -55,11 +55,12 @@
               <h1>{{ selectedContact.name }}</h1>
             </div>
             <div id="icons">
-              <button (click)="openEditContact()">
+              <button (click)="editContact(selectedContactIndex ?? 0)">
                 <img src="assets/images/edit.png" alt="edit" />
                 <p>Edit</p>
               </button>
-              <button>
+
+              <button (click)="deleteSelectedContact()">
                 <img src="assets/images/delete.png" alt="delete" />
                 <p>Delete</p>
               </button>
@@ -81,8 +82,15 @@
           [class.d-none]="!showOverlay"
           (close)="openAddContact()"
         ></app-add-contact-overlay>
+        <!-- <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"
+          [name]="editedContact.name" [email]="editedContact.email"
+          [phone]="editedContact.phone"></app-edit-contact-overlay> -->
         <app-edit-contact-overlay
           [class.d-none]="!showEditOverlay"
+          (close)="openEditContact()"
+          [editedContact]="editedContact"
+          [contactId]="contactId"
+          (saved)="onSaveCompleted()"
           (close)="openEditContact()"
         ></app-edit-contact-overlay>
       </div>

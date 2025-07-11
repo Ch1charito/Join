@@ -1,45 +1,48 @@
 <div id="overlay-edit-contact">
 
 
-          <div id="left-side">
+  <div id="left-side">
 
 
-            <img src="assets/icons/logo-overlay.png" alt="">
+    <img src="assets/icons/logo-overlay.png" alt="">
 
-            <div id="text">
-              <h1>Edit contact</h1>
-              <div id="line"></div>
-            </div>
-          </div>
+    <div id="text">
+      <h1>Edit contact</h1>
+      <div id="line"></div>
+    </div>
+  </div>
 
-          <div id="right-side">
-            <img id="close-overlay" (click)="onCloseClick()" src="assets/icons/close-overlay.png" alt="">
+  <div id="right-side">
+    <img id="close-overlay" (click)="onCloseClick()" src="assets/icons/close-overlay.png" alt="">
 
-            <img src="assets/icons/person-add-contact.png" alt="">
-            <form id="inputs">
+    <img src="assets/icons/person-add-contact.png" alt="">
+    <form id="inputs" (ngSubmit)="saveEdit()">
+      <div class="input-text-img">
+        <input type="text" placeholder="Name" [(ngModel)]="editedContact.name" name="name" />
+        <img src="assets/icons/person.png" alt="" />
+      </div>
 
-              <div class="input-text-img">
-                <input type="text" placeholder="Name"> <img src="assets/icons/person.png" alt="">
-              </div>
+      <div class="input-text-img">
+        <input type="text" placeholder="Email" [(ngModel)]="editedContact.email" name="email" />
+        <img src="assets/icons/mail.png" alt="" />
+      </div>
 
-              <div class="input-text-img">
-                <input type="text" placeholder="Email"> <img src="assets/icons/mail.png" alt="">
-              </div>
+      <div class="input-text-img">
+        <input type="text" placeholder="Phone" [(ngModel)]="editedContact.phone" name="phone" />
+        <img src="assets/icons/call.png" alt="" />
+      </div>
 
-              <div class="input-text-img">
-                <input type="text" placeholder="Phone"> <img src="assets/icons/call.png" alt="">
-              </div>
-
-
-              <div id="buttons">
-                <button id="delete-btn">Delete</button>
-                <button type="submit" (click)="onCloseClick()" id="save-btn">Save <img src="assets/icons/icon-create.png" alt=""></button>
-              </div>
-            </form>
-
-
-          </div>
+      <div id="buttons">
+        <button (click)="deleteContact(selectedContactIndex ?? 0)" id="delete-btn" type="button">Delete</button>
+        <button (click)="onCloseClick()" type="submit" id="save-btn">
+          Save <img src="assets/icons/icon-create.png" alt="" />
+        </button>
+      </div>
+    </form>
 
 
+  </div>
 
-        </div>
+
+
+</div>

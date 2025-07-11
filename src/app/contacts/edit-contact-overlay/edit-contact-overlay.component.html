@@ -16,25 +16,25 @@
     <img id="close-overlay" (click)="onCloseClick()" src="assets/icons/close-overlay.png" alt="">
 
     <img src="assets/icons/person-add-contact.png" alt="">
-    <form id="inputs">
+    <form id="inputs" (ngSubmit)="saveEdit()">
       <div class="input-text-img">
-        <input type="text" placeholder="Name" [(ngModel)]="name" name="name" />
+        <input type="text" placeholder="Name" [(ngModel)]="editedContact.name" name="name" />
         <img src="assets/icons/person.png" alt="" />
       </div>
 
       <div class="input-text-img">
-        <input type="text" placeholder="Email" [(ngModel)]="email" name="email" />
+        <input type="text" placeholder="Email" [(ngModel)]="editedContact.email" name="email" />
         <img src="assets/icons/mail.png" alt="" />
       </div>
 
       <div class="input-text-img">
-        <input type="text" placeholder="Phone" [(ngModel)]="phone" name="phone" />
+        <input type="text" placeholder="Phone" [(ngModel)]="editedContact.phone" name="phone" />
         <img src="assets/icons/call.png" alt="" />
       </div>
 
       <div id="buttons">
-        <button id="delete-btn" type="button">Delete</button>
-        <button type="submit" (click)="onCloseClick()" id="save-btn">
+        <button (click)="deleteContact(selectedContactIndex ?? 0)" id="delete-btn" type="button">Delete</button>
+        <button (click)="onCloseClick()" type="submit" id="save-btn">
           Save <img src="assets/icons/icon-create.png" alt="" />
         </button>
       </div>

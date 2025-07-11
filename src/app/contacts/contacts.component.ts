@@ -30,6 +30,13 @@ export class ContactsComponent {
     phone: '',
   };
 
+  saveEditFromChild(updatedContact: ContactInterface) {
+  if (this.contactId) {
+    this.firebaseService.updateContactInDatabase(this.contactId, updatedContact);
+  }
+  this.cancelEdit();
+}
+
   editContact(index: number) {
     this.isEdited = true;
     this.selectedContactIndex = index;
@@ -51,7 +58,7 @@ export class ContactsComponent {
         this.editedContact
       );
     }
-    this.cancelEdit();
+    this.openEditContact();
   }
 
   cancelEdit() {
@@ -59,6 +66,10 @@ export class ContactsComponent {
     this.selectedContactIndex = null;
     this.contactId = '';
   }
+
+  onSaveCompleted() {
+  this.cancelEdit();  // schließt das Overlay und räumt auf
+}
 
   deleteContact(index: number) {
     this.contactId = this.firebaseService.contactList[index].id;
@@ -85,6 +96,14 @@ export class ContactsComponent {
 
   openEditContact() {
     this.showEditOverlay = !this.showEditOverlay;
+  }
+
+  deleteSelectedContact() {
+    if (this.selectedContact?.id) {
+      this.firebaseService.deleteContactFromDatabase(this.selectedContact.id);
+      this.showSelectedContact = false; // optional: schließt das Overlay
+      this.selectedContact = null;
+    }
   }
   //#endregion
 

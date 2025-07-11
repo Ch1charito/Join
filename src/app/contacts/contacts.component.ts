@@ -30,12 +30,44 @@ export class ContactsComponent {
     phone: '',
   };
 
-  saveEditFromChild(updatedContact: ContactInterface) {
-  if (this.contactId) {
-    this.firebaseService.updateContactInDatabase(this.contactId, updatedContact);
+  // add colors for initials
+  colors = [
+    '#FF7A00',
+    '#FF5EB3',
+    '#6E52FF',
+    '#9327FF',
+    '#00BEE8',
+    '#1FD7C1',
+    '#FF745E',
+    '#FFA35E',
+    '#FC71FF',
+    '#FFC701',
+    '#0038FF',
+    '#C3FF2B',
+    '#FFE62B',
+    '#FF4646',
+    '#FFBB2B',
+  ];
+
+  // add initial contacts
+  getInitials(name: string) {
+    if (!name) return '';
+    return name
+      .split(' ')
+      .map((part) => part.charAt(0))
+      .join('')
+      .toUpperCase();
   }
-  this.cancelEdit();
-}
+
+  saveEditFromChild(updatedContact: ContactInterface) {
+    if (this.contactId) {
+      this.firebaseService.updateContactInDatabase(
+        this.contactId,
+        updatedContact
+      );
+    }
+    this.cancelEdit();
+  }
 
   editContact(index: number) {
     this.isEdited = true;
@@ -49,7 +81,6 @@ export class ContactsComponent {
     };
     this.showEditOverlay = true; // öffnet das Overlay
   }
-
 
   saveEdit() {
     if (this.contactId) {
@@ -68,8 +99,8 @@ export class ContactsComponent {
   }
 
   onSaveCompleted() {
-  this.cancelEdit();  // schließt das Overlay und räumt auf
-}
+    this.cancelEdit(); // schließt das Overlay und räumt auf
+  }
 
   deleteContact(index: number) {
     this.contactId = this.firebaseService.contactList[index].id;
@@ -85,10 +116,9 @@ export class ContactsComponent {
 
   selectedContact: any;
   openSelectedContact(index: number) {
-  this.selectedContact = this.firebaseService.contactList[index];
-  this.selectedContactIndex = index;
-  this.showSelectedContact = true;
-}
+    this.selectedContact = this.firebaseService.contactList[index];
+    this.showSelectedContact = true;
+  }
 
   openAddContact() {
     this.showOverlay = !this.showOverlay;
@@ -106,84 +136,4 @@ export class ContactsComponent {
     }
   }
   //#endregion
-
-  // contacts: Contact[] = [
-  //   {
-  //     id: 1,
-  //     name: 'Anton Mayer',
-  //     email: 'anton.mayer@gmail.com',
-  //     color: '#f44336',
-  //   }, // red
-  //   {
-  //     id: 2,
-  //     name: 'Anna Müller',
-  //     email: 'anna.mueller@yahoo.de',
-  //     color: '#e91e63',
-  //   }, // pink
-  //   {
-  //     id: 3,
-  //     name: 'Boris Becker',
-  //     email: 'boris.becker@web.de',
-  //     color: '#9c27b0',
-  //   }, // lila
-  //   {
-  //     id: 4,
-  //     name: 'Claudia Schmidt',
-  //     email: 'claudia.schmidt@icloud.com',
-  //     color: '#3f51b5',
-  //   }, // blue
-  //   {
-  //     id: 5,
-  //     name: 'David Wagner',
-  //     email: 'david.wagner@outlook.de',
-  //     color: '#2196f3',
-  //   }, // lightblue
-  //   {
-  //     id: 6,
-  //     name: 'Eva Fischer',
-  //     email: 'eva.fischer@t-online.de',
-  //     color: '#009688',
-  //   }, // pink
-  //   {
-  //     id: 7,
-  //     name: 'Frank Hoffmann',
-  //     email: 'frank.hoffmann@gmx.de',
-  //     color: '#4caf50',
-  //   }, // green
-  //   {
-  //     id: 8,
-  //     name: 'Gabriele Klein',
-  //     email: 'gabriele.klein@yahoo.com',
-  //     color: '#ff9800',
-  //   }, // orange
-  //   {
-  //     id: 9,
-  //     name: 'Holger Braun',
-  //     email: 'holger.braun@mail.de',
-  //     color: '#795548',
-  //   }, // brown
-  //   {
-  //     id: 10,
-  //     name: 'Isabel Neumann',
-  //     email: 'isabel.neumann@web.de',
-  //     color: '#607d8b',
-  //   }, // grey
-  //   {
-  //     id: 11,
-  //     name: 'Bob Neumann',
-  //     email: 'Bob.neumann@web.de',
-  //     color: '#607d8b',
-  //   }, // grey
-  // ];
-  // Init(): void {
-  //   this.contacts.sort((a, b) => a.name.localeCompare(b.name)); //sort name
-  // }
-  // //
-  // getInitials(name: string) {
-  //   return name
-  //     .split(' ') //split name into words
-  //     .map((part) => part.charAt(0)) //get first letter of each word("A", "M")
-  //     .join('') //join letter together (AM)
-  //     .toUpperCase(); //make all letters always uppercase
-  // }
 }

@@ -6,25 +6,31 @@
       <div class="contacts">
         <div class="contact-sidebar">
           <button id="new-contact-btn-resp">
-            <img src="/assets/images/resp-btn/new-contact-btn-resp.png" alt="" />
+            <img
+              src="/assets/images/resp-btn/new-contact-btn-resp.png"
+              alt=""
+            />
           </button>
           <button class="new-contact-btn" (click)="openAddContact()">
             Add new contact <img src="./assets/icons/person_add.png" alt="" />
           </button>
 
-          @for (item of firebaseService.contactList; let i = $index; track $index) {<!--  @if (i
-          === 0 || contact.name.charAt(0).toUpperCase() !== contacts[i -
-          1].name.charAt(0).toUpperCase()) {
+          @for (item of firebaseService.contactList; let i = $index; track
+          item.id) { @if (i === 0 || item.name.charAt(0).toUpperCase() !==
+          firebaseService.contactList[i - 1].name.charAt(0).toUpperCase()) {
           <div class="contact-letter">
-            <span>{{ contact.name.charAt(0).toUpperCase() }}</span>
-            <hr class="brake-line" />
+            <span>{{ item.name.charAt(0).toUpperCase() }}</span>
           </div>
-          } -->
+          <hr class="brake-line" />
+          }
 
           <div class="contact-list" (click)="openSelectedContact(i)">
-            <!-- <div class="initials" [style.background-color]="contact.color">
-              {{ getInitials(contact.name) }}
-            </div> -->
+            <div
+              class="initials"
+              [style.backgroundColor]="colors[i % colors.length]"
+            >
+              {{ getInitials(item.name) }}
+            </div>
             <ul>
               <li>{{ item.name }}</li>
               <li>
@@ -33,38 +39,6 @@
             </ul>
           </div>
           }
-          <!-- <div>
-            <section>
-              @for (item of firebaseService.contactList; track $index) {
-              @if(!isEdited) {
-              <p>
-                {{ item.name }} - {{ item.email }}
-                <button (click)="editContact($index)">Edit</button>
-                <button (click)="deleteContact($index)">Delete</button>
-              </p>
-              } } @if(isEdited && selectedContactIndex !== null) {
-              <form (ngSubmit)="saveEdit()">
-                <input
-                  type="text"
-                  [(ngModel)]="editedContact.name"
-                  name="name"
-                />
-                <input
-                  type="text"
-                  [(ngModel)]="editedContact.email"
-                  name="email"
-                />
-                <button
-                  type="submit"
-                  [disabled]="!editedContact.name || !editedContact.email"
-                >
-                  Save
-                </button>
-                <button type="button" (click)="cancelEdit()">Cancel</button>
-              </form>
-              }
-            </section>
-          </div> -->
         </div>
 
         <div class="mohammad">
@@ -78,7 +52,7 @@
           <div id="info">
             <div id="contact-title">
               <img src="/assets/images/name-info.png" alt="name-info" />
-              <h1>{{selectedContact.name}}</h1>
+              <h1>{{ selectedContact.name }}</h1>
             </div>
             <div id="icons">
               <button (click)="editContact(selectedContactIndex ?? 0)">
@@ -96,22 +70,29 @@
             </div>
             <div id="mail-phone">
               <h3>Email</h3>
-              <p>{{selectedContact.email}}</p>
+              <p>{{ selectedContact.email }}</p>
               <h3>Phone</h3>
-              <p>{{selectedContact.phone}}</p>
+              <p>{{ selectedContact.phone }}</p>
             </div>
           </div>
           }
-
         </div>
 
-        <app-add-contact-overlay [class.d-none]="!showOverlay" (close)="openAddContact()"></app-add-contact-overlay>
+        <app-add-contact-overlay
+          [class.d-none]="!showOverlay"
+          (close)="openAddContact()"
+        ></app-add-contact-overlay>
         <!-- <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"
           [name]="editedContact.name" [email]="editedContact.email"
           [phone]="editedContact.phone"></app-edit-contact-overlay> -->
-        <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"
-          [editedContact]="editedContact" [contactId]="contactId" (saved)="onSaveCompleted()" (close)="openEditContact() " ></app-edit-contact-overlay>
-        
+        <app-edit-contact-overlay
+          [class.d-none]="!showEditOverlay"
+          (close)="openEditContact()"
+          [editedContact]="editedContact"
+          [contactId]="contactId"
+          (saved)="onSaveCompleted()"
+          (close)="openEditContact()"
+        ></app-edit-contact-overlay>
       </div>
     </div>
   </div>

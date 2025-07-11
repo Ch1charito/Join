@@ -28,7 +28,7 @@ export class FirebaseService implements OnDestroy {
             this.setContactObject(element.id, element.data())
           );
         });
-        console.log(this.contactList);
+        this.contactList.sort((a, b) => a.name.localeCompare(b.name));
       }
     );
   }

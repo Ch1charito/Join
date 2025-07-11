@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
 export class ContactsComponent {
   firebaseService = inject(FirebaseService);
   isEdited = false;
-  selectedContactIndex: number | null = null;
+  selectedContactIndex: number | null = 0;
   contactId?: string = '';
   editedContact = {
     name: '',
@@ -30,16 +30,26 @@ export class ContactsComponent {
     phone: '',
   };
 
+  saveEditFromChild(updatedContact: ContactInterface) {
+  if (this.contactId) {
+    this.firebaseService.updateContactInDatabase(this.contactId, updatedContact);
+  }
+  this.cancelEdit();
+}
+
   editContact(index: number) {
     this.isEdited = true;
     this.selectedContactIndex = index;
-    this.contactId = this.firebaseService.contactList[index].id;
+    const contact = this.firebaseService.contactList[index];
+    this.contactId = contact.id;
     this.editedContact = {
-      name: this.firebaseService.contactList[index].name,
-      email: this.firebaseService.contactList[index].email,
-      phone: this.firebaseService.contactList[index].phone,
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone,
     };
+    this.showEditOverlay = true; // öffnet das Overlay
   }
+
 
   saveEdit() {
     if (this.contactId) {
@@ -48,7 +58,7 @@ export class ContactsComponent {
         this.editedContact
       );
     }
-    this.cancelEdit();
+    this.openEditContact();
   }
 
   cancelEdit() {
@@ -56,6 +66,10 @@ export class ContactsComponent {
     this.selectedContactIndex = null;
     this.contactId = '';
   }
+
+  onSaveCompleted() {
+  this.cancelEdit();  // schließt das Overlay und räumt auf
+}
 
   deleteContact(index: number) {
     this.contactId = this.firebaseService.contactList[index].id;
@@ -70,10 +84,11 @@ export class ContactsComponent {
   showSelectedContact: boolean = false;
 
   selectedContact: any;
-  openSelectedContact(index:number){
-    this.selectedContact = this.firebaseService.contactList[index];
-    this.showSelectedContact = true;
-  }
+  openSelectedContact(index: number) {
+  this.selectedContact = this.firebaseService.contactList[index];
+  this.selectedContactIndex = index;
+  this.showSelectedContact = true;
+}
 
   openAddContact() {
     this.showOverlay = !this.showOverlay;
@@ -81,6 +96,14 @@ export class ContactsComponent {
 
   openEditContact() {
     this.showEditOverlay = !this.showEditOverlay;
+  }
+
+  deleteSelectedContact() {
+    if (this.selectedContact?.id) {
+      this.firebaseService.deleteContactFromDatabase(this.selectedContact.id);
+      this.showSelectedContact = false; // optional: schließt das Overlay
+      this.selectedContact = null;
+    }
   }
   //#endregion
 

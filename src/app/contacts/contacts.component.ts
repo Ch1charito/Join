@@ -116,7 +116,7 @@ export class ContactsComponent {
   showEditOverlay: boolean = false;
   showSelectedContact: boolean = false;
   animateContactInfo: boolean = false;
-   animateAddOverlay: boolean = false;
+  animateAddOverlay: boolean = false;
   selectedContact: any;
 
 
@@ -125,6 +125,7 @@ export class ContactsComponent {
     this.animateContactInfo = false;
 
     this.selectedContact = this.firebaseService.contactList[index];
+    this.selectedContactIndex = index;
     this.showSelectedContact = true;
 
     setTimeout(() => {
@@ -132,7 +133,7 @@ export class ContactsComponent {
     }, 50);
   }
 
-   openAddContact() {
+  openAddContact() {
     this.showOverlay = !this.showOverlay;
     // Setze animateAddOverlay auf true nach einer kleinen Verzögerung beim Öffnen
     if (this.showOverlay) {

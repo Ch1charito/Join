@@ -30,7 +30,6 @@ export class ContactsComponent {
     phone: '',
   };
 
-
   // add colors for initials
   colors = [
     '#FF7A00',
@@ -70,7 +69,6 @@ export class ContactsComponent {
     this.cancelEdit();
   }
 
-
   editContact(index: number) {
     this.isEdited = true;
     this.selectedContactIndex = index;
@@ -81,8 +79,10 @@ export class ContactsComponent {
       email: contact.email,
       phone: contact.phone,
     };
-    this.showEditOverlay = true; // öffnet das Overlay
+    // this.showEditOverlay = true;
+    this.openEditContact();
   }
+
 
   saveEdit() {
     if (this.contactId) {
@@ -101,7 +101,7 @@ export class ContactsComponent {
   }
 
   onSaveCompleted() {
-    this.cancelEdit(); // schließt das Overlay und räumt auf
+    this.cancelEdit();
   }
 
   deleteContact(index: number) {
@@ -118,8 +118,7 @@ export class ContactsComponent {
   animateContactInfo: boolean = false;
   animateAddOverlay: boolean = false;
   selectedContact: any;
-
-
+  animateEditOverlay: boolean = false;
 
   openSelectedContact(index: number) {
     this.animateContactInfo = false;
@@ -135,29 +134,36 @@ export class ContactsComponent {
 
   openAddContact() {
     this.showOverlay = !this.showOverlay;
-    // Setze animateAddOverlay auf true nach einer kleinen Verzögerung beim Öffnen
+
     if (this.showOverlay) {
-      this.animateAddOverlay = false; // Vor der Animation zurücksetzen
+      this.animateAddOverlay = false;
       setTimeout(() => {
         this.animateAddOverlay = true;
       }, 50);
     } else {
-      this.animateAddOverlay = false; // Beim Schließen zurücksetzen
+      this.animateAddOverlay = false;
     }
   }
 
   openEditContact() {
     this.showEditOverlay = true;
+    this.animateEditOverlay = false; // Animation auf false setzen
+    setTimeout(() => {
+      this.animateEditOverlay = true; // Nach kurzer Verzögerung auf true setzen, um Animation auszulösen
+    }, 50);
   }
 
-  closeEditContact() {
-    this.showEditOverlay = false;
+ closeEditContact() {
+    this.animateEditOverlay = false; // Slide-Out durch Setzen auf false auslösen
+    setTimeout(() => {
+      this.showEditOverlay = false; // Nach Abschluss der Animation ausblenden
+    }, 300); // Verzögerung an die Animationsdauer anpassen
   }
 
   deleteSelectedContact() {
     if (this.selectedContact?.id) {
       this.firebaseService.deleteContactFromDatabase(this.selectedContact.id);
-      this.showSelectedContact = false; 
+      this.showSelectedContact = false;
       this.selectedContact = null;
     }
   }

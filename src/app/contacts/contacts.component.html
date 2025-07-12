@@ -96,7 +96,8 @@
           (close)="openAddContact()"
         ></app-add-contact-overlay>
         <app-edit-contact-overlay
-          [class.d-none]="!showEditOverlay"
+          [class.slide-in-overlay]="animateEditOverlay"
+          [hidden]="!showEditOverlay"
           (close)="closeEditContact()"
           [editedContact]="editedContact"
           [contactId]="contactId"

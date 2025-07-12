@@ -41,8 +41,7 @@ export class EditContactOverlayComponent {
     this.onCloseClick();
   }
 
-  deleteContact(index: number) {
-    this.contactId = this.firebaseService.contactList[index].id;
+  deleteContact() {
     if (this.contactId) {
       this.firebaseService.deleteContactFromDatabase(this.contactId);
     }

@@ -15,7 +15,27 @@
             Add new contact <img src="./assets/icons/person_add.png" alt="" />
           </button>
 
-          @for (item of firebaseService.contactList; let i = $index; track $index) {<div class="contact-list" (click)="openSelectedContact(i)">
+
+          
+
+
+          @for (item of firebaseService.contactList; let i = $index; track
+          item.id) { @if (i === 0 || item.name.charAt(0).toUpperCase() !==
+          firebaseService.contactList[i - 1].name.charAt(0).toUpperCase()) {
+          <div class="contact-letter">
+            <span>{{ item.name.charAt(0).toUpperCase() }}</span>
+          </div>
+          <hr class="brake-line" />
+          }
+
+          <div class="contact-list" (click)="openSelectedContact(i)">
+            <div
+              class="initials"
+              [style.backgroundColor]="colors[i % colors.length]"
+            >
+              {{ getInitials(item.name) }}
+            </div>
+
             <ul>
               <li>{{ item.name }}</li>
               <li>
@@ -24,7 +44,9 @@
             </ul>
           </div>
           }
-          </div>
+
+        </div>
+
 
         <div class="mohammad">
           <div id="header">
@@ -34,17 +56,20 @@
           </div>
 
           @if (showSelectedContact){
+
              <div id="info" [class.slide-in]="animateContactInfo">
+
             <div id="contact-title">
               <img src="/assets/images/name-info.png" alt="name-info" />
-              <h1>{{selectedContact.name}}</h1>
+              <h1>{{ selectedContact.name }}</h1>
             </div>
             <div id="icons">
-              <button (click)="openEditContact()">
+              <button (click)="editContact(selectedContactIndex ?? 0)">
                 <img src="assets/images/edit.png" alt="edit" />
                 <p>Edit</p>
               </button>
-              <button>
+
+              <button (click)="deleteSelectedContact()">
                 <img src="assets/images/delete.png" alt="delete" />
                 <p>Delete</p>
               </button>
@@ -54,12 +79,14 @@
             </div>
             <div id="mail-phone">
               <h3>Email</h3>
-              <p>{{selectedContact.email}}</p>
+              <p>{{ selectedContact.email }}</p>
               <h3>Phone</h3>
-              <p>{{selectedContact.phone}}</p>
+              <p>{{ selectedContact.phone }}</p>
             </div>
           </div>
           }
+
+
 
         </div>
 
@@ -68,8 +95,15 @@
           [class.slide-in-overlay]="animateAddOverlay"
           (close)="openAddContact()"
         ></app-add-contact-overlay>
+        <!-- <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"
+          [name]="editedContact.name" [email]="editedContact.email"
+          [phone]="editedContact.phone"></app-edit-contact-overlay> -->
         <app-edit-contact-overlay
           [class.d-none]="!showEditOverlay"
+          (close)="openEditContact()"
+          [editedContact]="editedContact"
+          [contactId]="contactId"
+          (saved)="onSaveCompleted()"
           (close)="openEditContact()"
         ></app-edit-contact-overlay>
       </div>

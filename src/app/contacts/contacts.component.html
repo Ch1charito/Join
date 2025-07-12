@@ -95,16 +95,12 @@
           [class.slide-in-overlay]="animateAddOverlay"
           (close)="openAddContact()"
         ></app-add-contact-overlay>
-        <!-- <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"
-          [name]="editedContact.name" [email]="editedContact.email"
-          [phone]="editedContact.phone"></app-edit-contact-overlay> -->
         <app-edit-contact-overlay
           [class.d-none]="!showEditOverlay"
-          (close)="openEditContact()"
+          (close)="closeEditContact()"
           [editedContact]="editedContact"
           [contactId]="contactId"
           (saved)="onSaveCompleted()"
-          (close)="openEditContact()"
         ></app-edit-contact-overlay>
       </div>
     </div>

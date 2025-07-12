@@ -147,13 +147,17 @@ export class ContactsComponent {
   }
 
   openEditContact() {
-    this.showEditOverlay = !this.showEditOverlay;
+    this.showEditOverlay = true;
+  }
+
+  closeEditContact() {
+    this.showEditOverlay = false;
   }
 
   deleteSelectedContact() {
     if (this.selectedContact?.id) {
       this.firebaseService.deleteContactFromDatabase(this.selectedContact.id);
-      this.showSelectedContact = false; // optional: schließt das Overlay
+      this.showSelectedContact = false; 
       this.selectedContact = null;
     }
   }

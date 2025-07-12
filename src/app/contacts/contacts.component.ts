@@ -30,6 +30,7 @@ export class ContactsComponent {
     phone: '',
   };
 
+
   // add colors for initials
   colors = [
     '#FF7A00',
@@ -68,6 +69,7 @@ export class ContactsComponent {
     }
     this.cancelEdit();
   }
+
 
   editContact(index: number) {
     this.isEdited = true;
@@ -113,15 +115,34 @@ export class ContactsComponent {
   showOverlay: boolean = false;
   showEditOverlay: boolean = false;
   showSelectedContact: boolean = false;
-
+  animateContactInfo: boolean = false;
+   animateAddOverlay: boolean = false;
   selectedContact: any;
+
+
+
   openSelectedContact(index: number) {
+    this.animateContactInfo = false;
+
     this.selectedContact = this.firebaseService.contactList[index];
     this.showSelectedContact = true;
+
+    setTimeout(() => {
+      this.animateContactInfo = true;
+    }, 50);
   }
 
-  openAddContact() {
+   openAddContact() {
     this.showOverlay = !this.showOverlay;
+    // Setze animateAddOverlay auf true nach einer kleinen Verzögerung beim Öffnen
+    if (this.showOverlay) {
+      this.animateAddOverlay = false; // Vor der Animation zurücksetzen
+      setTimeout(() => {
+        this.animateAddOverlay = true;
+      }, 50);
+    } else {
+      this.animateAddOverlay = false; // Beim Schließen zurücksetzen
+    }
   }
 
   openEditContact() {

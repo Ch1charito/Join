@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './add-contact-overlay.component.scss'
 })
 export class AddContactOverlayComponent {
+
   firebaseService = inject(FirebaseService);
   contacts = {
     name: '',
@@ -31,6 +32,8 @@ export class AddContactOverlayComponent {
  
   //#region overlay
   @Output() close = new EventEmitter<void>();
+ 
+
 
   onCloseClick() {
     this.close.emit();

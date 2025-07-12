@@ -15,6 +15,10 @@
             Add new contact <img src="./assets/icons/person_add.png" alt="" />
           </button>
 
+
+          
+
+
           @for (item of firebaseService.contactList; let i = $index; track
           item.id) { @if (i === 0 || item.name.charAt(0).toUpperCase() !==
           firebaseService.contactList[i - 1].name.charAt(0).toUpperCase()) {
@@ -31,6 +35,7 @@
             >
               {{ getInitials(item.name) }}
             </div>
+
             <ul>
               <li>{{ item.name }}</li>
               <li>
@@ -39,7 +44,9 @@
             </ul>
           </div>
           }
+
         </div>
+
 
         <div class="mohammad">
           <div id="header">
@@ -49,7 +56,9 @@
           </div>
 
           @if (showSelectedContact){
-          <div id="info">
+
+             <div id="info" [class.slide-in]="animateContactInfo">
+
             <div id="contact-title">
               <img src="/assets/images/name-info.png" alt="name-info" />
               <h1>{{ selectedContact.name }}</h1>
@@ -76,10 +85,14 @@
             </div>
           </div>
           }
+
+
+
         </div>
 
+
         <app-add-contact-overlay
-          [class.d-none]="!showOverlay"
+          [class.slide-in-overlay]="animateAddOverlay"
           (close)="openAddContact()"
         ></app-add-contact-overlay>
         <!-- <app-edit-contact-overlay [class.d-none]="!showEditOverlay" (close)="openEditContact()"

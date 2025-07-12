@@ -79,7 +79,7 @@ export class ContactsComponent {
       email: contact.email,
       phone: contact.phone,
     };
-    // this.showEditOverlay = true;
+    
     this.openEditContact();
   }
 

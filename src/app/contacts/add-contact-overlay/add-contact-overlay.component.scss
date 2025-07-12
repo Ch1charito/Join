@@ -1,174 +1,183 @@
- #overlay-add-contact {
-       
-        z-index: 10;
-        position: fixed;
-        width: 1212px;
-        height: 592px;
+#overlay-add-contact {
+  z-index: 10;
+  position: fixed;
+  width: 1212px;
+  height: 592px;
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgb(184, 185, 186);
+  top: 20%;
+  left: 20%;
+  overflow: hidden;
+  border-radius: 25px;
+
+
+  #left-side {
+    background-color: rgb(42, 54, 71);
+    width: 467px;
+    height: 594px;
+    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 50px;
+
+    img {
+      width: 55px;
+      height: 66px;
+    }
+
+    #text {
+      color: white;
+      display: flex;
+      flex-direction: column;
+
+      h1 {
+        font-size: 61px;
+      }
+      h3 {
+        font-size: 24px;
+      }
+      #line {
+        height: 2px;
+        width: 80px;
+        background-color: rgb(41, 171, 226);
+        margin-top: 10px;
+      }
+    }
+  }
+
+  #right-side {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: white;
+    width: calc(100% - 467px);
+    padding-right: 50px;
+
+    img[src="assets/icons/person-add-contact.png"] {
+      margin-right: 100px;
+      width: 120px;
+      height: 120px;
+    }
+
+    #close-overlay {
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: 14px;
+      height: 14px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: rgb(226, 227, 228);
+        width: 16px;
+        height: 16px;
+      }
+    }
+
+    #inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      input {
+        cursor: pointer;
+        width: 422px;
+        height: 50px;
+        padding: 0 15px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 20px;
+      }
+
+      .input-text-img {
         display: flex;
-        justify-content: flex-end;
-        background-color: rgb(184, 185, 186);
-        top: 20%;
-        left: 20%;
-        overflow: hidden;
-        border-radius: 25px;
+        align-items: center;
+        position: relative;
+        width: 422px;
+        height: 50px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-sizing: border-box;
 
-        #left-side {
-          background-color: rgb(42, 54, 71);
-          width: 467px;
-          height: 594px;
-          gap: 30px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          padding-left: 50px;
-
-          img {
-            width: 55px;
-            height: 66px;
-          }
-
-          #text {
-            color: white;
-            display: flex;
-            flex-direction: column;
-
-            h1 {
-              font-size: 61px;
-            }
-            h3 {
-              font-size: 24px;
-            }
-            #line {
-              height: 2px;
-              width: 80px;
-              background-color: rgb(41, 171, 226);
-              margin-top: 10px;
-            }
-          }
+        input {
+          flex-grow: 1;
+          border: none;
+          outline: none;
+          padding: 0 0 0 15px;
+          height: 100%;
         }
 
-        #right-side {
-          display: flex;
-          align-items: center;
-          justify-content: flex-end; 
-          background-color: white;
-          width: calc(100% - 467px);
-          padding-right: 50px; 
-
-          img[src="assets/icons/person-add-contact.png"] { 
-            margin-right: 100px; 
-             width: 120px;
-            height: 120px;
-          }
-
-          #close-overlay {
-            position: absolute;
-            right: 40px;
-            top: 40px;
-            width: 14px;
-            height: 14px;
-
-            &:hover {
-              cursor: pointer;
-              background-color: rgb(226, 227, 228);
-              width: 16px;
-              height: 16px;
-            }
-          }
-
-
-          #inputs {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-
-            input {
-              cursor: pointer;
-              width: 422px;
-              height: 50px;
-              padding: 0 15px;
-              box-sizing: border-box;
-              border: 1px solid #ccc;
-              border-radius: 8px;
-              font-size: 20px;
-            }
-
-            .input-text-img {
-              display: flex;
-              align-items: center;
-              position: relative;
-              width: 422px;
-              height: 50px;
-              border: 1px solid #ccc;
-              border-radius: 8px;
-              box-sizing: border-box;
-
-              input {
-                flex-grow: 1;
-                border: none;
-                outline: none;
-                padding: 0 0 0 15px;
-                height: 100%;
-              }
-
-              img {
-                height: 20px;
-                width: 20px;
-                margin-left: -25px;
-                position: absolute;
-                right: 15px;
-                top: 50%;
-                transform: translateY(-50%);
-              }
-            }
-          }
-
-          #buttons {
-            width: 394px;
-            height: 57px;
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-
-            img {
-              width: 20px;
-              height: 20px;
-            }
-
-            #cancel-btn {
-              width: 136px;
-              height: 56px;
-              background-color: white;
-              border-radius: 10px;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-size: 20px;
-              gap: 10px;
-            }
-
-            #create-btn {
-              width: 244px;
-              height: 57px;
-              border-radius: 10px;
-              background-color: rgb(42, 54, 71);
-              color: white;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              border: none;
-              font-size: 20px;
-              gap: 10px;
-
-              &:hover {
-                background-color: rgb(41, 171, 226);
-              }
-            }
-          }
+        img {
+          height: 20px;
+          width: 20px;
+          margin-left: -25px;
+          position: absolute;
+          right: 15px;
+          top: 50%;
+          transform: translateY(-50%);
         }
+      }
+    }
 
-        
+    #buttons {
+      width: 394px;
+      height: 57px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+
+      img {
+        width: 20px;
+        height: 20px;
       }
-      .d-none {
-        display: none;
+
+      #cancel-btn {
+        width: 136px;
+        height: 56px;
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        gap: 10px;
+
+        &:hover {
+          color: #29abe2;
+          transform: scale(1.05);
+          border: 1px solid #29abe2;
+        }
+        &:hover img {
+          filter: brightness(0) saturate(100%) invert(50%) sepia(100%)
+            saturate(2000%) hue-rotate(180deg) brightness(100%) contrast(100%);
+          transform: scale(1.1);
+        }
       }
+
+      #create-btn {
+        width: 244px;
+        height: 57px;
+        border-radius: 10px;
+        background-color: rgb(42, 54, 71);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        font-size: 20px;
+        gap: 10px;
+
+        &:hover {
+          background-color: rgb(41, 171, 226);
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+.d-none {
+  display: none;
+}

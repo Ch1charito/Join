@@ -11,13 +11,11 @@
               alt=""
             />
           </button>
-          <button class="new-contact-btn" (click)="openAddContact()">
-            Add new contact <img src="./assets/icons/person_add.png" alt="" />
-          </button>
-
-
-          
-
+          <div class="new-contact-btn-container">
+            <button class="new-contact-btn" (click)="openAddContact()">
+              Add new contact <img src="./assets/icons/person_add.png" alt="" />
+            </button>
+          </div>
 
           @for (item of firebaseService.contactList; let i = $index; track
           item.id) { @if (i === 0 || item.name.charAt(0).toUpperCase() !==
@@ -44,9 +42,7 @@
             </ul>
           </div>
           }
-
         </div>
-
 
         <div class="mohammad">
           <div id="header">
@@ -57,11 +53,17 @@
 
           @if (showSelectedContact){
 
-             <div id="info" [class.slide-in]="animateContactInfo">
-
+          <div id="info" [class.slide-in]="animateContactInfo">
             <div id="contact-title">
-              <img src="/assets/images/name-info.png" alt="name-info" />
-              <h1>{{selectedContact.name}}</h1>
+              <div
+                class="contact-initials"
+                [style.backgroundColor]="
+                  colors[(selectedContactIndex ?? 0) % colors.length]
+                "
+              >
+                {{ getInitials(selectedContact.name) }}
+              </div>
+              <h1>{{ selectedContact.name }}</h1>
             </div>
             <div id="icons">
               <button (click)="editContact(selectedContactIndex ?? 0)">
@@ -79,17 +81,13 @@
             </div>
             <div id="mail-phone">
               <h3>Email</h3>
-              <p>{{selectedContact.email}}</p>
+              <p>{{ selectedContact.email }}</p>
               <h3>Phone</h3>
-              <p>{{selectedContact.phone}}</p>
+              <p>{{ selectedContact.phone }}</p>
             </div>
           </div>
           }
-
-
-
         </div>
-
 
         <app-add-contact-overlay
           [class.slide-in-overlay]="animateAddOverlay"

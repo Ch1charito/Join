@@ -17,47 +17,33 @@
     <img src="assets/icons/person-add-contact.png" alt="" />
     <form id="inputs" (ngSubmit)="submitContact(addContactForm)" #addContactForm="ngForm">
       <div class="input-text-img">
-
-        <input
-          name="name"
-          [(ngModel)]="contacts.name"
-          type="text"
-          placeholder="Name"
-          required
+        <input name="name" [(ngModel)]="contacts.name" type="text" placeholder="Name" required
           pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
-        />
-
+          #name="ngModel" />
         <img src="assets/icons/person.png" alt="" />
       </div>
-
-      <div class="input-text-img">
-
-        <input
-          name="email"
-          [(ngModel)]="contacts.email"
-          required
-          type="text"
-          placeholder="Email"
-          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-          #email="ngModel"
-          (blur)="email.control.markAsTouched()"
-        />
-
-        <img src="assets/icons/mail.png" alt="" />
+      <div class="validation-error" *ngIf="name.invalid && name.touched">
+        Please enter name & surname.
       </div>
 
+      <!-- EMAIL -->
       <div class="input-text-img">
+        <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email"
+          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" #email="ngModel" />
+        <img src="assets/icons/mail.png" alt="" />
+      </div>
+      <div class="validation-error" *ngIf="email.invalid && email.touched">
+        Please enter a valid email address.
+      </div>
 
-        <input
-          name="phone"
-          [(ngModel)]="contacts.phone"
-          required
-          type="text"
-          placeholder="Phone"
-          pattern="^^\+?\d{7,15}$"
-        />
-
+      <!-- PHONE -->
+      <div class="input-text-img">
+        <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone"
+          pattern="^\+?\d{7,15}$" #phone="ngModel" />
         <img src="assets/icons/call.png" alt="" />
+      </div>
+      <div class="validation-error" *ngIf="phone.invalid && phone.touched">
+        Please enter a valid phone number.
       </div>
 
       <div id="buttons">

@@ -35,7 +35,6 @@
           z-index: 2;
           background: none;
           border: none;
-          padding: 0;
           cursor: pointer;
           img {
             height: 56px;
@@ -48,25 +47,27 @@
           }
         }
         .new-contact-btn-container {
+          background: white;
           position: sticky;
           top: 0;
-          background: white;
           z-index: 5;
           width: 100%;
-          padding: 2rem;
+          padding: 2rem 1rem;
+
           .new-contact-btn {
             display: flex;
             justify-content: center;
             align-items: center;
             background: #2a3647;
-            padding: 0.5rem 1rem;
             cursor: pointer;
-            border-radius: 8px;
-            width: 100%;
             font-weight: bold;
             font-size: 1.2rem;
             color: white;
             border: none;
+            padding: 0.5rem 0;
+            border-radius: 8px;
+            width: 100%;
+
             gap: 1rem;
             img {
               width: 32px;
@@ -78,6 +79,10 @@
             }
             @media (max-width: 550px) {
               display: none;
+            }
+            @media (max-width: 1200px) {
+              width: 90%;
+              margin: 0 auto;
             }
           }
         }
@@ -139,12 +144,14 @@
         display: flex;
         flex-direction: column;
         padding-left: 30px;
-
         background-color: rgb(246, 247, 248);
+        @media (max-width: 800px) {
+          display: none;
+        }
 
         #header {
           margin-top: 206px;
-          width: 569px;
+          width: auto;
           height: 73px;
           display: flex;
           align-items: center;
@@ -155,6 +162,7 @@
             flex-direction: column;
             align-items: start;
             height: auto;
+            margin-top: 100px;
           }
 
           h1 {
@@ -209,9 +217,7 @@
             padding: 1rem;
 
             h1 {
-
               font-size: 2rem;
-
             }
           }
           .contact-initials {
@@ -234,7 +240,6 @@
             gap: 10px;
             margin-left: 167px;
             margin-top: -40px;
-
 
             button {
               display: flex;
@@ -332,7 +337,6 @@
   }
 }
 
-
 app-add-contact-overlay {
   position: fixed;
   top: 0;
@@ -385,5 +389,4 @@ app-edit-contact-overlay {
     transform: translateX(0);
     opacity: 1;
   }
-
 }

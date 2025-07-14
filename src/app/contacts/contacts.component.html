@@ -95,18 +95,14 @@
           }
         </div>
 
-        <app-add-contact-overlay
-          [class.slide-in-overlay]="animateAddOverlay"
-          (close)="openAddContact()"
-        ></app-add-contact-overlay>
-        <app-edit-contact-overlay
-          [class.slide-in-overlay]="animateEditOverlay"
-          [hidden]="!showEditOverlay"
-          (close)="closeEditContact()"
-          [editedContact]="editedContact"
-          [contactId]="contactId"
-          (saved)="onSaveCompleted()"
-        ></app-edit-contact-overlay>
+
+
+        <app-add-contact-overlay [class.slide-in-overlay]="animateAddOverlay"
+          (close)="openAddContact()" (submitted)="showContactCreatedMessage()"></app-add-contact-overlay>
+        <app-edit-contact-overlay [class.slide-in-overlay]="animateEditOverlay" [hidden]="!showEditOverlay"
+          (close)="closeEditContact()" [editedContact]="editedContact" [contactId]="contactId"
+          (saved)="onSaveCompleted()"></app-edit-contact-overlay>
+
       </div>
     </div>
   </div>

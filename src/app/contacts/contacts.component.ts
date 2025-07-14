@@ -30,6 +30,8 @@ export class ContactsComponent {
     phone: '',
   };
 
+  showSuccessMessage: boolean = false;
+
   // add colors for initials
   colors = [
     '#FF7A00',
@@ -111,6 +113,13 @@ export class ContactsComponent {
     }
   }
 
+   showContactCreatedMessage() {
+    this.showSuccessMessage = true; 
+    setTimeout(() => {
+      this.showSuccessMessage = false; 
+    }, 2000); 
+  }
+
   //#region Overlay
   showOverlay: boolean = false;
   showEditOverlay: boolean = false;
@@ -142,22 +151,23 @@ export class ContactsComponent {
       }, 50);
     } else {
       this.animateAddOverlay = false;
+       this.showContactCreatedMessage();
     }
   }
 
   openEditContact() {
     this.showEditOverlay = true;
-    this.animateEditOverlay = false; // Animation auf false setzen
+    this.animateEditOverlay = false; 
     setTimeout(() => {
-      this.animateEditOverlay = true; // Nach kurzer Verzögerung auf true setzen, um Animation auszulösen
+      this.animateEditOverlay = true;
     }, 50);
   }
 
  closeEditContact() {
-    this.animateEditOverlay = false; // Slide-Out durch Setzen auf false auslösen
+    this.animateEditOverlay = false; 
     setTimeout(() => {
-      this.showEditOverlay = false; // Nach Abschluss der Animation ausblenden
-    }, 300); // Verzögerung an die Animationsdauer anpassen
+      this.showEditOverlay = false; 
+    }, 300); 
   }
 
   deleteSelectedContact() {

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-contact-overlay',
@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class AddContactOverlayComponent {
 
+  @Output() submitted = new EventEmitter<void>();
   firebaseService = inject(FirebaseService);
   contacts = {
     name: '',
@@ -18,9 +19,22 @@ export class AddContactOverlayComponent {
     phone: ''
   };
 
-  submitContact() {
+  /* submitContact() {
     this.firebaseService.addContactToDatabase(this.contacts);
     this.clearInputFields();
+    this.submitted.emit();
+    
+  } */
+
+  submitContact(form: NgForm) {
+    if (!form.valid) {
+      console.warn('Formular ungültig');
+    return;
+    }
+
+    this.firebaseService.addContactToDatabase(this.contacts);
+    this.clearInputFields();
+    this.submitted.emit();
   }
 
   clearInputFields() {
@@ -29,7 +43,9 @@ export class AddContactOverlayComponent {
     this.contacts.phone = '';
   }
 
- 
+  
+
+
   //#region overlay
   @Output() close = new EventEmitter<void>();
  

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { FirebaseService } from '../../services/firebase.service';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -10,7 +10,7 @@ import { FormsModule, NgForm } from '@angular/forms';
   styleUrl: './add-contact-overlay.component.scss'
 })
 export class AddContactOverlayComponent {
-
+  @ViewChild('addContactForm') addContactForm!: NgForm;
   @Output() submitted = new EventEmitter<void>();
   firebaseService = inject(FirebaseService);
   contacts = {
@@ -19,12 +19,6 @@ export class AddContactOverlayComponent {
     phone: ''
   };
 
-  /* submitContact() {
-    this.firebaseService.addContactToDatabase(this.contacts);
-    this.clearInputFields();
-    this.submitted.emit();
-    
-  } */
 
   submitContact(form: NgForm) {
     if (!form.valid) {
@@ -33,8 +27,10 @@ export class AddContactOverlayComponent {
     }
 
     this.firebaseService.addContactToDatabase(this.contacts);
+    form.resetForm()
     this.clearInputFields();
     this.submitted.emit();
+    this.onCloseClick();
   }
 
   clearInputFields() {
@@ -53,6 +49,8 @@ export class AddContactOverlayComponent {
 
   onCloseClick() {
     this.close.emit();
+    this.addContactForm.resetForm();
+    this.clearInputFields();
   }
   //#endregion
 }  

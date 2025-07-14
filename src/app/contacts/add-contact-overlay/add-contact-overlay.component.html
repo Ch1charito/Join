@@ -39,6 +39,8 @@
           type="text"
           placeholder="Email"
           pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+          #email="ngModel"
+          (blur)="email.control.markAsTouched()"
         />
 
         <img src="assets/icons/mail.png" alt="" />
@@ -62,7 +64,7 @@
         <button type="button" (click)="onCloseClick()" id="cancel-btn">
           Cancel <img src="assets/icons/icon-cancel.png" alt="" />
         </button>
-        <button (click)="onCloseClick()" type="submit" id="create-btn">
+        <button type="submit" id="create-btn">
           Create contact <img src="assets/icons/icon-create.png" alt="" />
         </button>
       </div>

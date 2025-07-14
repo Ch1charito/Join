@@ -25,7 +25,8 @@
           [(ngModel)]="contacts.name"
           type="text"
           placeholder="Name"
-          pattern="^[A-Za-zäöüÄÖÜß-]+ [A-Za-zäöüÄÖÜß-]+$" required
+          required
+          pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
         />
         <img src="assets/icons/person.png" alt="" />
       </div>
@@ -37,6 +38,7 @@
           required
           type="text"
           placeholder="Email"
+          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
         />
         <img src="assets/icons/mail.png" alt="" />
       </div>
@@ -48,6 +50,7 @@
           required
           type="text"
           placeholder="Phone"
+          pattern="^^\+?\d{7,15}$"
         />
         <img src="assets/icons/call.png" alt="" />
       </div>

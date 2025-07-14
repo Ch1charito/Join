@@ -1,18 +1,27 @@
 @import url("../../../styles.scss");
 
 #overlay-add-contact {
+  border-radius: 25px;
   z-index: 10;
   position: fixed;
   width: 1212px;
   height: 592px;
   display: flex;
   justify-content: flex-end;
-  background-color: rgb(184, 185, 186);
   top: 20%;
   left: 20%;
   overflow: hidden;
   border-radius: 25px;
 
+  @media (max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+  }
 
   #left-side {
     background-color: rgb(42, 54, 71);
@@ -23,6 +32,27 @@
     flex-direction: column;
     justify-content: center;
     padding-left: 50px;
+
+    @media (max-width: 1200px) {
+      width: 396px;
+      height: 351px;
+      border-radius: 25px;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    #close-overlay-responsive {
+      display: none;
+      position: absolute;
+      right: 40px;
+      top: 40px;
+      width: 14px;
+      height: 14px;
+      cursor: pointer;
+      @media (max-width: 1200px) {
+        display: block;
+      }
+    }
 
     img {
       width: 55px;
@@ -36,9 +66,16 @@
 
       h1 {
         font-size: 61px;
+        @media (max-width: 1200px) {
+          font-size: 47px;
+        }
       }
       h3 {
         font-size: 24px;
+         @media (max-width: 1200px) {
+          font-size: 20px;
+          font-weight: 200;
+        }
       }
       #line {
         height: 2px;
@@ -57,10 +94,24 @@
     width: calc(100% - 467px);
     padding-right: 50px;
 
+    @media (max-width: 1200px) {
+      display: flex;
+      flex-direction: column;
+      padding-right: 0;
+      width: 396px;
+      height: 409px;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+    }
+
     img[src="assets/icons/person-add-contact.png"] {
       margin-right: 100px;
+      margin-bottom: 30px;
       width: 120px;
       height: 120px;
+      @media (max-width: 1200px) {
+        margin-right: 0;
+      }
     }
 
     #close-overlay {
@@ -76,12 +127,21 @@
         width: 16px;
         height: 16px;
       }
+      @media (max-width: 1200px) {
+        display: none;
+      }
     }
 
     #inputs {
       display: flex;
       flex-direction: column;
       gap: 20px;
+
+      @media (max-width: 1200px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
       input {
         cursor: pointer;
@@ -103,6 +163,9 @@
         border: 1px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
+        @media (max-width: 1200px) {
+          width: 364px;
+        }
 
         input {
           flex-grow: 1;
@@ -130,6 +193,13 @@
       display: flex;
       justify-content: space-between;
       gap: 20px;
+      @media (max-width: 1200px) {
+        margin-bottom: 40px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
       img {
         width: 20px;
@@ -146,6 +216,10 @@
         align-items: center;
         font-size: 20px;
         gap: 10px;
+
+        @media (max-width: 1200px) {
+          display: none;
+        }
 
         &:hover {
           color: #29abe2;
@@ -171,6 +245,10 @@
         border: none;
         font-size: 20px;
         gap: 10px;
+
+        @media (max-width: 1200px) {
+          width: 202px;
+        }
 
         &:hover {
           background-color: rgb(41, 171, 226);

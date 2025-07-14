@@ -1,8 +1,9 @@
+
 <div id="overlay-add-contact">
 
   <div id="left-side">
     <img src="assets/icons/logo-overlay.png" alt="" />
-    <img src="assets/icons/close-responsive.png" alt="" id="close-overlay-responsive">
+    <img (click)="onCloseClick()" src="assets/icons/close-responsive.png" alt="" id="close-overlay-responsive">
 
     <div id="text">
       <h1>Add contact</h1>
@@ -18,42 +19,24 @@
     <form id="inputs" (ngSubmit)="submitContact(addContactForm)" #addContactForm="ngForm">
       <div class="input-text-img">
 
-        <input
-          name="name"
-          [(ngModel)]="contacts.name"
-          type="text"
-          placeholder="Name"
-          required
-          pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
-        />
+        <input name="name" [(ngModel)]="contacts.name" type="text" placeholder="Name" required
+          pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$" />
 
         <img src="assets/icons/person.png" alt="" />
       </div>
 
       <div class="input-text-img">
 
-        <input
-          name="email"
-          [(ngModel)]="contacts.email"
-          required
-          type="text"
-          placeholder="Email"
-          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-        />
+        <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email"
+          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
 
         <img src="assets/icons/mail.png" alt="" />
       </div>
 
       <div class="input-text-img">
 
-        <input
-          name="phone"
-          [(ngModel)]="contacts.phone"
-          required
-          type="text"
-          placeholder="Phone"
-          pattern="^^\+?\d{7,15}$"
-        />
+        <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone"
+          pattern="^^\+?\d{7,15}$" />
 
         <img src="assets/icons/call.png" alt="" />
       </div>

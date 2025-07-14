@@ -15,24 +15,51 @@
     <img (click)="onCloseClick()" id="close-overlay" src="assets/icons/close-overlay.png" alt="" />
 
     <img src="assets/icons/person-add-contact.png" alt="" />
-    <form id="inputs" (ngSubmit)="submitContact()">
+    <form id="inputs" (ngSubmit)="submitContact(addContactForm)" #addContactForm="ngForm">
       <div class="input-text-img">
-        <input name="name" [(ngModel)]="contacts.name" required type="text" placeholder="Name" />
+
+        <input
+          name="name"
+          [(ngModel)]="contacts.name"
+          type="text"
+          placeholder="Name"
+          required
+          pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
+        />
+
         <img src="assets/icons/person.png" alt="" />
       </div>
 
       <div class="input-text-img">
-        <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email" />
+
+        <input
+          name="email"
+          [(ngModel)]="contacts.email"
+          required
+          type="text"
+          placeholder="Email"
+          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+        />
+
         <img src="assets/icons/mail.png" alt="" />
       </div>
 
       <div class="input-text-img">
-        <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone" />
+
+        <input
+          name="phone"
+          [(ngModel)]="contacts.phone"
+          required
+          type="text"
+          placeholder="Phone"
+          pattern="^^\+?\d{7,15}$"
+        />
+
         <img src="assets/icons/call.png" alt="" />
       </div>
 
       <div id="buttons">
-        <button (click)="onCloseClick()" id="cancel-btn">
+        <button type="button" (click)="onCloseClick()" id="cancel-btn">
           Cancel <img src="assets/icons/icon-cancel.png" alt="" />
         </button>
         <button (click)="onCloseClick()" type="submit" id="create-btn">

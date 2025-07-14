@@ -113,7 +113,9 @@ export class ContactsComponent {
   }
 
   showContactCreatedMessage() {
-    this.showSuccessMessage = true;
+
+    this.showSuccessMessage = true; 
+
     setTimeout(() => {
       this.showSuccessMessage = false;
     }, 2000);
@@ -150,7 +152,6 @@ export class ContactsComponent {
       }, 50);
     } else {
       this.animateAddOverlay = false;
-      this.showContactCreatedMessage();
     }
   }
 

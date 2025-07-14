@@ -29,37 +29,7 @@ export class ContactsComponent {
     email: '',
     phone: '',
   };
-
   showSuccessMessage: boolean = false;
-
-  // add colors for initials
-  colors = [
-    '#FF7A00',
-    '#FF5EB3',
-    '#6E52FF',
-    '#9327FF',
-    '#00BEE8',
-    '#1FD7C1',
-    '#FF745E',
-    '#FFA35E',
-    '#FC71FF',
-    '#FFC701',
-    '#0038FF',
-    '#C3FF2B',
-    '#FFE62B',
-    '#FF4646',
-    '#FFBB2B',
-  ];
-
-  // add initial contacts
-  getInitials(name: string) {
-    if (!name) return '';
-    return name
-      .split(' ')
-      .map((part) => part.charAt(0))
-      .join('')
-      .toUpperCase();
-  }
 
   saveEditFromChild(updatedContact: ContactInterface) {
     if (this.contactId) {
@@ -81,10 +51,9 @@ export class ContactsComponent {
       email: contact.email,
       phone: contact.phone,
     };
-    
+
     this.openEditContact();
   }
-
 
   saveEdit() {
     if (this.contactId) {
@@ -114,28 +83,34 @@ export class ContactsComponent {
   }
 
   showContactCreatedMessage() {
-    this.showSuccessMessage = true; 
+    this.showSuccessMessage = true;
     setTimeout(() => {
-      this.showSuccessMessage = false; 
-    }, 2000); 
+      this.showSuccessMessage = false;
+    }, 2000);
   }
 
   //#region Overlay
   showOverlay: boolean = false;
   showEditOverlay: boolean = false;
-  showSelectedContact: boolean = false;
   animateContactInfo: boolean = false;
   animateAddOverlay: boolean = false;
   selectedContact: any;
   animateEditOverlay: boolean = false;
+  showSelectedContact: boolean = false;
+  isDetailViewMobile: boolean = false;
 
   openSelectedContact(index: number) {
-    this.animateContactInfo = false;
-
-    this.selectedContact = this.firebaseService.contactList[index];
-    this.selectedContactIndex = index;
-    this.showSelectedContact = true;
-
+    if (this.selectedContactIndex === index) {
+      this.showSelectedContact = false;
+      this.selectedContactIndex = null;
+      this.isDetailViewMobile = false;
+    } else {
+      this.animateContactInfo = false;
+      this.selectedContact = this.firebaseService.contactList[index];
+      this.selectedContactIndex = index;
+      this.showSelectedContact = true;
+      this.isDetailViewMobile = true;
+    }
     setTimeout(() => {
       this.animateContactInfo = true;
     }, 50);
@@ -156,17 +131,17 @@ export class ContactsComponent {
 
   openEditContact() {
     this.showEditOverlay = true;
-    this.animateEditOverlay = false; 
+    this.animateEditOverlay = false;
     setTimeout(() => {
       this.animateEditOverlay = true;
     }, 50);
   }
 
- closeEditContact() {
-    this.animateEditOverlay = false; 
+  closeEditContact() {
+    this.animateEditOverlay = false;
     setTimeout(() => {
-      this.showEditOverlay = false; 
-    }, 300); 
+      this.showEditOverlay = false;
+    }, 300);
   }
 
   deleteSelectedContact() {
@@ -176,5 +151,36 @@ export class ContactsComponent {
       this.selectedContact = null;
     }
   }
+  closeDetailView() {
+    this.isDetailViewMobile = false;
+  }
   //#endregion
+  // add colors for initials
+  colors = [
+    '#FF7A00',
+    '#FF5EB3',
+    '#6E52FF',
+    '#9327FF',
+    '#00BEE8',
+    '#1FD7C1',
+    '#FF745E',
+    '#FFA35E',
+    '#FC71FF',
+    '#FFC701',
+    '#0038FF',
+    '#C3FF2B',
+    '#FFE62B',
+    '#FF4646',
+    '#FFBB2B',
+  ];
+
+  // add initial contacts
+  getInitials(name: string) {
+    if (!name) return '';
+    return name
+      .split(' ')
+      .map((part) => part.charAt(0))
+      .join('')
+      .toUpperCase();
+  }
 }

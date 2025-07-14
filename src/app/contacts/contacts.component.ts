@@ -81,10 +81,9 @@ export class ContactsComponent {
       email: contact.email,
       phone: contact.phone,
     };
-    
+
     this.openEditContact();
   }
-
 
   saveEdit() {
     if (this.contactId) {
@@ -113,11 +112,11 @@ export class ContactsComponent {
     }
   }
 
-   showContactCreatedMessage() {
-    this.showSuccessMessage = true; 
+  showContactCreatedMessage() {
+    this.showSuccessMessage = true;
     setTimeout(() => {
-      this.showSuccessMessage = false; 
-    }, 2000); 
+      this.showSuccessMessage = false;
+    }, 2000);
   }
 
   //#region Overlay
@@ -131,14 +130,14 @@ export class ContactsComponent {
 
   openSelectedContact(index: number) {
     this.animateContactInfo = false;
-
+    this.showSelectedContact = false; 
     this.selectedContact = this.firebaseService.contactList[index];
     this.selectedContactIndex = index;
-    this.showSelectedContact = true;
 
     setTimeout(() => {
+      this.showSelectedContact = true; 
       this.animateContactInfo = true;
-    }, 50);
+    }, 50); 
   }
 
   openAddContact() {
@@ -151,23 +150,23 @@ export class ContactsComponent {
       }, 50);
     } else {
       this.animateAddOverlay = false;
-       this.showContactCreatedMessage();
+      this.showContactCreatedMessage();
     }
   }
 
   openEditContact() {
     this.showEditOverlay = true;
-    this.animateEditOverlay = false; 
+    this.animateEditOverlay = false;
     setTimeout(() => {
       this.animateEditOverlay = true;
     }, 50);
   }
 
- closeEditContact() {
-    this.animateEditOverlay = false; 
+  closeEditContact() {
+    this.animateEditOverlay = false;
     setTimeout(() => {
-      this.showEditOverlay = false; 
-    }, 300); 
+      this.showEditOverlay = false;
+    }, 300);
   }
 
   deleteSelectedContact() {

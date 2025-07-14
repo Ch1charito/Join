@@ -199,6 +199,10 @@
           width: 452px;
           height: 364px;
 
+          &.slide-in {
+            animation: slideInContactInfo 0.3s ease-out forwards;
+          }
+
           #contact-title {
             width: 452px;
             display: flex;
@@ -209,9 +213,7 @@
             padding: 1rem;
 
             h1 {
-
               font-size: 2rem;
-
             }
           }
           .contact-initials {
@@ -235,7 +237,6 @@
             margin-left: 167px;
             margin-top: -40px;
 
-
             button {
               display: flex;
               justify-content: space-between;
@@ -251,6 +252,13 @@
               }
               &:hover {
                 color: #29abe2;
+                transform: scale(1.05);
+              }
+              &:hover img {
+                filter: brightness(0) saturate(100%) invert(50%) sepia(100%)
+                  saturate(2000%) hue-rotate(180deg) brightness(100%)
+                  contrast(100%);
+                transform: scale(1.1);
               }
             }
 
@@ -280,6 +288,17 @@
               margin-bottom: 20px;
               margin-top: 20px;
             }
+          }
+        }
+
+        @keyframes slideInContactInfo {
+          from {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
           }
         }
 
@@ -331,7 +350,6 @@
     }
   }
 }
-
 
 app-add-contact-overlay {
   position: fixed;
@@ -385,5 +403,4 @@ app-edit-contact-overlay {
     transform: translateX(0);
     opacity: 1;
   }
-
 }

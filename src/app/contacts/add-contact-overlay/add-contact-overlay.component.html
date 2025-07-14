@@ -1,6 +1,8 @@
 <div id="overlay-add-contact">
+
   <div id="left-side">
     <img src="assets/icons/logo-overlay.png" alt="" />
+    <img src="assets/icons/close-responsive.png" alt="" id="close-overlay-responsive">
 
     <div id="text">
       <h1>Add contact</h1>
@@ -10,45 +12,22 @@
   </div>
 
   <div id="right-side">
-    <img
-      (click)="onCloseClick()"
-      id="close-overlay"
-      src="assets/icons/close-overlay.png"
-      alt=""
-    />
+    <img (click)="onCloseClick()" id="close-overlay" src="assets/icons/close-overlay.png" alt="" />
 
     <img src="assets/icons/person-add-contact.png" alt="" />
     <form id="inputs" (ngSubmit)="submitContact()">
       <div class="input-text-img">
-        <input
-          name="name"
-          [(ngModel)]="contacts.name"
-          required
-          type="text"
-          placeholder="Name"
-        />
+        <input name="name" [(ngModel)]="contacts.name" required type="text" placeholder="Name" />
         <img src="assets/icons/person.png" alt="" />
       </div>
 
       <div class="input-text-img">
-        <input
-          name="email"
-          [(ngModel)]="contacts.email"
-          required
-          type="text"
-          placeholder="Email"
-        />
+        <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email" />
         <img src="assets/icons/mail.png" alt="" />
       </div>
 
       <div class="input-text-img">
-        <input
-          name="phone"
-          [(ngModel)]="contacts.phone"
-          required
-          type="text"
-          placeholder="Phone"
-        />
+        <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone" />
         <img src="assets/icons/call.png" alt="" />
       </div>
 

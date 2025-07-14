@@ -6,16 +6,15 @@
       <div class="contacts">
         <div class="contact-sidebar">
           <button id="new-contact-btn-resp">
-            <img
-              src="/assets/images/resp-btn/new-contact-btn-resp.png"
-              alt=""
-            />
+            <img src="/assets/images/resp-btn/new-contact-btn-resp.png" alt="" />
           </button>
+
           <div class="new-contact-btn-container">
             <button class="new-contact-btn" (click)="openAddContact()">
               Add new contact <img src="./assets/icons/person_add.png" alt="" />
             </button>
           </div>
+
 
           @for (item of firebaseService.contactList; let i = $index; track
           item.id) { @if (i === 0 || item.name.charAt(0).toUpperCase() !==
@@ -27,10 +26,7 @@
           }
 
           <div class="contact-list" (click)="openSelectedContact(i)">
-            <div
-              class="initials"
-              [style.backgroundColor]="colors[i % colors.length]"
-            >
+            <div class="initials" [style.backgroundColor]="colors[i % colors.length]">
               {{ getInitials(item.name) }}
             </div>
 
@@ -49,11 +45,17 @@
             <h1>Contacts</h1>
             <div id="line"></div>
             <span>Better with a team</span>
+            <div id="line-responsive"></div>
+
           </div>
+
+
 
           @if (showSelectedContact){
 
           <div id="info" [class.slide-in]="animateContactInfo">
+
+
             <div id="contact-title">
               <div
                 class="contact-initials"
@@ -87,20 +89,23 @@
             </div>
           </div>
           }
+
+
+          @if (showSuccessMessage) {
+          <div class="contact-success-message slide-in-message">
+            Contact successfully created
+          </div>
+          }
+
         </div>
 
-        <app-add-contact-overlay
-          [class.slide-in-overlay]="animateAddOverlay"
-          (close)="openAddContact()"
-        ></app-add-contact-overlay>
-        <app-edit-contact-overlay
-          [class.slide-in-overlay]="animateEditOverlay"
-          [hidden]="!showEditOverlay"
-          (close)="closeEditContact()"
-          [editedContact]="editedContact"
-          [contactId]="contactId"
-          (saved)="onSaveCompleted()"
-        ></app-edit-contact-overlay>
+
+        <app-add-contact-overlay [class.slide-in-overlay]="animateAddOverlay"
+          (close)="openAddContact()"></app-add-contact-overlay>
+        <app-edit-contact-overlay [class.slide-in-overlay]="animateEditOverlay" [hidden]="!showEditOverlay"
+          (close)="closeEditContact()" [editedContact]="editedContact" [contactId]="contactId"
+          (saved)="onSaveCompleted()"></app-edit-contact-overlay>
+
       </div>
     </div>
   </div>

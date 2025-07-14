@@ -20,32 +20,44 @@
       <div class="input-text-img">
 
         <input name="name" [(ngModel)]="contacts.name" type="text" placeholder="Name" required
-          pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$" />
+          pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
+          #name="ngModel" />
 
         <img src="assets/icons/person.png" alt="" />
       </div>
+      <div class="validation-error" *ngIf="name.invalid && name.touched">
+        Please enter name & surname.
+      </div>
 
+      <!-- EMAIL -->
       <div class="input-text-img">
 
         <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email"
-          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
+          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" #email="ngModel" />
 
         <img src="assets/icons/mail.png" alt="" />
       </div>
+      <div class="validation-error" *ngIf="email.invalid && email.touched">
+        Please enter a valid email address.
+      </div>
 
+      <!-- PHONE -->
       <div class="input-text-img">
 
         <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone"
-          pattern="^^\+?\d{7,15}$" />
+          pattern="^\+?\d{7,15}$" #phone="ngModel" />
 
         <img src="assets/icons/call.png" alt="" />
+      </div>
+      <div class="validation-error" *ngIf="phone.invalid && phone.touched">
+        Please enter a valid phone number.
       </div>
 
       <div id="buttons">
         <button type="button" (click)="onCloseClick()" id="cancel-btn">
           Cancel <img src="assets/icons/icon-cancel.png" alt="" />
         </button>
-        <button (click)="onCloseClick()" type="submit" id="create-btn">
+        <button type="submit" id="create-btn">
           Create contact <img src="assets/icons/icon-create.png" alt="" />
         </button>
       </div>

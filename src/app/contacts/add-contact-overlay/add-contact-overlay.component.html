@@ -18,14 +18,14 @@
     />
 
     <img src="assets/icons/person-add-contact.png" alt="" />
-    <form id="inputs" (ngSubmit)="submitContact()">
+    <form id="inputs" (ngSubmit)="submitContact(addContactForm)" #addContactForm="ngForm">
       <div class="input-text-img">
         <input
           name="name"
           [(ngModel)]="contacts.name"
-          required
           type="text"
           placeholder="Name"
+          pattern="^[A-Za-zäöüÄÖÜß-]+ [A-Za-zäöüÄÖÜß-]+$" required
         />
         <img src="assets/icons/person.png" alt="" />
       </div>
@@ -53,7 +53,7 @@
       </div>
 
       <div id="buttons">
-        <button (click)="onCloseClick()" id="cancel-btn">
+        <button type="button" (click)="onCloseClick()" id="cancel-btn">
           Cancel <img src="assets/icons/icon-cancel.png" alt="" />
         </button>
         <button (click)="onCloseClick()" type="submit" id="create-btn">
@@ -63,3 +63,5 @@
     </form>
   </div>
 </div>
+
+

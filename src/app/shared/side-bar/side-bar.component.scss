@@ -1,13 +1,11 @@
 section {
     width: 232px;
     height: 100dvh;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     padding: 64px 0px;
-
     background: #2A3647;
     @media(max-width: 1030px){
         display: none;
@@ -24,17 +22,14 @@ section {
             height: 121.97px;
         }
     }
-
     #menu {
         width: 100%;
-
         .menu-links {
             display: flex;
             flex-direction: column;
             width: 100%;
             gap: 15px;
         }
-
         .header-links {
             width: 100%;
             display: flex;
@@ -43,39 +38,32 @@ section {
                 background: #2A3D59;
             }
         }
-
         a {
             height: 46px;
-
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
             margin-left: 66px;
             cursor: pointer;
-
             span {
                 font-family: 'intern';
                 font-weight: 400;
                 font-size: 16px;
                 color: #CDCDCD;
             }
-
         }
     }
-
     #policies {
         display: flex;
         flex-direction: column;
         gap: 16px;
-
         a {
             span {
                 font-family: 'intern';
                 font-weight: 400;
                 font-size: 16px;
                 color: #CDCDCD;
-
                 &:hover {
                     font-weight: 700;
                     color: #29ABE2;
@@ -89,48 +77,38 @@ section {
     display: none;
     width: 100%;
     height: 96px;
-
     align-items: center;
     justify-content: space-between;
     padding: 0 40px;
-
     background: #2A3647;
-
     @media (max-width: 1030px) {
         display: flex;
         position: fixed;
         bottom: 0;
         z-index: 20;
     }
-
     @media (max-width: 640px) {
         height: 80px;
         padding: 0 16px;
     }
-
     a {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 12px;
-
         cursor: pointer;
-
         img {
-
             @media (max-width: 640px) {
                 width: 24px;
                 height: 24px;
             }
         }
-
         span {
             font-family: 'intern';
             font-weight: 400;
             font-size: 16px;
             color: #CDCDCD;
-
             @media (max-width: 640px) {
                 font-size: 14px;
             }

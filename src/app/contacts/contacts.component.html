@@ -96,12 +96,14 @@
               <h3>Phone</h3>
               <p>{{ selectedContact.phone }}</p>
             </div>
+
           </div>
           }
 
           <div id="edit-mobile" (click)="toggleDropdownMenu($event)">
             <img src="assets/icons/Menu Contact options.png" alt="" />
           </div>
+
 
           <div id="dropdown-menu" *ngIf="showDropdownMenu">
             <div

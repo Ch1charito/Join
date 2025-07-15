@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './add-contact-overlay.component.html',
   styleUrl: './add-contact-overlay.component.scss'
 })
+
 export class AddContactOverlayComponent {
   @ViewChild('addContactForm') addContactForm!: NgForm;
   @Output() submitted = new EventEmitter<void>();
@@ -19,7 +20,6 @@ export class AddContactOverlayComponent {
     email: '',
     phone: ''
   };
-
 
   submitContact(form: NgForm) {
     if (!form.valid) {
@@ -40,14 +40,9 @@ export class AddContactOverlayComponent {
     this.contacts.phone = '';
   }
 
-  
-
-
   //#region overlay
   @Output() close = new EventEmitter<void>();
  
-
-
   onCloseClick() {
     this.close.emit();
     this.addContactForm.resetForm();

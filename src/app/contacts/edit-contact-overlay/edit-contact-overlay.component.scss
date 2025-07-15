@@ -64,6 +64,9 @@
     img {
       width: 55px;
       height: 66px;
+      @media (max-width: 1200px) {
+        display: none;
+      }
     }
 
     #text {

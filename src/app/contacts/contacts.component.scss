@@ -242,7 +242,12 @@
             gap: 54px;
             padding: 1rem;
             h1 {
-              font-size: 2rem;
+              font-size: 47px;
+            }
+            @media (max-width: 400px) {
+              h1 {
+                font-size: 36px;
+              }
             }
           }
           .contact-initials {
@@ -322,44 +327,6 @@
             }
           }
 
-          #edit-mobile {
-            display: none;
-            @media (max-width: 900px) {
-              display: block;
-              position: absolute;
-              bottom: -200px;
-              right: 1px;
-              cursor: pointer;
-            }
-          }
-
-          #dropdown-menu {
-            position: absolute;
-            right: 40px;
-            background-color: white;
-            border-radius: 20px 20px 0;
-            box-shadow: 6px 4px 10px #00000046;
-            width: 120px;
-            z-index: 10;
-            animation: fade-in-left 0.5s ease-in-out;
-
-            #edit {
-              display: flex;
-              align-items: center;
-              justify-content: space-around;
-              cursor: pointer;
-              padding: 10px 15px;
-            }
-
-            #delete {
-              display: flex;
-              align-items: center;
-              justify-content: space-around;
-              cursor: pointer;
-              padding: 10px 15px;
-            }
-          }
-
           @keyframes fade-in-left {
             from {
               opacity: 0;
@@ -380,6 +347,47 @@
           to {
             transform: translateX(0);
             opacity: 1;
+          }
+        }
+
+        #edit-mobile {
+          display: none;
+          @media (max-width: 900px) {
+            display: block;
+            position: absolute;
+            bottom: 100px;
+            right: 10px;
+
+            cursor: pointer;
+            z-index: 10;
+          }
+        }
+
+        #dropdown-menu {
+          position: absolute;
+          right: 60px;
+          bottom: 170px;
+          background-color: white;
+          border-radius: 20px 20px 0;
+          box-shadow: 6px 4px 10px #00000046;
+          width: 120px;
+          z-index: 10;
+          animation: fade-in-left 0.5s ease-in-out;
+
+          #edit {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            cursor: pointer;
+            padding: 10px 15px;
+          }
+
+          #delete {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            cursor: pointer;
+            padding: 10px 15px;
           }
         }
       }
@@ -464,7 +472,6 @@
           display: flex;
         }
       }
-
     }
   }
 }

@@ -130,11 +130,12 @@ export class ContactsComponent {
       this.selectedContactIndex = index;
       this.showSelectedContact = true;
       this.isDetailViewMobile = true;
+
+      setTimeout(() => {
+        this.showSelectedContact = true;
+        this.animateContactInfo = true;
+      }, 50);
     }
-    setTimeout(() => {
-      this.showSelectedContact = true;
-      this.animateContactInfo = true;
-    }, 50);
   }
 
   openAddContact() {

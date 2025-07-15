@@ -229,10 +229,15 @@
             }
             h1 {
               font-size: 47px;
+              width: 278px;
+              white-space: nowrap; 
+              
+             
             }
             @media (max-width: 1200px) {
               h1 {
                 font-size: 36px;
+                 width: 100%
               }
             }
             @media (max-width: 400px) {
@@ -251,7 +256,13 @@
             color: white;
             border-radius: 50%;
             border: solid 4px white;
-            font-size: 3rem;
+            font-size: 47px;
+
+            @media(max-width:800px) {
+              width: 60px;
+              height: 60px;
+              font-size: 26px;
+            }
           }
           #icons {
             display: flex;

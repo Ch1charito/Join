@@ -88,15 +88,13 @@
 
 
 
-
-
-
           </div>
           }
 
           <div id="edit-mobile" (click)="toggleDropdownMenu($event)">
             <img src="assets/icons/Menu Contact options.png" alt="">
           </div>
+
 
           <div id="dropdown-menu" *ngIf="showDropdownMenu">
             <div id="edit" (click)="editContact(selectedContactIndex ?? 0); showDropdownMenu = false">

@@ -16,14 +16,11 @@
 
     <img src="assets/icons/person-add-contact.png" alt="" />
 
-
     <form id="inputs" (ngSubmit)="submitContact(addContactForm)" #addContactForm="ngForm">
 
       <div class="input-container">
 
         <div class="input-text-img">
-
-
 
           <input name="name" [(ngModel)]="contacts.name" type="text" placeholder="Name" required
             pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
@@ -37,7 +34,6 @@
       </div>
 
       <!-- EMAIL -->
-
       <div class="input-container">
         <div class="input-text-img">
 
@@ -52,7 +48,6 @@
       </div>
 
       <!-- PHONE -->
-
       <div class="input-container">
         <div class="input-text-img">
 

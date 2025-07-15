@@ -22,7 +22,6 @@ section {
             height: 121.97px;
         }
     }
-
     #menu {
         width: 100%;
         .menu-links {
@@ -31,7 +30,6 @@ section {
             width: 100%;
             gap: 15px;
         }
-
         .header-links {
             width: 100%;
             display: flex;
@@ -40,7 +38,6 @@ section {
                 background: #2A3D59;
             }
         }
-
         a {
             height: 46px;
             display: flex;
@@ -57,7 +54,6 @@ section {
             }
         }
     }
-
     #policies {
         display: flex;
         flex-direction: column;
@@ -85,19 +81,16 @@ section {
     justify-content: space-between;
     padding: 0 40px;
     background: #2A3647;
-
     @media (max-width: 1030px) {
         display: flex;
         position: fixed;
         bottom: 0;
         z-index: 20;
     }
-
     @media (max-width: 640px) {
         height: 80px;
         padding: 0 16px;
     }
-
     a {
         display: flex;
         flex-direction: column;
@@ -111,13 +104,12 @@ section {
                 height: 24px;
             }
         }
-
         span {
             font-family: 'intern';
             font-weight: 400;
             font-size: 16px;
             color: #CDCDCD;
-            
+
             @media (max-width: 640px) {
                 font-size: 14px;
             }

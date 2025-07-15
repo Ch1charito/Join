@@ -3,7 +3,7 @@
     <app-side-bar></app-side-bar>
     <div class="header-and-content">
       <app-header></app-header>
-      <div class="contacts">
+      <div class="contacts" [class.details-active]="isDetailViewMobile">
         <div class="contact-sidebar">
           <button id="new-contact-btn-resp" (click)="openAddContact()">
             <img src="/assets/images/resp-btn/new-contact-btn-resp.png" alt="" />
@@ -24,8 +24,16 @@
           <hr class="brake-line" />
           }
 
-          <div class="contact-list" (click)="openSelectedContact(i)">
-            <div class="initials" [style.backgroundColor]="colors[i % colors.length]">
+          <div
+            class="contact-list"
+            (click)="openSelectedContact(i)"
+            [class.selected]="i === selectedContactIndex"
+          >
+            <div
+              class="initials"
+              [style.backgroundColor]="colors[i % colors.length]"
+            >
+
               {{ getInitials(item.name) }}
             </div>
 
@@ -40,6 +48,9 @@
         </div>
 
         <div class="mohammad">
+          <button class="back-btn" (click)="closeDetailView()">
+            <img src="./assets/images/arrow-back.png" />
+          </button>
           <div id="header">
             <h1>Contacts</h1>
             <div id="line"></div>
@@ -109,11 +120,13 @@
 
 
 
+
         <app-add-contact-overlay [class.slide-in-overlay]="animateAddOverlay" (close)="openAddContact()"
           (submitted)="showContactCreatedMessage()"></app-add-contact-overlay>
         <app-edit-contact-overlay [class.slide-in-overlay]="animateEditOverlay" [hidden]="!showEditOverlay"
           (close)="closeEditContact()" [editedContact]="editedContact" [contactId]="contactId"
           (saved)="onSaveCompleted()"></app-edit-contact-overlay>
+
 
       </div>
     </div>

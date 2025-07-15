@@ -31,7 +31,6 @@ export class ContactsComponent {
     email: '',
     phone: '',
   };
-
   showSuccessMessage: boolean = false;
   showDropdownMenu: boolean = false;
 
@@ -53,35 +52,6 @@ export class ContactsComponent {
   toggleDropdownMenu(event: MouseEvent): void {
     event.stopPropagation();
     this.showDropdownMenu = !this.showDropdownMenu;
-  }
-
-  // add colors for initials
-  colors = [
-    '#FF7A00',
-    '#FF5EB3',
-    '#6E52FF',
-    '#9327FF',
-    '#00BEE8',
-    '#1FD7C1',
-    '#FF745E',
-    '#FFA35E',
-    '#FC71FF',
-    '#FFC701',
-    '#0038FF',
-    '#C3FF2B',
-    '#FFE62B',
-    '#FF4646',
-    '#FFBB2B',
-  ];
-
-  // add initial contacts
-  getInitials(name: string) {
-    if (!name) return '';
-    return name
-      .split(' ')
-      .map((part) => part.charAt(0))
-      .join('')
-      .toUpperCase();
   }
 
   saveEditFromChild(updatedContact: ContactInterface) {
@@ -146,17 +116,26 @@ export class ContactsComponent {
   //#region Overlay
   showOverlay: boolean = false;
   showEditOverlay: boolean = false;
-  showSelectedContact: boolean = false;
   animateContactInfo: boolean = false;
   animateAddOverlay: boolean = false;
   selectedContact: any;
   animateEditOverlay: boolean = false;
+  showSelectedContact: boolean = false;
+  isDetailViewMobile: boolean = false;
 
   openSelectedContact(index: number) {
-    this.animateContactInfo = false;
-    this.showSelectedContact = false;
-    this.selectedContact = this.firebaseService.contactList[index];
-    this.selectedContactIndex = index;
+
+    if (this.selectedContactIndex === index) {
+      this.showSelectedContact = false;
+      this.selectedContactIndex = null;
+      this.isDetailViewMobile = false;
+    } else {
+      this.animateContactInfo = false;
+      this.selectedContact = this.firebaseService.contactList[index];
+      this.selectedContactIndex = index;
+      this.showSelectedContact = true;
+      this.isDetailViewMobile = true;
+    }
 
     setTimeout(() => {
       this.showSelectedContact = true;
@@ -199,5 +178,36 @@ export class ContactsComponent {
       this.selectedContact = null;
     }
   }
+  closeDetailView() {
+    this.isDetailViewMobile = false;
+  }
   //#endregion
+  // add colors for initials
+  colors = [
+    '#FF7A00',
+    '#FF5EB3',
+    '#6E52FF',
+    '#9327FF',
+    '#00BEE8',
+    '#1FD7C1',
+    '#FF745E',
+    '#FFA35E',
+    '#FC71FF',
+    '#FFC701',
+    '#0038FF',
+    '#C3FF2B',
+    '#FFE62B',
+    '#FF4646',
+    '#FFBB2B',
+  ];
+
+  // add initial contacts
+  getInitials(name: string) {
+    if (!name) return '';
+    return name
+      .split(' ')
+      .map((part) => part.charAt(0))
+      .join('')
+      .toUpperCase();
+  }
 }

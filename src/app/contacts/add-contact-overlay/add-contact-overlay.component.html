@@ -1,4 +1,3 @@
-
 <div id="overlay-add-contact">
 
   <div id="left-side">
@@ -16,41 +15,55 @@
     <img (click)="onCloseClick()" id="close-overlay" src="assets/icons/close-overlay.png" alt="" />
 
     <img src="assets/icons/person-add-contact.png" alt="" />
+
+
     <form id="inputs" (ngSubmit)="submitContact(addContactForm)" #addContactForm="ngForm">
-      <div class="input-text-img">
 
-        <input name="name" [(ngModel)]="contacts.name" type="text" placeholder="Name" required
-          pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
-          #name="ngModel" />
+      <div class="input-container">
 
-        <img src="assets/icons/person.png" alt="" />
-      </div>
-      <div class="validation-error" *ngIf="name.invalid && name.touched">
-        Please enter name & surname.
+        <div class="input-text-img">
+
+
+
+          <input name="name" [(ngModel)]="contacts.name" type="text" placeholder="Name" required
+            pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
+            #name="ngModel" />
+
+          <img src="assets/icons/person.png" alt="" />
+        </div>
+        <div class="validation-error" *ngIf="name.invalid && name.touched">
+          <p>Please enter name & surname.</p>
+        </div>
       </div>
 
       <!-- EMAIL -->
-      <div class="input-text-img">
 
-        <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email"
-          pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" #email="ngModel" />
+      <div class="input-container">
+        <div class="input-text-img">
 
-        <img src="assets/icons/mail.png" alt="" />
-      </div>
-      <div class="validation-error" *ngIf="email.invalid && email.touched">
-        Please enter a valid email address.
+          <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email"
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" #email="ngModel" />
+
+          <img src="assets/icons/mail.png" alt="" />
+        </div>
+        <div class="validation-error" *ngIf="email.invalid && email.touched">
+          <p>Please enter a valid email address.</p>
+        </div>
       </div>
 
       <!-- PHONE -->
-      <div class="input-text-img">
 
-        <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone"
-          pattern="^\+?\d{7,15}$" #phone="ngModel" />
+      <div class="input-container">
+        <div class="input-text-img">
 
-        <img src="assets/icons/call.png" alt="" />
-      </div>
-      <div class="validation-error" *ngIf="phone.invalid && phone.touched">
-        Please enter a valid phone number.
+          <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone"
+            pattern="^\+?\d{7,15}$" #phone="ngModel" />
+
+          <img src="assets/icons/call.png" alt="" />
+        </div>
+        <div class="validation-error" *ngIf="phone.invalid && phone.touched">
+          <p>Please enter a valid phone number.</p>
+        </div>
       </div>
 
       <div id="buttons">

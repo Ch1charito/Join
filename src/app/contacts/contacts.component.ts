@@ -24,7 +24,7 @@ import { CommonModule } from '@angular/common';
 export class ContactsComponent {
   firebaseService = inject(FirebaseService);
   isEdited = false;
-  selectedContactIndex: number | null = 0;
+  selectedContactIndex: number | null = null;
   contactId?: string = '';
   editedContact = {
     name: '',

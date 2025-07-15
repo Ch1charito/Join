@@ -11,9 +11,6 @@ import { FirebaseService } from '../../services/firebase.service';
   standalone: true,
 })
 export class EditContactOverlayComponent {
-  // @Input() name: string = '';
-  // @Input() email: string = '';
-  // @Input() phone: string = '';
   @Input() editedContact!: ContactInterface;
   @Input() contactId!: string | undefined;
 

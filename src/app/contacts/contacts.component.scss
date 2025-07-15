@@ -227,6 +227,11 @@
         #info {
           width: 452px;
           height: 364px;
+          position: relative;
+
+          &.slide-in {
+            animation: slideInContactInfo 0.3s ease-out forwards;
+          }
 
           #contact-title {
             width: 452px;
@@ -256,10 +261,13 @@
           #icons {
             display: flex;
             align-items: center;
-
             gap: 10px;
             margin-left: 167px;
             margin-top: -40px;
+
+            @media (max-width: 900px) {
+              display: none;
+            }
 
             button {
               display: flex;
@@ -276,6 +284,13 @@
               }
               &:hover {
                 color: #29abe2;
+                transform: scale(1.05);
+              }
+              &:hover img {
+                filter: brightness(0) saturate(100%) invert(50%) sepia(100%)
+                  saturate(2000%) hue-rotate(180deg) brightness(100%)
+                  contrast(100%);
+                transform: scale(1.1);
               }
             }
 
@@ -306,33 +321,58 @@
               margin-top: 20px;
             }
           }
+
+          #edit-mobile {
+            display: none;
+            @media (max-width: 900px) {
+              display: block;
+              position: absolute;
+              bottom: -200px;
+              right: 1px;
+              cursor: pointer;
+            }
+          }
+
+          #dropdown-menu {
+            position: absolute;
+            right: 40px;
+            background-color: white;
+            border-radius: 20px 20px 0;
+            box-shadow: 6px 4px 10px #00000046;
+            width: 120px;
+            z-index: 10;
+            animation: fade-in-left 0.5s ease-in-out;
+
+            #edit {
+              display: flex;
+              align-items: center;
+              justify-content: space-around;
+              cursor: pointer;
+              padding: 10px 15px;
+            }
+
+            #delete {
+              display: flex;
+              align-items: center;
+              justify-content: space-around;
+              cursor: pointer;
+              padding: 10px 15px;
+            }
+          }
+
+          @keyframes fade-in-left {
+            from {
+              opacity: 0;
+              transform: translateX(20px);
+            }
+            to {
+              opacity: 1;
+              transform: translateX(0);
+            }
+          }
         }
 
-        .contact-success-message {
-          position: fixed;
-          bottom: 50px;
-          left: 50%;
-          transform: translateX(-50%);
-          background-color: #2a3647;
-          color: white;
-          padding: 15px 30px;
-          border-radius: 8px;
-          font-size: 18px;
-          z-index: 1000;
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-          white-space: nowrap;
-        }
-
-        .contact-success-message.slide-in-message {
-          opacity: 1;
-          visibility: visible;
-          transform: translateX(-50%) translateY(0);
-          animation: slideInMessage 0.3s ease-out forwards;
-        }
-
-        @keyframes slideInMessage {
+        @keyframes slideInContactInfo {
           from {
             transform: translateX(100%);
             opacity: 0;
@@ -340,19 +380,59 @@
           to {
             transform: translateX(0);
             opacity: 1;
-          }
-        }
-        @keyframes slideOutMessage {
-          from {
-            transform: translateX(0);
-            opacity: 1;
-          }
-          to {
-            transform: translateX(100%);
-            opacity: 0;
           }
         }
       }
+      .contact-success-message {
+        position: fixed;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #2a3647;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 8px;
+        font-size: 18px;
+        z-index: 10;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+        white-space: nowrap;
+
+        @media (max-width: 800px) {
+          bottom: 120px;
+          left: 25%;
+        }
+      }
+
+      .contact-success-message.slide-in-message {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+        animation: slideInMessage 0.3s ease-out forwards;
+      }
+
+      @keyframes slideInMessage {
+        from {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes slideOutMessage {
+        from {
+          transform: translateX(0);
+          opacity: 1;
+        }
+        to {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+      }
+
       @media (max-width: 800px) {
         .mohammad {
           display: none;
@@ -384,6 +464,7 @@
           display: flex;
         }
       }
+
     }
   }
 }

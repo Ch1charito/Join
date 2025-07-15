@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, HostListener } from '@angular/core';
 import { HeaderComponent } from '../shared/header/header.component';
 import { SideBarComponent } from '../shared/side-bar/side-bar.component';
 import { AddContactOverlayComponent } from './add-contact-overlay/add-contact-overlay.component';
@@ -6,6 +6,7 @@ import { EditContactOverlayComponent } from './edit-contact-overlay/edit-contact
 import { ContactInterface } from './../../app/interfaces/contact.interface';
 import { FirebaseService } from '../services/firebase.service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contacts',
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     AddContactOverlayComponent,
     EditContactOverlayComponent,
     FormsModule,
+    CommonModule,
   ],
   templateUrl: './contacts.component.html',
   styleUrl: './contacts.component.scss',
@@ -30,6 +32,27 @@ export class ContactsComponent {
     phone: '',
   };
   showSuccessMessage: boolean = false;
+  showDropdownMenu: boolean = false;
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent): void {
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    const editMobile = document.getElementById('edit-mobile');
+
+    if (dropdownMenu && editMobile) {
+      const clickedInsideDropdown = dropdownMenu.contains(event.target as Node);
+      const clickedInsideEditMobile = editMobile.contains(event.target as Node);
+
+      if (!clickedInsideDropdown && !clickedInsideEditMobile) {
+        this.showDropdownMenu = false;
+      }
+    }
+  }
+
+  toggleDropdownMenu(event: MouseEvent): void {
+    event.stopPropagation();
+    this.showDropdownMenu = !this.showDropdownMenu;
+  }
 
   saveEditFromChild(updatedContact: ContactInterface) {
     if (this.contactId) {
@@ -84,6 +107,7 @@ export class ContactsComponent {
 
   showContactCreatedMessage() {
     this.showSuccessMessage = true;
+
     setTimeout(() => {
       this.showSuccessMessage = false;
     }, 2000);
@@ -100,6 +124,7 @@ export class ContactsComponent {
   isDetailViewMobile: boolean = false;
 
   openSelectedContact(index: number) {
+
     if (this.selectedContactIndex === index) {
       this.showSelectedContact = false;
       this.selectedContactIndex = null;
@@ -111,7 +136,9 @@ export class ContactsComponent {
       this.showSelectedContact = true;
       this.isDetailViewMobile = true;
     }
+
     setTimeout(() => {
+      this.showSelectedContact = true;
       this.animateContactInfo = true;
     }, 50);
   }

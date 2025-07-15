@@ -6,10 +6,7 @@
       <div class="contacts" [class.details-active]="isDetailViewMobile">
         <div class="contact-sidebar">
           <button id="new-contact-btn-resp" (click)="openAddContact()">
-            <img
-              src="/assets/images/resp-btn/new-contact-btn-resp.png"
-              alt=""
-            />
+            <img src="/assets/images/resp-btn/new-contact-btn-resp.png" alt="" />
           </button>
 
           <div class="new-contact-btn-container">
@@ -26,6 +23,7 @@
           </div>
           <hr class="brake-line" />
           }
+
           <div
             class="contact-list"
             (click)="openSelectedContact(i)"
@@ -35,6 +33,7 @@
               class="initials"
               [style.backgroundColor]="colors[i % colors.length]"
             >
+
               {{ getInitials(item.name) }}
             </div>
 
@@ -63,12 +62,9 @@
 
           <div id="info" [class.slide-in]="animateContactInfo">
             <div id="contact-title">
-              <div
-                class="contact-initials"
-                [style.backgroundColor]="
+              <div class="contact-initials" [style.backgroundColor]="
                   colors[(selectedContactIndex ?? 0) % colors.length]
-                "
-              >
+                ">
                 {{ getInitials(selectedContact.name) }}
               </div>
               <h1>{{ selectedContact.name }}</h1>
@@ -83,7 +79,10 @@
                 <img src="assets/images/delete.png" alt="delete" />
                 <p>Delete</p>
               </button>
+
             </div>
+
+
             <div id="contact-information">
               <p>Contact Information</p>
             </div>
@@ -93,28 +92,44 @@
               <h3>Phone</h3>
               <p>{{ selectedContact.phone }}</p>
             </div>
-          </div>
-          } @if (showSuccessMessage) {
-          <div class="contact-success-message slide-in-message">
-            Contact successfully created
+
+
+            <div id="edit-mobile" (click)="toggleDropdownMenu($event)">
+              <img src="assets/icons/Menu Contact options.png" alt="">
+            </div>
+
+
+            <div id="dropdown-menu" *ngIf="showDropdownMenu">
+              <div id="edit" (click)="editContact(selectedContactIndex ?? 0); showDropdownMenu = false">
+                <img src="assets/icons/edit.png" alt="">
+                <p>Edit</p>
+              </div>
+              <div id="delete" (click)="deleteSelectedContact(); showDropdownMenu = false">
+                <img src="assets/icons/delete.png" alt="">
+                <p>Delete</p>
+              </div>
+            </div>
           </div>
           }
         </div>
+        @if (showSuccessMessage) {
+        <div class="contact-success-message slide-in-message">
+          Contact successfully created
+        </div>
+        }
 
-        <app-add-contact-overlay
-          [class.slide-in-overlay]="animateAddOverlay"
-          (close)="openAddContact()"
-          (submitted)="showContactCreatedMessage()"
-        ></app-add-contact-overlay>
-        <app-edit-contact-overlay
-          [class.slide-in-overlay]="animateEditOverlay"
-          [hidden]="!showEditOverlay"
-          (close)="closeEditContact()"
-          [editedContact]="editedContact"
-          [contactId]="contactId"
-          (saved)="onSaveCompleted()"
-        ></app-edit-contact-overlay>
+
+
+
+        <app-add-contact-overlay [class.slide-in-overlay]="animateAddOverlay" (close)="openAddContact()"
+          (submitted)="showContactCreatedMessage()"></app-add-contact-overlay>
+        <app-edit-contact-overlay [class.slide-in-overlay]="animateEditOverlay" [hidden]="!showEditOverlay"
+          (close)="closeEditContact()" [editedContact]="editedContact" [contactId]="contactId"
+          (saved)="onSaveCompleted()"></app-edit-contact-overlay>
+
+
       </div>
     </div>
   </div>
+
 </section>

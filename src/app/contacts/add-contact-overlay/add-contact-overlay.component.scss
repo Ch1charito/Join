@@ -1,10 +1,10 @@
 @import url("../../../styles.scss");
 
 #overlay-add-contact {
-  position: fixed; 
+  position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
+  transform: translate(-50%, -50%);
   border-radius: 25px;
   z-index: 10;
   width: 1212px;
@@ -12,17 +12,16 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
- 
 
   @media (max-width: 1200px) {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     width: 100%;
     height: 100vh;
-    top: 0; 
-    left: 0; 
+    top: 0;
+    left: 0;
     transform: none;
   }
 
@@ -116,7 +115,7 @@
       flex-direction: column;
       padding-right: 0;
       width: 396px;
-      height: 409px;
+      height: 500px;
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
     }
@@ -163,11 +162,21 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      position: relative;
 
       @media (max-width: 1200px) {
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      .input-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 80px;
+        @media (max-width: 500px) {
+          height: 50px;
+        }
       }
 
       input {
@@ -301,7 +310,6 @@
   display: none;
 }
 
-
 .contact-success-message {
   position: fixed;
   bottom: 50px;
@@ -312,7 +320,7 @@
   padding: 15px 30px;
   border-radius: 8px;
   font-size: 18px;
-  z-index: 1000;
+  z-index: 10;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -358,9 +366,26 @@
 }
 
 .validation-error {
-  color: red;
-  font-size: 14px;
-  margin-top: 4px;
+  position: absolute;
+  bottom: -15px;
+  left: 0;
+  width: 100%;
   margin-left: 4px;
+  color: red;
+  p {
+    font-size: 16px;
+  }
+}
 
+@media (max-width: 1200px) {
+  .input-container {
+    width: 364px;
+  }
+}
+
+@media (max-width: 500px) {
+  .input-container {
+    width: 300px;
+    height: 100%;
+  }
 }

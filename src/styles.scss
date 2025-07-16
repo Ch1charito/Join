@@ -13,6 +13,11 @@ section {
   width: 100%;
   display: flex;
   justify-content: flex-start;
+  padding-left: 232px;
+  @media (max-width: 1030px) {
+    padding-left: 0;
+  }
+
   .content {
     width: 100%;
     max-width: 1920px;

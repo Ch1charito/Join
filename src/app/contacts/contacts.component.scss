@@ -121,7 +121,8 @@ section{
           border-radius: 10px;
           gap: 1rem;
           padding: 1rem 2rem;
-
+          width: 100%; 
+         
           &.selected {
             background-color: #2a3647;
             color: white;
@@ -134,6 +135,18 @@ section{
             display: flex;
             list-style-type: none;
             flex-direction: column;
+            flex-grow: 1;
+            min-width: 0; 
+          }
+          li {
+            font-size: 1rem;
+            white-space: nowrap;      
+            overflow: hidden;         
+            text-overflow: ellipsis;   
+          }
+          a {
+            pointer-events: none;
+            color: #007cee;
           }
           .initials {
             display: flex;

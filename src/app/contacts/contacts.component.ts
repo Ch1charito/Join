@@ -126,7 +126,7 @@ export class ContactsComponent {
   isDetailViewMobile: boolean = false;
 
   openSelectedContact(index: number) {
-    if (this.selectedContactIndex === index) {
+    if (this.selectedContactIndex === index && window.innerWidth >= 800) {
       this.showSelectedContact = false;
       this.selectedContactIndex = null;
       this.isDetailViewMobile = false;

@@ -6,10 +6,12 @@
       <div class="contacts" [class.details-active]="isDetailViewMobile">
         <div class="contact-sidebar">
           <button id="new-contact-btn-resp" (click)="openAddContact()">
+
             <img
               src="assets/images/resp-btn/new-contact-btn-resp.png"
               alt=""
             />
+
           </button>
 
           <div class="new-contact-btn-container">
@@ -27,15 +29,8 @@
           <hr class="brake-line" />
           }
 
-          <div
-            class="contact-list"
-            (click)="openSelectedContact(i)"
-            [class.selected]="i === selectedContactIndex"
-          >
-            <div
-              class="initials"
-              [style.backgroundColor]="colors[i % colors.length]"
-            >
+          <div class="contact-list" (click)="openSelectedContact(i)" [class.selected]="i === selectedContactIndex">
+            <div class="initials" [style.backgroundColor]="colors[i % colors.length]">
               {{ getInitials(item.name) }}
             </div>
 
@@ -65,12 +60,9 @@
 
           <div id="info" [class.slide-in]="animateContactInfo">
             <div id="contact-title">
-              <div
-                class="contact-initials"
-                [style.backgroundColor]="
+              <div class="contact-initials" [style.backgroundColor]="
                   colors[(selectedContactIndex ?? 0) % colors.length]
-                "
-              >
+                ">
                 {{ getInitials(selectedContact.name) }}
               </div>
               <h1>{{ selectedContact.name }}</h1>
@@ -101,24 +93,18 @@
           }
 
           <div id="edit-mobile" (click)="toggleDropdownMenu($event)">
-            <img src="assets/icons/Menu Contact options.png" alt="" />
+            <img src="assets/icons/menu-edit-delete.png" alt="" />
           </div>
 
 
           <div id="dropdown-menu" *ngIf="showDropdownMenu">
-            <div
-              id="edit"
-              (click)="
+            <div id="edit" (click)="
                 editContact(selectedContactIndex ?? 0); showDropdownMenu = false
-              "
-            >
+              ">
               <img src="assets/icons/edit.png" alt="" />
               <p>Edit</p>
             </div>
-            <div
-              id="delete"
-              (click)="deleteSelectedContact(); showDropdownMenu = false"
-            >
+            <div id="delete" (click)="deleteSelectedContact(); showDropdownMenu = false">
               <img src="assets/icons/delete.png" alt="" />
               <p>Delete</p>
             </div>
@@ -131,20 +117,12 @@
         </div>
         }
 
-        <app-add-contact-overlay
-          [class.slide-in-overlay]="animateAddOverlay"
-          (close)="openAddContact()"
-          (submitted)="showContactCreatedMessage()"
-        ></app-add-contact-overlay>
+        <app-add-contact-overlay [class.slide-in-overlay]="animateAddOverlay" (close)="openAddContact()"
+          (submitted)="showContactCreatedMessage()"></app-add-contact-overlay>
 
-        <app-edit-contact-overlay
-          [class.slide-in-overlay]="animateEditOverlay"
-          [hidden]="!showEditOverlay"
-          (close)="closeEditContact()"
-          [editedContact]="editedContact"
-          [contactId]="contactId"
-          (saved)="onSaveCompleted()"
-        ></app-edit-contact-overlay>
+        <app-edit-contact-overlay [class.slide-in-overlay]="animateEditOverlay" [hidden]="!showEditOverlay"
+          (close)="closeEditContact()" [editedContact]="editedContact" [contactId]="contactId"
+          (saved)="onSaveCompleted()"></app-edit-contact-overlay>
       </div>
     </div>
   </div>

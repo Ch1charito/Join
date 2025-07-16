@@ -1,5 +1,3 @@
-@import url("../../../styles.scss");
-
 #overlay-add-contact {
   position: fixed;
   top: 50%;
@@ -7,11 +5,12 @@
   transform: translate(-50%, -50%);
   border-radius: 25px;
   z-index: 10;
-  width: 1212px;
-  height: 592px;
+  width: 70%;
+  height: 70vh;
   display: flex;
   justify-content: center;
   overflow: hidden;
+ 
 
   @media (max-width: 1200px) {
     display: flex;
@@ -27,25 +26,26 @@
 
   #left-side {
     background-color: rgb(42, 54, 71);
-    width: 467px;
-    height: 594px;
+    width: 40%;
+    height: 100%;
     gap: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-left: 50px;
+    padding-left: 5%;
 
     @media (max-width: 1200px) {
-      width: 396px;
-      height: 351px;
+      width: 90%;
+      max-width: 396px;
+      height: 30vh;
       border-radius: 25px;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
 
     @media (max-width: 500px) {
-      width: 310px;
-      height: 351px;
+      width: 95%;
+      max-width: 310px;
       border-radius: 25px;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -54,10 +54,10 @@
     #close-overlay-responsive {
       display: none;
       position: absolute;
-      right: 40px;
-      top: 40px;
-      width: 14px;
-      height: 14px;
+      right: 4vw;
+      top: 4vh;
+      width: 16px;
+      height: 16px;
       cursor: pointer;
       @media (max-width: 1200px) {
         display: block;
@@ -65,8 +65,8 @@
     }
 
     img {
-      width: 55px;
-      height: 66px;
+      width: 5vw;
+      height: auto;
       @media (max-width: 1200px) {
         display: none;
       }
@@ -78,31 +78,31 @@
       flex-direction: column;
 
       h1 {
-        font-size: 61px;
+        font-size: 46px;
         @media (max-width: 1200px) {
-          font-size: 47px;
+          font-size: 4vh;
         }
         @media (max-width: 500px) {
-          font-size: 26px;
+          font-size: 3vh;
         }
       }
 
       h3 {
-        font-size: 24px;
-        @media (max-width: 1200px) {
+        font-size: 25px;
+        @media (max-width: 1400px) {
           font-size: 20px;
-          font-weight: 200;
+          font-weight: 100;
         }
         @media (max-width: 500px) {
-          font-size: 18px;
+          font-size: 1.8vh;
         }
       }
 
       #line {
         height: 2px;
-        width: 80px;
+        width: 90px;
         background-color: rgb(41, 171, 226);
-        margin-top: 10px;
+        margin-top: 1vh;
       }
     }
   }
@@ -112,15 +112,16 @@
     align-items: center;
     justify-content: flex-end;
     background-color: white;
-    width: calc(100% - 467px);
-    padding-right: 50px;
+    width: 60%;
+    padding-right: 5%;
 
     @media (max-width: 1200px) {
       display: flex;
       flex-direction: column;
       padding-right: 0;
-      width: 396px;
-      height: 500px;
+      width: 90%;
+      max-width: 396px;
+      height: 50vh;
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
     }
@@ -129,34 +130,40 @@
       display: flex;
       flex-direction: column;
       padding-right: 0;
-      width: 310px;
-      height: 409px;
+      width: 95%;
+      max-width: 310px;
       border-bottom-left-radius: 25px;
       border-bottom-right-radius: 25px;
     }
 
     img[src="assets/icons/person-add-contact.png"] {
-      margin-right: 100px;
-      margin-bottom: 30px;
-      width: 120px;
-      height: 120px;
+      margin-right: 1%;
+      margin-bottom: 3vh;
+      width: 134px;
+      height: 134px;
       @media (max-width: 1200px) {
         margin-right: 0;
+        
+      }
+
+      @media (max-width: 500px) {
+        margin-right: 0;
+       
       }
     }
 
     #close-overlay {
       position: absolute;
-      right: 40px;
-      top: 40px;
-      width: 14px;
-      height: 14px;
+      right: 4vw;
+      top: 4vh;
+      width: 16px;
+      height: 16px;
 
       &:hover {
         cursor: pointer;
         background-color: rgb(226, 227, 228);
-        width: 16px;
-        height: 16px;
+        width: 1.6vw;
+        height: 1.6vw;
       }
       @media (max-width: 1200px) {
         display: none;
@@ -166,58 +173,68 @@
     #inputs {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 2vh;
       position: relative;
+      width: 90%;
 
       @media (max-width: 1200px) {
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 90%;
       }
 
       .input-container {
         position: relative;
         display: flex;
         flex-direction: column;
-        height: 80px;
-        @media (max-width: 500px) {
-          height: 50px;
-        }
+        height: 8vh;
+        width: 100%;
       }
 
       input {
         cursor: pointer;
-        width: 422px;
-        height: 50px;
-        padding: 0 15px;
+        width: 100%;
+        height: 5vh;
+        padding: 0 1.5%;
         box-sizing: border-box;
         border: 1px solid #ccc;
         border-radius: 8px;
-        font-size: 20px;
+        font-size: 19px;
+        @media (max-width: 500px) {
+          font-size: 16px;
+        }
       }
 
       .input-text-img {
         display: flex;
         align-items: center;
         position: relative;
-        width: 422px;
-        height: 50px;
+        width: 100%;
+        height: 5vh;
         border: 1px solid #ccc;
         border-radius: 8px;
         box-sizing: border-box;
+
+        @media (max-width: 1400px) {
+          width: 90%;
+          margin-left: 5%;
+        }
         @media (max-width: 1200px) {
-          width: 364px;
+          width: 100%;
+          max-width: 364px;
         }
 
         @media (max-width: 500px) {
-          width: 305px;
+          width: 100%;
+          max-width: 305px;
         }
 
         input {
           flex-grow: 1;
           border: none;
           outline: none;
-          padding: 0 0 0 15px;
+          padding: 0 0 0 1.5%;
           height: 100%;
         }
 
@@ -230,11 +247,11 @@
         }
 
         img {
-          height: 20px;
-          width: 20px;
-          margin-left: -25px;
+          height: 2vh;
+          width: 2vh;
+          margin-left: -2.5%;
           position: absolute;
-          right: 15px;
+          right: 1.5%;
           top: 50%;
           transform: translateY(-50%);
         }
@@ -242,34 +259,35 @@
     }
 
     #buttons {
-      width: 394px;
-      height: 57px;
+      width: 90%;
+      max-width: 394px;
+      height: auto;
       display: flex;
       justify-content: space-between;
-      gap: 20px;
+      gap: 2%;
       @media (max-width: 1200px) {
-        margin-bottom: 40px;
-        margin-top: 20px;
+        margin-bottom: 4vh;
+        margin-top: 2vh;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 90%;
       }
 
       img {
-        width: 20px;
-        height: 20px;
+        width: 2vh;
+        height: 2vh;
       }
 
       #cancel-btn {
-        width: 136px;
-        height: 56px;
+        width: 40%;
+        height: 5vh;
         background-color: white;
         border-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 20px;
-        gap: 10px;
 
         @media (max-width: 1200px) {
           display: none;
@@ -288,8 +306,8 @@
       }
 
       #create-btn {
-        width: 244px;
-        height: 57px;
+        width: 60%;
+        height: 5vh;
         border-radius: 10px;
         background-color: rgb(42, 54, 71);
         color: white;
@@ -298,10 +316,10 @@
         align-items: center;
         border: none;
         font-size: 20px;
-        gap: 10px;
 
         @media (max-width: 1200px) {
-          width: 202px;
+          width: 70%;
+          max-width: 202px;
         }
 
         &:hover {
@@ -319,14 +337,14 @@
 
 .contact-success-message {
   position: fixed;
-  bottom: 50px;
+  bottom: 5vh;
   left: 50%;
   transform: translateX(-50%);
   background-color: #2a3647;
   color: white;
-  padding: 15px 30px;
+  padding: 1.5vh 3vw;
   border-radius: 8px;
-  font-size: 18px;
+  font-size: 1.8vh;
   z-index: 10;
   opacity: 0;
   visibility: hidden;
@@ -376,10 +394,8 @@
 
 .validation-error {
   position: absolute;
-  bottom: -15px;
-  left: 0;
+  bottom: -1.5vh;
   width: 100%;
-  margin-left: 4px;
   color: red;
   p {
     font-size: 16px;
@@ -388,13 +404,15 @@
 
 @media (max-width: 1200px) {
   .input-container {
-    width: 364px;
+    width: 90%;
+    max-width: 364px;
   }
 }
 
 @media (max-width: 500px) {
   .input-container {
-    width: 300px;
-    height: 100%;
+    width: 95%;
+    max-width: 300px;
+    height: auto;
   }
 }

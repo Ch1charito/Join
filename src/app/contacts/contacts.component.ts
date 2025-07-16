@@ -62,6 +62,12 @@ export class ContactsComponent {
     this.cancelEdit();
   }
 
+  updateSelectedContact(){
+    if (this.selectedContactIndex !== null) {
+      this.selectedContact = { ...this.firebaseService.contactList[this.selectedContactIndex] };
+    }
+  }
+
   editContact(index: number) {
     this.isEdited = true;
     this.selectedContactIndex = index;
@@ -162,6 +168,7 @@ export class ContactsComponent {
     this.animateEditOverlay = false;
     setTimeout(() => {
       this.showEditOverlay = false;
+      this.updateSelectedContact();
     }, 300);
   }
 

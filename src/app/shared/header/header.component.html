@@ -1,13 +1,17 @@
-<header>
-    <p>Kanban Project Management Tool</p>
-    <img id="logo-resp" src="assets/images/header/logo-resp.png" alt="">
-    <div class="help-and-menu">
+<div class="full-width-header">
+  <header>
+    <div class="header-content">
+      <p>Kanban Project Management Tool</p>
+      <img id="logo-resp" src="assets/images/header/logo-resp.png" alt="">
+      <div class="help-and-menu">
         <img src="assets/images/header/help.png" alt="">
         <button (click)="toggleOverlay()">SM</button>
+      </div>
     </div>
-</header>
+  </header>
+</div>
 <div class="overlay" [class.d-none]="!showOverlay">
-    <a href="">Legal Notice</a>
-    <a href="">Privacy Policy</a>
-    <a href="">Log Out</a>
+  <a href="">Legal Notice</a>
+  <a href="">Privacy Policy</a>
+  <a href="">Log Out</a>
 </div>

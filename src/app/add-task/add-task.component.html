@@ -1,16 +1,18 @@
 <app-header></app-header>
 <app-side-bar></app-side-bar>
 <section>
-     <h1>Mudi</h1>
-<form>
+  <h1>Mudi</h1>
+  <form>
+    <div></div>
     <div>
-       
+      <app-priority></app-priority>
+      <!-- <app-priority
+  [options]="priorityOptions"
+  [(selectedKey)]="form.controls.priority.value">
+</app-priority> -->
+      <app-assigned-to></app-assigned-to>
+      <app-category></app-category>
+      <app-subtasks></app-subtasks>
     </div>
-    <div>
-        <app-priority></app-priority>
-        <app-assigned-to></app-assigned-to>
-        <app-category></app-category>
-        <app-subtasks></app-subtasks>
-    </div>
-</form>
+  </form>
 </section>

@@ -1,0 +1,55 @@
+@use "../../styles/all-styles.scss" as *;
+
+.priority-container {
+  @include dFlex($ai: start, $jc: center, $fd: column);
+  gap: 1rem;
+  padding: 2rem;
+}
+.title {
+  font-size: 1rem;
+  font-weight: lighter;
+}
+.button-group {
+  @include dFlex($jc: space-between);
+  gap: 1rem;
+}
+.priority-btn {
+  @include dFlex($jc: center, $ai: center);
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  min-width: 1rem;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  width: 100%;
+
+  img {
+    width: 24px;
+    height: 24px;
+  }
+  &.selected {
+    &.urgent {
+      background-color: #ff3d00;
+      color: #fff;
+    }
+    &.medium {
+      background-color: #ffa800;
+      color: #fff;
+    }
+    &.low {
+      background-color: #7ae229;
+      color: #fff;
+    }
+
+    img {
+      filter: brightness(0) invert(1);
+    }
+  }
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px;
+  }
+}

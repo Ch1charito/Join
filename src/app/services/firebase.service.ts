@@ -9,17 +9,21 @@ import {
   deleteDoc,
 } from '@angular/fire/firestore';
 import { ContactInterface } from '../interfaces/contact.interface';
+import { TaskInterface } from '../interfaces/task.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService implements OnDestroy {
   firestore = inject(Firestore);
-  unsubscribe: () => void;
+  /* unsubscribe: () => void; */
   contactList: ContactInterface[] = [];
+  taskList: TaskInterface[] = [];       // für add-task
+  unsubscribeContacts: () => void;
+  unsubscribeTasks: () => void; 
 
   constructor() {
-    this.unsubscribe = onSnapshot(
+    this.unsubscribeContacts = onSnapshot(
       collection(this.firestore, 'contacts'),
       (contacts) => {
         this.contactList = [];
@@ -31,8 +35,21 @@ export class FirebaseService implements OnDestroy {
         this.contactList.sort((a, b) => a.name.localeCompare(b.name));
       }
     );
+    this.unsubscribeTasks = onSnapshot(
+      collection(this.firestore, 'tasks'),
+      (tasks) => {
+        this.taskList = [];
+        tasks.forEach((element) => {
+          this.taskList.push(
+            this.setTaskObject(element.id, element.data())
+          );
+        });
+        this.taskList.sort((a, b) => a.title.localeCompare(b.title));
+      }
+    );
   }
 
+  //#region contacs
   setContactObject(id: string, obj: any): ContactInterface {
     return {
       id: id,
@@ -57,10 +74,38 @@ export class FirebaseService implements OnDestroy {
   async deleteContactFromDatabase(id: string) {
     await deleteDoc(doc(this.firestore, 'contacts', id));
   }
+  //#endregion
 
   ngOnDestroy() {
-    if (this.unsubscribe) {
-      this.unsubscribe();
-    }
+    if (this.unsubscribeContacts) this.unsubscribeContacts();
+    if (this.unsubscribeTasks) this.unsubscribeTasks();
   }
+
+
+  //#region tasks
+  setTaskObject(id: string, obj: any): TaskInterface {
+    return {
+      id: id,
+      title: obj.title,
+      description: obj.description,
+      date: obj.date,
+    };
+  }
+
+  async addTaskToDatabase(tasks: TaskInterface) {
+    await addDoc(collection(this.firestore, 'tasks'), tasks);
+  }
+
+  async updateTaskInDatabase(id: string, tasks: TaskInterface) {
+    await updateDoc(doc(this.firestore, 'tasks', id), {
+      title: tasks.title,
+      description: tasks.description,
+      date: tasks.date,
+    });
+  }
+
+  async deleteTaskFromDatabase(id: string) {
+    await deleteDoc(doc(this.firestore, 'tasks', id));
+  }
+  //#endregion
 }

@@ -2,14 +2,10 @@
 <app-side-bar></app-side-bar>
 <section>
   <h1>Mudi</h1>
-  <form>
+  <form (ngSubmit)="saveTask()">
     <div></div>
     <div>
-      <app-priority></app-priority>
-      <!-- <app-priority
-  [options]="priorityOptions"
-  [(selectedKey)]="form.controls.priority.value">
-</app-priority> -->
+      <app-priority [(selectedPriority)]="selectedPriority"></app-priority>
       <app-assigned-to></app-assigned-to>
       <app-category></app-category>
       <app-subtasks></app-subtasks>

@@ -5,6 +5,7 @@ import { PriorityComponent } from './priority/priority.component';
 import { AssignedToComponent } from './assigned-to/assigned-to.component';
 import { CategoryComponent } from './category/category.component';
 import { SubtasksComponent } from './subtasks/subtasks.component';
+import { PriorityKey } from '../interfaces/priority.interface';
 
 @Component({
   selector: 'app-add-task',
@@ -20,5 +21,8 @@ import { SubtasksComponent } from './subtasks/subtasks.component';
   styleUrl: './add-task.component.scss',
 })
 export class AddTaskComponent {
-  priorityOptions: any;
+  selectedPriority: PriorityKey | null = 'medium';
+  saveTask() {
+    console.log('Priorität:', this.selectedPriority);
+  }
 }

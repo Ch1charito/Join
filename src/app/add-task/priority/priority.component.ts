@@ -1,34 +1,22 @@
-import { Component } from '@angular/core';
-// import {
-//   PriorityOptionInterface,
-//   PriorityKey,
-// } from '../../interfaces/priority.interface';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { PriorityKey } from '../../interfaces/priority.interface';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-priority',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './priority.component.html',
   styleUrl: './priority.component.scss',
 })
 export class PriorityComponent {
-  selectedPriority: 'urgent' | 'medium' | 'low' | null = null;
+  @Input() selectedPriority: PriorityKey | null = null;
+  @Output() selectedPriorityChange = new EventEmitter<PriorityKey | null>();
 
-  selectPriority(priority: 'urgent' | 'medium' | 'low') {
-    if (this.selectedPriority === priority) {
-      this.selectedPriority = null;
-    } else {
-      this.selectedPriority = priority;
-    }
+  selectPriority(priority: PriorityKey) {
+    //toggle
+    this.selectedPriority =
+      this.selectedPriority === priority ? null : priority;
+    //emmit the change to parent component
+    this.selectedPriorityChange.emit(this.selectedPriority);
   }
 }
-// export class PriorityComponent {
-//   @Input() options: PriorityOption[] = [];
-//   @Input() selectedKey: PriorityKey | null = null;
-//   @Output() selectedKeyChange = new EventEmitter<PriorityKey | null>();
-
-//   selectPriority(key: PriorityKey) {
-//     const newKey = this.selectedKey === key ? null : key;
-//     this.selectedKey = newKey;
-//     this.selectedKeyChange.emit(newKey);
-//   }
-// }

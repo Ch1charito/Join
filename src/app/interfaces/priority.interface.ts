@@ -1,16 +1,6 @@
 export type PriorityKey = 'urgent' | 'medium' | 'low';
-
-export interface PriorityButtonConfig {
+export interface PriorityInterface {
   key: PriorityKey;
   label: string;
   iconPath: string;
-  altText: string;
-  cssClass: string;
 }
-// export type PriorityKey = 'urgent' | 'medium' | 'low';
-
-// export interface PriorityOptionInterface {
-//   key: PriorityKey;
-//   label: string;
-//   iconPath: string;
-// }

@@ -1,5 +1,5 @@
 
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { SideBarComponent } from "../shared/side-bar/side-bar.component";
 import { HeaderComponent } from "../shared/header/header.component";
 import { PriorityComponent } from "./priority/priority.component";
@@ -20,6 +20,8 @@ import { TaskInterface } from '../interfaces/task.interface';
   styleUrl: './add-task.component.scss',
 })
 export class AddTaskComponent {
+  @ViewChild(CategoryComponent) categoryComponent!: CategoryComponent;
+  @ViewChild(SubtasksComponent) subtasksComponent!: SubtasksComponent;
   selectedAssignedContacts: ContactInterface[] = [];
 
   selectedPriority: PriorityKey | null = 'medium';
@@ -34,6 +36,8 @@ export class AddTaskComponent {
     date: '',
     priority: '',
     assignedContacts: [],
+    category: '',
+    subtasks: [],
   };
 
   submitTask(form: NgForm) {
@@ -54,17 +58,20 @@ export class AddTaskComponent {
     this.tasks.date = '';
     this.selectedPriority = 'medium';
     this.selectedAssignedContacts = [];
+    this.categoryComponent.resetCategory();
+    this.subtasksComponent.resetSubtasks();
   }
 
   onAssignedContactsChange(contacts: ContactInterface[]) {
     this.selectedAssignedContacts = contacts;
   }
+  onCategoryChange(category: string) {
+    this.tasks.category = category;
+  }
 
-    handleTaskListChange(taskList: any) {
-  console.log('Daten für Robin', taskList);
-}
 
-handleSubtasksChange(subtasks: { text: string; editing: boolean }[]) {
-  console.log('Daten für Robin', subtasks);
-}
+  handleSubtasksChange(subtasks: string[]) {
+    console.log('Daten für Robin', subtasks);
+    this.tasks.subtasks = subtasks;  
+  }
 }

@@ -1,1 +1,35 @@
-<p>priority works!</p>
+
+<div class="priority-container">
+  <h3 class="title">Priorität</h3>
+
+  <div class="button-group">
+    <button
+      type="button"
+      class="priority-btn urgent"
+      (click)="selectPriority('urgent')"
+      [class.selected]="selectedPriority === 'urgent'"
+    >
+      <span class="label">Urgent</span
+      ><img src="./assets/icons/Property-1=Urgent.png" alt="very-important" />
+    </button>
+    <button
+      type="button"
+      class="priority-btn medium"
+      (click)="selectPriority('medium')"
+      [class.selected]="selectedPriority === 'medium'"
+    >
+      <span class="label">Medium</span
+      ><img src="./assets/icons/Property-1=Medium.png" alt="middle-important" />
+    </button>
+    <button
+      type="button"
+      class="priority-btn low"
+      (click)="selectPriority('low')"
+      [class.selected]="selectedPriority === 'low'"
+    >
+      <span class="label">Low</span
+      ><img src="./assets/icons/Property-1=Low.png" alt="low-important" />
+    </button>
+  </div>
+</div>
+

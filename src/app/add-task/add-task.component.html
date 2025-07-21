@@ -1,8 +1,11 @@
 <app-header></app-header>
 <app-side-bar></app-side-bar>
 <section>
+
+
     <h1>Mudi</h1>
 <form #form="ngForm" (ngSubmit)="submitTask(form)">
+
     <div>
         <h4>Title</h4>
         <input type="text" name="title" [(ngModel)]="tasks.title" placeholder="Enter a title" required>
@@ -15,7 +18,9 @@
             <button type="submit">Create Task</button>
         </div>
     
+
     </div>
+
     <div>
         <app-priority></app-priority>
         <app-assigned-to></app-assigned-to>

@@ -15,12 +15,12 @@
         <input type="text" name="date" [(ngModel)]="tasks.date" placeholder="dd/mm/yyyy" pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$" required>
         <app-priority [(selectedPriority)]="selectedPriority"></app-priority>
         <app-assigned-to [selectedAssignedContacts]="selectedAssignedContacts" (selectedContactsChange)="onAssignedContactsChange($event)"></app-assigned-to>
+        <app-category (taskListChange)="onCategoryChange($event)"></app-category>
+        <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
         <div>
             <button (click)="clearInputFields()" type="button">Clear</button>
             <button type="submit">Create Task</button>
         </div>
-      <app-category (taskListChange)="handleTaskListChange($event)"></app-category>
-        <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
     
 
     </div>

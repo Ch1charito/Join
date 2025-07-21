@@ -60,5 +60,11 @@ export class AddTaskComponent {
     this.selectedAssignedContacts = contacts;
   }
 
+    handleTaskListChange(taskList: any) {
+  console.log('Daten für Robin', taskList);
+}
 
+handleSubtasksChange(subtasks: { text: string; editing: boolean }[]) {
+  console.log('Daten für Robin', subtasks);
+}
 }

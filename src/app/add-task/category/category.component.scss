@@ -1,0 +1,57 @@
+.category-dropdown {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.required-asterisk {
+    color: #dc3545;
+    margin-left: 0.2rem;
+}
+
+.select-category {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    background-color: #fff;
+    font-size: 1rem;
+    color: #495057;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 16px 12px;
+}
+
+.select-category:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.select-category.errorborder {
+    border-color: #dc3545;
+}
+
+.invalid-input {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    height: 1.25rem;
+}
+
+.select-category:invalid {
+    color: black;
+}
+
+/* Normale Textfarbe nach Auswahl */
+.select-category option:not([disabled]) {
+    color: black;
+}

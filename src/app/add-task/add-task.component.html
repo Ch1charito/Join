@@ -19,10 +19,15 @@
             <button (click)="clearInputFields()" type="button">Clear</button>
             <button type="submit">Create Task</button>
         </div>
+      <app-category (taskListChange)="handleTaskListChange($event)"></app-category>
+        <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
     
 
     </div>
+
 </form>
+
+
 
 
 </section>

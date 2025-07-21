@@ -1,3 +1,32 @@
+<label>Assigned to</label>
+<div class="assigned-to" id="assignedDiv" >
+    <input id="assignedInput" type="text" class="assigned-input" (click)="toggleContactDropdown()"
+        placeholder="Select contacts to assign" readonly />
+    <img id="dropdown" class="dropdown-icon" src="assets/icons/arrow_drop_down.png" alt="" (click)="toggleContactDropdown()"/>
+</div>
 
-<input type="text" class="overlay-input" placeholder="Select contacts to assign">
-<h1>HIIII</h1>
+<div id="selectedAssignedContactsDisplay" class="selected-contacts-display">
+    @for (contact of selectedAssignedContacts; track contact.id) {
+    <div class="initials-bubble" [style.backgroundColor]="
+      colors[firebaseService.contactList.indexOf(contact) % colors.length]
+    ">
+        {{ getInitials(contact.name) }}
+    </div>
+    }
+</div>
+
+<div id="assignedContacts">
+    <div id="contactDropdown" class="assigned-dropdown" *ngIf="showContactDropdown">
+        @for (item of firebaseService.contactList; track item.id) {
+        <div class="assigned-to-contact" (click)="selectContact(item)" [class.selected-contact]="isSelected(item)">
+            <div class="contact-img-name" [style.backgroundColor]="
+          colors[firebaseService.contactList.indexOf(item) % colors.length]">
+                {{ getInitials(item.name) }}
+            </div>
+            <span>{{ item.name }}</span>
+            <img src="assets/icons/check_btn.png" alt="Checkbox" *ngIf="!isSelected(item)" />
+            <img src="assets/icons/checked.png" alt="Checked" *ngIf="isSelected(item)" />
+        </div>
+        }
+    </div>
+</div>

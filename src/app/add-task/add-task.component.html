@@ -20,5 +20,12 @@
     
 
     </div>
-  </form>
+
+    <div>
+        <app-priority></app-priority>
+        <app-assigned-to></app-assigned-to>
+        <app-category (taskListChange)="handleTaskListChange($event)"></app-category>
+        <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
+    </div>
+</form>
 </section>

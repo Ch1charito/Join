@@ -47,5 +47,11 @@ export class AddTaskComponent {
     this.tasks.date = '';
   }
 
+    handleTaskListChange(taskList: any) {
+  console.log('Daten für Robin', taskList);
+}
 
+handleSubtasksChange(subtasks: { text: string; editing: boolean }[]) {
+  console.log('Daten für Robin', subtasks);
+}
 }

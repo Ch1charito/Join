@@ -4,25 +4,25 @@
         <div id="menu">
             <div class="menu-links">
                 <div class="header-links">
-                    <a routerLink="/summary" routerLinkActive="active">
+                    <a [routerLink]="['/summary']">
                         <img src="assets/icons/summary-icon.png" alt="summary-icon" class="">
                         <span>Summary</span>
                     </a>
                 </div>
                 <div class="header-links">
-                    <a routerLink="/#" routerLinkActive="active">
+                    <a [routerLink]="['/']">
                         <img src="assets/icons/add-task-icon.png" alt="">
                         <span>Add Task</span>
                     </a>
                 </div>
                 <div class="header-links">
-                    <a routerLink="/#" routerLinkActive="active">
+                    <a [routerLink]="['/board']">
                         <img src="assets/icons/board-icon.png" alt="">
                         <span>Board</span>
                     </a>
                 </div>
                 <div class="header-links">
-                    <a routerLink="/#" routerLinkActive="active">
+                    <a [routerLink]="['/contacts']">
                         <img src="assets/icons/contacts-icon.png" alt="">
                         <span>Contacts</span>
                     </a>

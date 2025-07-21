@@ -9,6 +9,8 @@ import { SubtasksComponent } from "./subtasks/subtasks.component";
 import { FirebaseService } from '../services/firebase.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { PriorityKey } from '../interfaces/priority.interface';
+import { ContactInterface } from '../interfaces/contact.interface';
+import { TaskInterface } from '../interfaces/task.interface';
 
 @Component({
   selector: 'app-add-task',
@@ -18,6 +20,7 @@ import { PriorityKey } from '../interfaces/priority.interface';
   styleUrl: './add-task.component.scss',
 })
 export class AddTaskComponent {
+  selectedAssignedContacts: ContactInterface[] = [];
 
   selectedPriority: PriorityKey | null = 'medium';
   saveTask() {
@@ -25,10 +28,12 @@ export class AddTaskComponent {
   }
 
   firebaseService = inject(FirebaseService);
-  tasks = {
+  tasks: TaskInterface = {
     title: '',
     description: '',
-    date: ''
+    date: '',
+    priority: '',
+    assignedContacts: [],
   };
 
   submitTask(form: NgForm) {
@@ -36,6 +41,8 @@ export class AddTaskComponent {
       console.warn('Formular ungültig');
     return;
     }
+    this.tasks.priority = this.selectedPriority ?? '';
+    this.tasks.assignedContacts = this.selectedAssignedContacts;
     this.firebaseService.addTaskToDatabase(this.tasks);
     form.resetForm()
     this.clearInputFields();
@@ -45,6 +52,12 @@ export class AddTaskComponent {
     this.tasks.title = '';
     this.tasks.description = '';
     this.tasks.date = '';
+    this.selectedPriority = 'medium';
+    this.selectedAssignedContacts = [];
+  }
+
+  onAssignedContactsChange(contacts: ContactInterface[]) {
+    this.selectedAssignedContacts = contacts;
   }
 
     handleTaskListChange(taskList: any) {

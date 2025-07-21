@@ -89,6 +89,8 @@ export class FirebaseService implements OnDestroy {
       title: obj.title,
       description: obj.description,
       date: obj.date,
+      priority: obj.priority,
+      assignedContacts: obj.assignedContacts,
     };
   }
 
@@ -101,6 +103,8 @@ export class FirebaseService implements OnDestroy {
       title: tasks.title,
       description: tasks.description,
       date: tasks.date,
+      priority: tasks.priority,
+      assignedContacts: tasks.assignedContacts,
     });
   }
 

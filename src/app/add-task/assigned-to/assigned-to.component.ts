@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FirebaseService } from '../../services/firebase.service';
 import { ContactInterface } from '../../interfaces/contact.interface';
@@ -11,9 +11,11 @@ import { ContactInterface } from '../../interfaces/contact.interface';
   styleUrls: ['./assigned-to.component.scss'],
 })
 export class AssignedToComponent {
+  @Output() selectedContactsChange = new EventEmitter<ContactInterface[]>();
+  @Input() selectedAssignedContacts: ContactInterface[] = [];
   firebaseService = inject(FirebaseService);
   showContactDropdown: boolean = false;
-  selectedAssignedContacts: ContactInterface[] = [];
+  /* selectedAssignedContacts: ContactInterface[] = []; */
 
   colors = [
     '#FF7A00',
@@ -75,6 +77,7 @@ export class AssignedToComponent {
     } else {
       this.selectedAssignedContacts.splice(index, 1);
     }
+    this.selectedContactsChange.emit(this.selectedAssignedContacts);
   }
 
   getInitials(name: string): string {

@@ -13,10 +13,11 @@ export class SubtasksComponent {
   newSubtask: string = '';
   subtasks: { text: string; editing: boolean }[] = [];
 
-  @Output() subtasksChange = new EventEmitter<{ text: string; editing: boolean }[]>();
+  @Output() subtasksChange = new EventEmitter<string[]>();
 
   private emitSubtasks() {
-    this.subtasksChange.emit(this.subtasks);
+    const texts = this.subtasks.map(subtask => subtask.text);
+    this.subtasksChange.emit(texts);
   }
 
   addSubtask() {
@@ -48,5 +49,11 @@ export class SubtasksComponent {
 
   cancelEdit(index: number) {
     this.subtasks[index].editing = false;
+  }
+
+  resetSubtasks() {
+    this.subtasks = [];
+    this.newSubtask = '';
+    this.subtasksChange.emit([]);
   }
 }

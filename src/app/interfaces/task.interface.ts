@@ -7,4 +7,6 @@ export interface TaskInterface{
     date: string;
     priority: string;
     assignedContacts: ContactInterface[];
+    category: string;
+    subtasks: string[];
 }

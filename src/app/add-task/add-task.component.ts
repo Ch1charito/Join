@@ -1,25 +1,35 @@
-
-import { Component, inject, ViewChild } from '@angular/core';
-import { SideBarComponent } from "../shared/side-bar/side-bar.component";
-import { HeaderComponent } from "../shared/header/header.component";
-import { PriorityComponent } from "./priority/priority.component";
-import { AssignedToComponent } from "./assigned-to/assigned-to.component";
-import { CategoryComponent } from "./category/category.component";
-import { SubtasksComponent } from "./subtasks/subtasks.component";
+import { Component, inject, ViewChild, Input } from '@angular/core';
+import { SideBarComponent } from '../shared/side-bar/side-bar.component';
+import { HeaderComponent } from '../shared/header/header.component';
+import { PriorityComponent } from './priority/priority.component';
+import { AssignedToComponent } from './assigned-to/assigned-to.component';
+import { CategoryComponent } from './category/category.component';
+import { SubtasksComponent } from './subtasks/subtasks.component';
 import { FirebaseService } from '../services/firebase.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { PriorityKey } from '../interfaces/priority.interface';
 import { ContactInterface } from '../interfaces/contact.interface';
 import { TaskInterface } from '../interfaces/task.interface';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-add-task',
-  imports: [SideBarComponent, HeaderComponent, PriorityComponent, AssignedToComponent, CategoryComponent, SubtasksComponent, FormsModule],
+  imports: [
+    SideBarComponent,
+    HeaderComponent,
+    PriorityComponent,
+    AssignedToComponent,
+    CategoryComponent,
+    SubtasksComponent,
+    FormsModule,
+    NgIf,
+  ],
 
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss',
 })
 export class AddTaskComponent {
+  @Input() showLayout = true;
   @ViewChild(CategoryComponent) categoryComponent!: CategoryComponent;
   @ViewChild(SubtasksComponent) subtasksComponent!: SubtasksComponent;
   selectedAssignedContacts: ContactInterface[] = [];
@@ -43,12 +53,12 @@ export class AddTaskComponent {
   submitTask(form: NgForm) {
     if (!form.valid) {
       console.warn('Formular ungültig');
-    return;
+      return;
     }
     this.tasks.priority = this.selectedPriority ?? '';
     this.tasks.assignedContacts = this.selectedAssignedContacts;
     this.firebaseService.addTaskToDatabase(this.tasks);
-    form.resetForm()
+    form.resetForm();
     this.clearInputFields();
   }
 
@@ -69,9 +79,8 @@ export class AddTaskComponent {
     this.tasks.category = category;
   }
 
-
   handleSubtasksChange(subtasks: string[]) {
     console.log('Daten für Robin', subtasks);
-    this.tasks.subtasks = subtasks;  
+    this.tasks.subtasks = subtasks;
   }
 }

@@ -5,9 +5,10 @@
       cdkDropList
       [cdkDropListData]="todo"
       class="example-list"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)"
+    >
       @for (item of todo; track item) {
-        <div class="example-box" cdkDrag>{{item}}</div>
+      <div class="example-box" cdkDrag>{{ item }}</div>
       }
     </div>
   </div>
@@ -17,9 +18,10 @@
       cdkDropList
       [cdkDropListData]="progress"
       class="example-list"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)"
+    >
       @for (item of progress; track item) {
-        <div class="example-box" cdkDrag>{{item}}</div>
+      <div class="example-box" cdkDrag>{{ item }}</div>
       }
     </div>
   </div>
@@ -29,12 +31,12 @@
       cdkDropList
       [cdkDropListData]="feedback"
       class="example-list"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)"
+    >
       @for (item of feedback; track item) {
-        <div class="example-box" cdkDrag>{{item}}</div>
+      <div class="example-box" cdkDrag>{{ item }}</div>
       }
     </div>
-
   </div>
   <div class="example-container">
     <h2>Done</h2>
@@ -42,12 +44,12 @@
       cdkDropList
       [cdkDropListData]="done"
       class="example-list"
-      (cdkDropListDropped)="drop($event)">
+      (cdkDropListDropped)="drop($event)"
+    >
       @for (item of done; track item) {
-        <div class="example-box" cdkDrag>{{item}}</div>
+      <div class="example-box" cdkDrag>{{ item }}</div>
       }
     </div>
-
   </div>
 </div>
 

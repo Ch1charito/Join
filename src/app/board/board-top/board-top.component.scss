@@ -1,18 +1,19 @@
 @use "../../styles/all-styles.scss" as *;
 
-.board-top {
+.board-container {
   @include dFlex($jc: space-between, $fd: row);
   width: 100%;
-  height: 40vh;
+  height: 20vh;
 
   .board {
     @include dFlex($jc: space-between, $ai: center);
-    padding: 2rem;
     gap: 1rem;
     border-radius: 0.5rem;
+    width: 100%;
+    padding: 2rem;
 
     h1 {
-      font-size: 2rem;
+      font-size: 3rem;
       font-weight: bold;
       margin-bottom: 1rem;
     }
@@ -20,6 +21,81 @@
     p {
       font-size: 1.2rem;
       color: #666;
+    }
+    .board-actions {
+      @include dFlex($jc: end, $ai: center);
+      gap: 1rem;
+      width: 100%;
+      padding: 0.5rem;
+
+      .board-action {
+        @include dFlex($jc: center, $ai: center);
+        height: 2.5rem;
+        border-radius: 8px;
+        background-color: #f0f0f0;
+        padding: 0 1rem;
+        cursor: pointer;
+
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
+      }
+      .search-task {
+        @include dFlex($jc: center, $ai: center);
+        height: 3rem;
+        border-radius: 8px;
+        background: #ffffff;
+        padding: 0 1rem;
+
+        input {
+          width: 100%;
+          border: none;
+          background-color: transparent;
+          outline: none;
+          font-size: 1rem;
+        }
+
+        .line {
+          width: 1px;
+          height: 2rem;
+          background-color: #ccc;
+          margin-left: 1rem;
+        }
+
+        .search-task-btn {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+
+          img {
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
+      }
+    }
+    .board-add-task {
+      @include dFlex($jc: center, $ai: center);
+      background: #2a3647;
+      cursor: pointer;
+      white-space: nowrap;
+      font-weight: bold;
+      font-size: 1rem;
+      color: white;
+      border: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 8px;
+      gap: 1rem;
+      height: 3rem;
+      img {
+        width: 18px;
+        height: 18px;
+      }
+      &:hover {
+        background: #29abe2;
+        box-shadow: 0px 3px 7px -3px rgba(0, 0, 0, 0.3);
+      }
     }
   }
 }

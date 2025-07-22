@@ -7,10 +7,11 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import {Component} from '@angular/core';
+import { CardComponent } from "../card/card.component";
 
 @Component({
   selector: 'app-board-bottom',
-  imports: [CdkDropList, CdkDrag, CdkDropListGroup],
+  imports: [CdkDropList, CdkDrag, CdkDropListGroup, CardComponent],
   templateUrl: './board-bottom.component.html',
   styleUrl: './board-bottom.component.scss'
 })

@@ -8,10 +8,11 @@ import {
 } from '@angular/cdk/drag-drop';
 import {Component} from '@angular/core';
 import { CardComponent } from "../card/card.component";
+import { CardOverlayComponent } from "../card-overlay/card-overlay.component";
 
 @Component({
   selector: 'app-board-bottom',
-  imports: [CdkDropList, CdkDrag, CdkDropListGroup, CardComponent],
+  imports: [CdkDropList, CdkDrag, CdkDropListGroup, CardComponent, CardOverlayComponent],
   templateUrl: './board-bottom.component.html',
   styleUrl: './board-bottom.component.scss'
 })

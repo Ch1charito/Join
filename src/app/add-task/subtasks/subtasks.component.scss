@@ -1,81 +1,88 @@
 .subtasks-container {
-    font-family: sans-serif;
-    margin: 1rem;
+  font-family: sans-serif;
+  height: 48px;
+  margin-top: 50px;
 
-    .input-group {
+  .input-group {
+    display: flex;
+    align-items: center;
+
+    position: relative;
+
+    input {
+      margin-top: 10px;
+      height: 48px;
+      width: 420px;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 16px;
+      border: 1px solid #d1d1d1;
+      background-image: url(../../../../public/assets/icons/plus-icon.png);
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      background-size: 15px 15px;
+
+      &:focus {
+        border: 2px solid #29abe2;
+      }
+    }
+
+    > div:nth-child(3) {
+      position: absolute;
+      top: 48px;
+      right: 25px;
+
+      span {
+        &::before {
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  .subtask-list {
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 25px 15px 50px;
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-size: 16px;
+
+      &.editable {
+        margin: 5px 0 5px;
+      }
+
+      .no-input {
         display: flex;
-        align-items: center;
-        gap: 0.5rem;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .with-input {
         position: relative;
+        width: 100%;
 
         input {
-            min-height: 48px;
-                            border-radius: 15px;
-                            padding: 0.5em;
-                            font-size: 16px;
-                            resize: none;
-                            border: 2px solid rgba(0, 0, 0, 0.049);
-                            &:focus {
-                                border: 2px solid #29abe2;
-                            }
+          width: 100%;
+          padding: 12px 16px;
+          font-size: 16px;
+          outline: none;
+          border: none;
+          border-bottom: solid 1px lightblue;
         }
 
-        >div:nth-child(3) {
-            position: absolute;
-            top: 48px;
-            right: 25px;
-
-            span {
-                &::before {
-                    vertical-align: middle;
-                }
-            }
+        > div {
+          position: absolute;
+          top: 13px;
+          right: 25px;
         }
+      }
     }
-
-    .subtask-list {
-        display: flex;
-        flex-direction: column;
-        list-style-type: none;
-        padding: 0;
-        margin: 15px 25px 15px 50px;
-
-        li {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 16px;
-
-            &.editable {
-                margin: 5px 0 5px;
-            }
-
-            .no-input {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-            }
-
-            .with-input {
-                position: relative;
-                width: 100%;
-
-                input {
-                    width: 100%;
-                    padding: 12px 16px;
-                    font-size: 16px;
-                    outline: none;
-                    border: none;
-                    border-bottom: solid 1px lightblue;
-                }
-
-                >div {
-                    position: absolute;
-                    top: 13px;
-                    right: 25px;
-                }
-            }
-        }
-    }
+  }
 }

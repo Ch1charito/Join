@@ -20,12 +20,20 @@ form {
       font-size: 40px;
       margin-left: 10px;
     }
+
   }
 }
 
 .asterisk {
   color: red;
   margin-right: 1em;
+}
+
+.invalid-input {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  height: 1.25rem;
 }
 
 .title-input {
@@ -42,6 +50,10 @@ form {
   margin-top: 10px;
 }
 
+.title-input.errorborder {
+  border-color: #dc3545; 
+}
+
 .description-input {
   padding: 12px;
   width: 430px;
@@ -56,6 +68,10 @@ form {
   margin-top: 10px;
 }
 
+.description-input.errorborder {
+  border-color: #dc3545;
+}
+
 .date-input {
   width: 420px;
   height: 48px;
@@ -67,6 +83,10 @@ form {
   font-size: 18px;
   background-image: none;
   padding-right: 40px;
+}
+
+.date-input.errorborder {
+  border-color: #dc3545;
 }
 
 .date-input::-webkit-calendar-picker-indicator {
@@ -145,17 +165,17 @@ form {
   margin-right: 14%;
   display: flex;
   justify-content: space-between;
- 
 }
 
 @media (max-width: 1420px) {
   form {
-    height: 90vh;
+    height: 100vh;
   }
   section {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100%;
   }
 
   .left-side {
@@ -172,5 +192,31 @@ form {
 
   .middle-line {
     display: none;
+  }
+}
+
+@media (max-width: 1030px) {
+  .task-buttons {
+    position: fixed;
+    z-index: 10;
+    bottom: 9%;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: rgb(246, 247, 249);
+  }
+}
+
+@media (max-width: 640px) {
+  .task-buttons {
+    position: fixed;
+    z-index: 10;
+    bottom: 7%;
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    background-color: rgb(246, 247, 249);
   }
 }

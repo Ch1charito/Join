@@ -11,7 +11,7 @@
 }
 .button-group {
   @include dFlex($jc: space-between);
-  gap: 1rem;
+  gap: 3rem;
 }
 .priority-btn {
   @include dFlex($jc: center, $ai: center);

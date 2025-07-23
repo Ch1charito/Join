@@ -2,8 +2,7 @@
     <label>Subtasks</label>
     <div class="input-group">
         <input type="text" [(ngModel)]="newSubtask" placeholder="Add new subtask" />
-        <button type="button" (click)="addSubtask()">
-            <img src="assets/icons/plus-icon.png" alt="Add" />
+        <button (click)="addSubtask()">
         </button>
     </div>
 
@@ -11,20 +10,20 @@
         <li *ngFor="let task of subtasks; let i = index">
             <div *ngIf="task.editing; else viewMode" class="edit-mode">
                 <input [(ngModel)]="task.text" />
-                <button type="button" (click)="deleteSubtask(i)">
+                <button (click)="deleteSubtask(i)">
                     <img src="assets/icons/delete.png" alt="Delete" />
                 </button>
-                <button type="button" (click)="confirmEdit(i, task.text)">
+                <button (click)="confirmEdit(i, task.text)">
                     <img src="assets/icons/check.png" alt="Confirm" />
                 </button>
             </div>
 
             <ng-template #viewMode>
                 <span>• {{ task.text }}</span>
-                <button type="button" (click)="startEdit(i)">
+                <button (click)="startEdit(i)">
                     <img src="assets/icons/edit.png" alt="Edit" />
                 </button>
-                <button type="button" (click)="deleteSubtask(i)">
+                <button (click)="deleteSubtask(i)">
                     <img src="assets/icons/delete.png" alt="Delete" />
                 </button>
             </ng-template>

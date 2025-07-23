@@ -36,6 +36,8 @@ export class AddTaskComponent {
 
   selectedPriority: PriorityKey | null = 'medium';
   showOverlay: boolean = false;
+  minDate: string = new Date().toISOString().split('T')[0];
+
   saveTask() {
     console.log('Priorität:', this.selectedPriority);
   }
@@ -66,7 +68,7 @@ export class AddTaskComponent {
 
     setTimeout(() => {
       this.showOverlay = false;
-    }, 100000);
+    }, 1000);
   }
 
   clearInputFields() {

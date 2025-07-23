@@ -16,22 +16,22 @@
             required
           />
           <label> Description <span class="asterisk">*</span></label>
-          <input
+          <textarea
             class="description-input"
             type="text"
             name="description"
             [(ngModel)]="tasks.description"
             placeholder="Enter a Description"
-          />
+          ></textarea>
           <label> Due Date <span class="asterisk">*</span></label>
+
           <input
             class="date-input"
-            type="text"
+            type="date"
             name="date"
             [(ngModel)]="tasks.date"
-            placeholder="dd/mm/yyyy"
-            pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$"
             required
+            [min]="minDate"
           />
         </div>
       </div>

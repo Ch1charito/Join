@@ -9,4 +9,5 @@ export interface TaskInterface{
     assignedContacts: ContactInterface[];
     category: string;
     subtasks: string[];
+    status: string;
 }

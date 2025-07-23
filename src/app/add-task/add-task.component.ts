@@ -35,6 +35,7 @@ export class AddTaskComponent {
   selectedAssignedContacts: ContactInterface[] = [];
 
   selectedPriority: PriorityKey | null = 'medium';
+  showOverlay: boolean = false;
   saveTask() {
     console.log('Priorität:', this.selectedPriority);
   }
@@ -60,6 +61,12 @@ export class AddTaskComponent {
     this.firebaseService.addTaskToDatabase(this.tasks);
     form.resetForm();
     this.clearInputFields();
+
+    this.showOverlay = true;
+
+    setTimeout(() => {
+      this.showOverlay = false;
+    }, 100000);
   }
 
   clearInputFields() {

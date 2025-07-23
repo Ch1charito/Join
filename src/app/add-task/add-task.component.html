@@ -2,41 +2,61 @@
 <app-side-bar *ngIf="showLayout"></app-side-bar>
 <section>
   <form #form="ngForm" (ngSubmit)="submitTask(form)">
-
-
     <section>
       <div class="left-side">
         <h1>Add Task</h1>
         <div class="left-side-content">
           <label> Title <span class="asterisk">*</span></label>
-          <input class="title-input" type="text" name="title" [(ngModel)]="tasks.title" placeholder="Enter a title"
-            required />
+          <input
+            class="title-input"
+            type="text"
+            name="title"
+            [(ngModel)]="tasks.title"
+            placeholder="Enter a title"
+            required
+          />
           <label> Description <span class="asterisk">*</span></label>
-          <input class="description-input" type="text" name="description" [(ngModel)]="tasks.description"
-            placeholder="Enter a Description" />
+          <input
+            class="description-input"
+            type="text"
+            name="description"
+            [(ngModel)]="tasks.description"
+            placeholder="Enter a Description"
+          />
           <label> Due Date <span class="asterisk">*</span></label>
-          <input class="date-input" type="text" name="date" [(ngModel)]="tasks.date" placeholder="dd/mm/yyyy"
-            pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$" required />
+          <input
+            class="date-input"
+            type="text"
+            name="date"
+            [(ngModel)]="tasks.date"
+            placeholder="dd/mm/yyyy"
+            pattern="^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/([0-9]{4})$"
+            required
+          />
         </div>
-
       </div>
       <div class="middle-line"></div>
       <div class="right-side">
         <div class="right-side-wrapper">
           <app-priority [(selectedPriority)]="selectedPriority"></app-priority>
-          <app-assigned-to [selectedAssignedContacts]="selectedAssignedContacts"
-            (selectedContactsChange)="onAssignedContactsChange($event)"></app-assigned-to>
-          <app-category (taskListChange)="onCategoryChange($event)"></app-category>
-          <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
-
-
+          <app-assigned-to
+            [selectedAssignedContacts]="selectedAssignedContacts"
+            (selectedContactsChange)="onAssignedContactsChange($event)"
+          ></app-assigned-to>
+          <app-category
+            (taskListChange)="onCategoryChange($event)"
+          ></app-category>
+          <app-subtasks
+            (subtasksChange)="handleSubtasksChange($event)"
+          ></app-subtasks>
         </div>
       </div>
     </section>
 
-
     <div class="bottom-container">
-      <label id="required-text"><span class="asterisk">*</span> this field is required</label>
+      <label id="required-text"
+        ><span class="asterisk">*</span> this field is required</label
+      >
       <div class="task-buttons">
         <button class="clear-button" (click)="clearInputFields()" type="button">
           Clear
@@ -45,7 +65,14 @@
           Create Task <img src="assets/icons/check-white.png" alt="" />
         </button>
       </div>
-
     </div>
   </form>
 </section>
+<div class="overlay" *ngIf="showOverlay">
+  <div class="overlay-content">
+    <span>Task added to board</span>
+    <button class="overlay-btn">
+      <img src="./assets/icons/board-icon.png" alt="Board" />
+    </button>
+  </div>
+</div>

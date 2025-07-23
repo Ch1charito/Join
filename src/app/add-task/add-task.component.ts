@@ -48,6 +48,7 @@ export class AddTaskComponent {
     assignedContacts: [],
     category: '',
     subtasks: [],
+    status: 'todo',
   };
 
   submitTask(form: NgForm) {

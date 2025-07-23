@@ -1,5 +1,5 @@
-<app-header></app-header>
-<app-side-bar></app-side-bar>
+<app-header *ngIf="showLayout"></app-header>
+<app-side-bar *ngIf="showLayout"></app-side-bar>
 <section>
   <form #form="ngForm" (ngSubmit)="submitTask(form)">
     <div class="left-side">

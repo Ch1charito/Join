@@ -3,7 +3,7 @@
 <section>
   <form #form="ngForm" (ngSubmit)="submitTask(form)">
 
-    <section>
+    <div class="div-add-task">
       <div class="left-side">
         <h1>Add Task</h1>
         <div class="left-side-content">
@@ -38,7 +38,7 @@
           <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
         </div>
       </div>
-    </section>
+    </div>
 
     <div class="bottom-container">
       <label id="required-text"><span class="asterisk">*</span> this field is required </label>

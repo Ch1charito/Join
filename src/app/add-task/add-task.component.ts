@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, Input } from '@angular/core';
+import { Component, inject, ViewChild, Input, OnInit } from '@angular/core';
 import { SideBarComponent } from '../shared/side-bar/side-bar.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { PriorityComponent } from './priority/priority.component';
@@ -30,7 +30,8 @@ import { AddTaskBtnOverlayComponent } from './add-task-btn-overlay/add-task-btn-
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss',
 })
-export class AddTaskComponent {
+export class AddTaskComponent implements OnInit {
+  @Input() status: string = 'todo';
   @Input() showLayout = true;
   @ViewChild(CategoryComponent) categoryComponent!: CategoryComponent;
   @ViewChild(SubtasksComponent) subtasksComponent!: SubtasksComponent;
@@ -55,6 +56,10 @@ export class AddTaskComponent {
     subtasks: [],
     status: 'todo',
   };
+
+  ngOnInit() {
+    this.tasks.status = this.status;
+  }
 
   submitTask(form: NgForm) {
     if (!form.valid) {

@@ -20,8 +20,9 @@
     cursor: pointer;
     font-size: 18px;
     &:focus {
-      outline: none;
-    }
+    border-color: #29abe2;
+    outline: none;
+  }
 
     &::placeholder {
       color: black;

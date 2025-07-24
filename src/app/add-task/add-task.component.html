@@ -14,9 +14,13 @@
 
 
           <label> Description <span class="asterisk">*</span></label>
-          <input class="description-input" type="text" name="description" [(ngModel)]="tasks.description"
-            placeholder="Enter a Description" required #description="ngModel"
-            [class.errorborder]="description.invalid && description.touched">
+      <textarea
+            class="description-input"
+            type="text"
+            name="description"
+            [(ngModel)]="tasks.description"
+            placeholder="Enter a Description"
+          ></textarea>
 
           <label> Due Date <span class="asterisk">*</span></label>
           <input class="date-input" type="date" name="date" [(ngModel)]="tasks.date" required #date="ngModel"

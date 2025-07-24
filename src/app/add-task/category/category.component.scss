@@ -36,13 +36,12 @@
 
 .select-category:focus {
   outline: none;
-  border-color: #80bdff;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  border-color: #29abe2;
 }
 
-.select-category.errorborder {
-  border-color: #dc3545;
-}
+// .select-category.errorborder {
+//   border-color: #dc3545;
+// }
 
 .invalid-input {
   color: #dc3545;

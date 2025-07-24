@@ -2,8 +2,10 @@
 <div class="assigned-to" id="assignedDiv">
     <input id="assignedInput" type="text" class="assigned-input" (click)="toggleContactDropdown()"
         placeholder="Select contacts to assign" readonly />
-    <img id="dropdown" class="dropdown-icon" src="assets/icons/arrow_drop_down.png" alt=""
+    <img class="dropdown-icon" src="assets/icons/arrow_drop_down.png" alt="" [class.d-none]="showContactDropdown"
         (click)="toggleContactDropdown()" />
+    <img src="assets/icons/dropdown_up.png" alt="" class="dropdown-icon" [class.d-none]="!showContactDropdown"
+        (click)="toggleContactDropdown()">
 </div>
 
 <div id="selectedAssignedContactsDisplay" class="selected-contacts-display">

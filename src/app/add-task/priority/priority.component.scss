@@ -52,3 +52,30 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 4px;
   }
 }
+
+@media(max-width:500px) {
+
+ 
+  .button-group {
+  @include dFlex($jc: space-between);
+  gap: 10px;
+  }
+
+  .priority-btn {
+  @include dFlex($jc: center, $ai: center);
+  border: none;
+  cursor: pointer;
+  background: #fff;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  font-size: 16px;
+  min-width: 1rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+
+  img {
+    width:12px;
+    height: 20px;
+  }
+}
+}

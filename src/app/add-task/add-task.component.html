@@ -2,70 +2,53 @@
 <app-side-bar *ngIf="showLayout"></app-side-bar>
 <section>
   <form #form="ngForm" (ngSubmit)="submitTask(form)">
+
     <section>
       <div class="left-side">
         <h1>Add Task</h1>
         <div class="left-side-content">
           <label> Title <span class="asterisk">*</span></label>
-          <input
-            class="title-input"
-            type="text"
-            name="title"
-            [(ngModel)]="tasks.title"
-            placeholder="Enter a title"
-            required
-          />
-          <label> Description <span class="asterisk">*</span></label>
-          <textarea
-            class="description-input"
-            type="text"
-            name="description"
-            [(ngModel)]="tasks.description"
-            placeholder="Enter a Description"
-          ></textarea>
-          <label> Due Date <span class="asterisk">*</span></label>
 
-          <input
-            class="date-input"
-            type="date"
-            name="date"
-            [(ngModel)]="tasks.date"
-            required
-            [min]="minDate"
-          />
+          <input class="title-input" type="text" name="title" [(ngModel)]="tasks.title" placeholder="Enter a title"
+            required #title="ngModel" [class.errorborder]="title.invalid && title.touched">
+
+
+          <label> Description <span class="asterisk">*</span></label>
+          <input class="description-input" type="text" name="description" [(ngModel)]="tasks.description"
+            placeholder="Enter a Description" required #description="ngModel"
+            [class.errorborder]="description.invalid && description.touched">
+
+          <label> Due Date <span class="asterisk">*</span></label>
+          <input class="date-input" type="date" name="date" [(ngModel)]="tasks.date" required #date="ngModel"
+            [class.errorborder]="date.invalid && date.touched">
+
         </div>
+
+
       </div>
+
       <div class="middle-line"></div>
+
       <div class="right-side">
         <div class="right-side-wrapper">
           <app-priority [(selectedPriority)]="selectedPriority"></app-priority>
-          <app-assigned-to
-            [selectedAssignedContacts]="selectedAssignedContacts"
-            (selectedContactsChange)="onAssignedContactsChange($event)"
-          ></app-assigned-to>
-          <app-category
-            (taskListChange)="onCategoryChange($event)"
-          ></app-category>
-          <app-subtasks
-            (subtasksChange)="handleSubtasksChange($event)"
-          ></app-subtasks>
+          <app-assigned-to [selectedAssignedContacts]="selectedAssignedContacts"
+            (selectedContactsChange)="onAssignedContactsChange($event)"></app-assigned-to>
+          <app-category (taskListChange)="handleSubtasksChange($event)"></app-category>
+          <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
         </div>
       </div>
     </section>
 
     <div class="bottom-container">
-      <label id="required-text"
-        ><span class="asterisk">*</span> this field is required</label
-      >
+      <label id="required-text"><span class="asterisk">*</span> this field is required </label>
       <div class="task-buttons">
-        <button class="clear-button" (click)="clearInputFields()" type="button">
-          Clear
-        </button>
-        <button class="creat-button" type="submit">
-          Create Task <img src="assets/icons/check-white.png" alt="" />
-        </button>
+        <button class="clear-button" (click)="clearInputFields()" type="button">Clear</button>
+        <button class="creat-button" type="submit">Create Task <img src="assets/icons/check-white.png" alt=""></button>
+
       </div>
     </div>
+
   </form>
   <app-add-task-btn-overlay [showOverlay]="showOverlay">
   </app-add-task-btn-overlay>

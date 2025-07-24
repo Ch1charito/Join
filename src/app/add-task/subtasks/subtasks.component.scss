@@ -6,37 +6,31 @@
   .input-group {
     display: flex;
     align-items: center;
-
     position: relative;
-
     input {
       margin-top: 10px;
       height: 48px;
       width: 420px;
       border-radius: 10px;
       padding: 12px;
+      padding-right: 40px;
       font-size: 16px;
       border: 1px solid #d1d1d1;
-      background-image: url(../../../../public/assets/icons/plus-icon.png);
-      background-repeat: no-repeat;
-      background-position: right 15px center;
-      background-size: 15px 15px;
 
       &:focus {
         border: 2px solid #29abe2;
       }
     }
 
-    > div:nth-child(3) {
+    .plus-icon {
       position: absolute;
-      top: 48px;
-      right: 25px;
-
-      span {
-        &::before {
-          vertical-align: middle;
-        }
-      }
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      width: 20px;
+      height: 20px;
+      margin-top: 5px;
     }
   }
 
@@ -82,6 +76,75 @@
           top: 13px;
           right: 25px;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .subtasks-container {
+    .input-group {
+      display: flex;
+      align-items: center;
+      position: relative;
+      input {
+        margin-top: 10px;
+        height: 48px;
+        width: 400px;
+        border-radius: 10px;
+        padding: 12px;
+        padding-right: 40px;
+        font-size: 16px;
+        border: 1px solid #d1d1d1;
+
+        &:focus {
+          border: 2px solid #29abe2;
+        }
+      }
+
+      .plus-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .subtasks-container {
+    .input-group {
+      display: flex;
+      align-items: center;
+      position: relative;
+      input {
+        margin-top: 10px;
+        height: 48px;
+        width: 300px;
+        border-radius: 10px;
+        padding: 12px;
+        padding-right: 40px;
+        font-size: 16px;
+        border: 1px solid #d1d1d1;
+
+        &:focus {
+          border: 2px solid #29abe2;
+        }
+      }
+
+      .plus-icon {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        margin-top: 5px;
       }
     }
   }

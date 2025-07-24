@@ -59,3 +59,17 @@
 .select-category option:not([disabled]) {
   color: black;
 }
+
+@media (max-width: 550px) {
+  .category-dropdown {
+    width: 400px;
+  
+  }
+}
+
+@media (max-width: 400px) {
+  .category-dropdown {
+    width: 300px;
+  
+  }
+}

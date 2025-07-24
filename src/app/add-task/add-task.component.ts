@@ -11,6 +11,7 @@ import { PriorityKey } from '../interfaces/priority.interface';
 import { ContactInterface } from '../interfaces/contact.interface';
 import { TaskInterface } from '../interfaces/task.interface';
 import { NgIf } from '@angular/common';
+import { AddTaskBtnOverlayComponent } from './add-task-btn-overlay/add-task-btn-overlay.component';
 
 @Component({
   selector: 'app-add-task',
@@ -21,6 +22,7 @@ import { NgIf } from '@angular/common';
     AssignedToComponent,
     CategoryComponent,
     SubtasksComponent,
+    AddTaskBtnOverlayComponent,
     FormsModule,
     NgIf,
   ],
@@ -61,14 +63,10 @@ export class AddTaskComponent {
     this.tasks.priority = this.selectedPriority ?? '';
     this.tasks.assignedContacts = this.selectedAssignedContacts;
     this.firebaseService.addTaskToDatabase(this.tasks);
+    this.showOverlay = true;
+    setTimeout(() => (this.showOverlay = false), 1000);
     form.resetForm();
     this.clearInputFields();
-
-    this.showOverlay = true;
-
-    setTimeout(() => {
-      this.showOverlay = false;
-    }, 1000);
   }
 
   clearInputFields() {

@@ -1,0 +1,39 @@
+.overlay {
+  position: fixed;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%, 0);
+  background: #2a3a4b;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  animation: slideIn 0.4s ease-out forwards;
+  .overlay-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .overlay-btn {
+      background: none;
+      border: none;
+    }
+    .overlay-btn img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, 100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}

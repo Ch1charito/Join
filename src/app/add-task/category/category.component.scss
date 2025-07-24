@@ -51,14 +51,17 @@
     }
 }
 
+
 .dropdown-icon {
-
   cursor: pointer;
+.select-category:focus {
+  outline: none;
+  border-color: #29abe2;
 }
 
-.select-category.errorborder {
-  border-color: #dc3545;
-}
+// .select-category.errorborder {
+//   border-color: #dc3545;
+// }
 
 .invalid-input {
   color: #dc3545;

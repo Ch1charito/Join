@@ -68,11 +68,15 @@ form {
   font-size: 18px;
   margin-bottom: 20px;
   margin-top: 10px;
+    &:focus {
+    border-color: #29abe2;
+    outline: none;
+  }
 }
 
-.title-input.errorborder {
-  border-color: #dc3545;
-}
+// .title-input.errorborder {
+//   border-color: #dc3545;
+// }
 
 .description-input {
   padding: 12px;
@@ -86,6 +90,11 @@ form {
   font-size: 18px;
   margin-bottom: 20px;
   margin-top: 10px;
+    &:focus {
+    display: flex;
+    border-color: #29abe2;
+    outline: none;
+  }
 }
 
 .description-input.errorborder {
@@ -100,16 +109,21 @@ form {
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   font-size: 18px;
-  background-image: none;
-  padding-right: 40px;
-}
-
-.date-input.errorborder {
-  border-color: #dc3545;
-}
-
-.date-input::-webkit-calendar-picker-indicator {
-  filter: invert(0.5);
+  cursor: pointer;
+  z-index: 10;
+  &:focus {
+    display: flex;
+    border-color: #29abe2;
+    outline: none;
+  }
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    opacity: 0.7;
+  }
 }
 
 .middle-line {

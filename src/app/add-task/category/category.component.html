@@ -1,16 +1,10 @@
 <div class="category-dropdown">
     <label class="form-label">Category<span class="required-asterisk">*</span></label>
-    <select
-        [(ngModel)]="taskList.category"
-        class="select-category"
-        name="category"
-        required
-        #category="ngModel"
-        [class.errorborder]="!category.valid && category.touched"
-        (change)="onCategoryChange()"
-    >
+    <select [(ngModel)]="taskList.category" class="select-category" name="category" required #category="ngModel"
+        [class.errorborder]="!category.valid && category.touched" (change)="onCategoryChange()">
         <option value="" disabled hidden>Select task category</option>
         <option value="Technical Task">Technical Task</option>
         <option value="User Story">User Story</option>
+       
     </select>
 </div>

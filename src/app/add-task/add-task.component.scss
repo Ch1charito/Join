@@ -20,7 +20,10 @@ form {
       font-size: 40px;
       margin-left: 10px;
     }
-
+    @media (max-width: 400px) {
+      font-size: 30px;
+      margin-left: 10px;
+    }
   }
 }
 
@@ -51,7 +54,7 @@ form {
 }
 
 .title-input.errorborder {
-  border-color: #dc3545; 
+  border-color: #dc3545;
 }
 
 .description-input {
@@ -193,6 +196,10 @@ form {
   .middle-line {
     display: none;
   }
+
+  .bottom-container {
+    bottom: 17%;
+  }
 }
 
 @media (max-width: 1030px) {
@@ -218,5 +225,33 @@ form {
     justify-content: center;
     padding: 10px 0;
     background-color: rgb(246, 247, 249);
+  }
+}
+
+@media (max-width: 550px) {
+  .title-input,
+  .description-input,
+  .date-input {
+    width: 400px;
+  }
+
+  .creat-button {
+    font-size: 16px;
+
+    img {
+      width: 10px;
+      height: 15px;
+    }
+  }
+  .clear-button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 400px) {
+  .title-input,
+  .description-input,
+  .date-input {
+    width: 300px;
   }
 }

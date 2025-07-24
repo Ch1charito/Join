@@ -8,6 +8,7 @@
         <h1>Add Task</h1>
         <div class="left-side-content">
           <label> Title <span class="asterisk">*</span></label>
+
           <input class="title-input" type="text" name="title" [(ngModel)]="tasks.title" placeholder="Enter a title"
             required #title="ngModel" [class.errorborder]="title.invalid && title.touched">
 
@@ -44,8 +45,11 @@
       <div class="task-buttons">
         <button class="clear-button" (click)="clearInputFields()" type="button">Clear</button>
         <button class="creat-button" type="submit">Create Task <img src="assets/icons/check-white.png" alt=""></button>
+
       </div>
     </div>
 
   </form>
+  <app-add-task-btn-overlay [showOverlay]="showOverlay">
+  </app-add-task-btn-overlay>
 </section>

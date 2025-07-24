@@ -2,6 +2,7 @@
 
   <div class="column">
     <h2>To do</h2>
+    <button (click)="openOverlay('todo')">+</button>
     <div
       cdkDropList
       id="todoList"
@@ -19,6 +20,7 @@
 
   <div class="column">
     <h2>In Progress</h2>
+    <button (click)="openOverlay('progress')">+</button>
     <div
       cdkDropList
       id="progressList"
@@ -36,6 +38,7 @@
 
   <div class="column">
     <h2>Await Feedback</h2>
+    <button (click)="openOverlay('feedback')">+</button>
     <div
       cdkDropList
       id="feedbackList"
@@ -67,7 +70,8 @@
       ></app-card>
     </div>
   </div>
-
 </div>
 
+<app-add-task-overlay *ngIf="showAddTaskOverlay" [status]="currentStatus" (closeOverlay)="closeOverlay()"></app-add-task-overlay>
+<app-card></app-card>
 <app-card-overlay></app-card-overlay>

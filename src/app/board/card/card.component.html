@@ -1,37 +1,28 @@
 <div class="task-card">
     <div class="category">
-        <span>{{ task.category }}</span>
+        <span>Kategorie</span>
     </div>
     <div class="description">
-        <h4>{{ task.title }}</h4>
-        <span>{{ task.description }}</span>
+        <h4>Titel</h4>
+        <span>Text für die Aufgabe</span>
     </div>
-
+    
     <div class="progression">
         <div class="progress-bar">
-            <div class="progress-fill" [style.width.%]="calculateProgress()"></div>
+            <div class="progress-fill"></div>
         </div>
         <div class="subtasks-text">
-            {{ getCompletedSubtasks() }}/{{ task.subtasks.length }} Subtasks
+            2/4 Subtasks
         </div>
     </div>
 
     <div class="overview">
         <div class="user-icons">
-            <ng-container *ngFor="let contact of task.assignedContacts.slice(0, 2); let i = index">
-                <div class="user-initials" [style.background]="'#'+(i === 0 ? 'FF5733' : '33C1FF')">
-                    {{ contact.name.charAt(0).toUpperCase() }}
-                </div>
-            </ng-container>
-            <div class="user-initials extra" *ngIf="task.assignedContacts.length > 2">
-                +{{ task.assignedContacts.length - 2 }}
-            </div>
+            <div class="user-initials" style="background: #FF5733;">A</div>
+            <div class="user-initials" style="background: #33C1FF;">B</div>
+            <div class="user-initials extra">+2</div>
         </div>
-        <div class="priority-icon">
-            <img
-    [src]="'assets/icons/Property-1=' + formatPriority(task.priority) + '.png'"
-    [alt]="task.priority"
-/>
-        </div>
+        <div class="priority-icon"></div>
+        <img src="assets/icons/Property-1=Urgent.png" alt="">
     </div>
 </div>

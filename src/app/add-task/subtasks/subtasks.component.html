@@ -4,6 +4,7 @@
         <input type="text" [(ngModel)]="newSubtask" placeholder="Add new subtask" />
         <img (click)="addSubtask()" src="assets/icons/plus-icon.png" alt="" class="plus-icon">
     </div>
+      <label id="required-text"><span class="asterisk">*</span> this field is required </label>
 
     <ul class="subtask-list">
         <li *ngFor="let task of subtasks; let i = index">
@@ -28,4 +29,6 @@
             </ng-template>
         </li>
     </ul>
+
+  
 </div>

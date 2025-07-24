@@ -1,10 +1,29 @@
 <div class="category-dropdown">
     <label class="form-label">Category<span class="required-asterisk">*</span></label>
-    <select [(ngModel)]="taskList.category" class="select-category" name="category" required #category="ngModel"
-        [class.errorborder]="!category.valid && category.touched" (change)="onCategoryChange()">
-        <option value="" disabled hidden>Select task category</option>
-        <option value="Technical Task">Technical Task</option>
-        <option value="User Story">User Story</option>
-       
-    </select>
+    <div class="category-input-container" id="categoryDiv">
+        <input [(ngModel)]="taskList.category" class="select-category" name="category" required #category="ngModel"
+            [class.errorborder]="!category.valid && category.touched" (click)="toggleCategoryDropdown()"
+            placeholder="Select task category" readonly />
+        <img class="dropdown-icon" src="assets/icons/arrow_drop_down.png" alt="" [class.d-none]="showCategoryDropdown"
+            (click)="toggleCategoryDropdown()" />
+        <img src="assets/icons/dropdown_up.png" alt="" class="dropdown-icon" [class.d-none]="!showCategoryDropdown"
+            (click)="toggleCategoryDropdown()">
+    </div>
+
+    <div id="categoryDropdown" class="category-options-dropdown" *ngIf="showCategoryDropdown">
+        <div class="category-option" (click)="selectCategory('Technical Task')"
+            [class.selected-option]="taskList.category === 'Technical Task'">
+            Technical Task
+
+        </div>
+        <div class="category-option" (click)="selectCategory('User Story')"
+            [class.selected-option]="taskList.category === 'User Story'">
+            User Story
+
+        </div>
+    </div>
+
+    <div *ngIf="!category.valid && category.touched" class="invalid-input">
+        Please select a category.
+    </div>
 </div>

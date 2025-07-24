@@ -8,7 +8,6 @@ import {
 } from '@angular/cdk/drag-drop';
 import {Component, inject, OnInit} from '@angular/core';
 import { CardComponent } from "../card/card.component";
-import { CommonModule } from '@angular/common';
 import { CardOverlayComponent } from "../card-overlay/card-overlay.component";
 import { TaskInterface } from '../../interfaces/task.interface';
 import { FirebaseService } from '../../services/firebase.service';
@@ -17,8 +16,7 @@ import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-board-bottom',
-  imports: [CdkDropList, CdkDrag, CdkDropListGroup, CardComponent, CardOverlayComponent, AddTaskOverlayComponent, NgIf, CommonModule],
-  standalone: true,
+  imports: [CdkDropList, CdkDrag, CdkDropListGroup, CardComponent, CardOverlayComponent, AddTaskOverlayComponent, NgIf],
   templateUrl: './board-bottom.component.html',
   styleUrl: './board-bottom.component.scss'
 })
@@ -41,10 +39,6 @@ export class BoardBottomComponent implements OnInit {
       this.done = this.firebaseService.taskList.filter(task => task.status === 'done');
     }, 100); 
   }
-
-  trackById(index: number, item: TaskInterface): string {
-  return item.id!;
-}
 
   drop(event: CdkDragDrop<TaskInterface[]>) {
   if (event.previousContainer === event.container) {

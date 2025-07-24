@@ -1,76 +1,65 @@
-<div class="board-columns" cdkDropListGroup>
-
-  <div class="column">
+<div cdkDropListGroup>
+  <div class="example-container">
     <h2>To do</h2>
     <button (click)="openOverlay('todo')">+</button>
     <div
       cdkDropList
       id="todoList"
       [cdkDropListData]="todo"
-      class="drop-list"
+      class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <app-card
-        *ngFor="let item of todo; trackBy: trackById"
-        cdkDrag
-        [task]="item"
-      ></app-card>
+      @for (item of todo; track item.id) {
+      <div class="example-box" cdkDrag>{{ item.title }}</div>
+      }
     </div>
   </div>
-
-  <div class="column">
+  <div class="example-container">
     <h2>In Progress</h2>
     <button (click)="openOverlay('progress')">+</button>
     <div
       cdkDropList
       id="progressList"
       [cdkDropListData]="progress"
-      class="drop-list"
+      class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <app-card
-        *ngFor="let item of progress; trackBy: trackById"
-        cdkDrag
-        [task]="item"
-      ></app-card>
+      @for (item of progress; track item.id) {
+      <div class="example-box" cdkDrag>{{ item.title }}</div>
+      }
     </div>
   </div>
-
-  <div class="column">
+  <div class="example-container">
     <h2>Await Feedback</h2>
     <button (click)="openOverlay('feedback')">+</button>
     <div
       cdkDropList
       id="feedbackList"
       [cdkDropListData]="feedback"
-      class="drop-list"
+      class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <app-card
-        *ngFor="let item of feedback; trackBy: trackById"
-        cdkDrag
-        [task]="item"
-      ></app-card>
+      @for (item of feedback; track item.id) {
+      <div class="example-box" cdkDrag>{{ item.title }}</div>
+      }
     </div>
   </div>
-
-  <div class="column">
+  <div class="example-container">
     <h2>Done</h2>
     <div
       cdkDropList
       id="doneList"
       [cdkDropListData]="done"
-      class="drop-list"
+      class="example-list"
       (cdkDropListDropped)="drop($event)"
     >
-      <app-card
-        *ngFor="let item of done; trackBy: trackById"
-        cdkDrag
-        [task]="item"
-      ></app-card>
+      @for (item of done; track item.id) {
+      <div class="example-box" cdkDrag>{{ item.title }}</div>
+      }
     </div>
   </div>
 </div>
+
 
 <app-add-task-overlay *ngIf="showAddTaskOverlay" [status]="currentStatus" (closeOverlay)="closeOverlay()"></app-add-task-overlay>
 <app-card></app-card>

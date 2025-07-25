@@ -6,8 +6,9 @@
         <input
           id="find-task"
           class="search-task-input"
-          type="search"
+          type="text"
           placeholder="Find Task"
+          (input)="onSearch($event)"
         />
         <hr class="line" />
         <button type="submit" class="search-task-btn">

@@ -20,9 +20,9 @@
     cursor: pointer;
     font-size: 18px;
     &:focus {
-    border-color: #29abe2;
-    outline: none;
-  }
+      border-color: #29abe2;
+      outline: none;
+    }
 
     &::placeholder {
       color: rgb(117, 117, 135);
@@ -49,6 +49,7 @@
   max-height: 200px;
   overflow-y: auto;
 }
+
 
 .assigned-to-contact {
   display: flex;

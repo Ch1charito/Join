@@ -1,34 +1,47 @@
 <div class="subtasks-container">
     <label>Subtasks</label>
     <div class="input-group">
-        <input type="text" [(ngModel)]="newSubtask" placeholder="Add new subtask" />
-        <img (click)="addSubtask()" src="assets/icons/plus-icon.png" alt="" class="plus-icon">
+        <input type="text" [(ngModel)]="newSubtask" placeholder="Add new subtask" (focus)="onInputFocus()"
+            (blur)="onInputBlur()" />
+        <img (click)="addSubtask()" src="assets/icons/plus-icon.png" alt="" class="plus-icon" *ngIf="!isInputFocused">
+        <div class="subtask-x-ok" *ngIf="isInputFocused">
+            <img class="ok-x" src="assets/icons/x.png" alt="" (click)="clearNewSubtask()"> <img class="ok-x"
+                src="assets/icons/ok.png" alt="">
+        </div>
     </div>
-      <label id="required-text"><span class="asterisk">*</span> this field is required </label>
+    <label id="required-text"><span class="asterisk">*</span> this field is required </label>
+
+
+
 
     <ul class="subtask-list">
         <li *ngFor="let task of subtasks; let i = index">
             <div *ngIf="task.editing; else viewMode" class="edit-mode">
                 <input [(ngModel)]="task.text" />
-                <button type="button" (click)="deleteSubtask(i)">
-                    <img src="assets/icons/delete.png" alt="Delete" />
-                </button>
-                <button type="button" (click)="confirmEdit(i, task.text)">
-                    <img src="assets/icons/check.png" alt="Confirm" />
-                </button>
+
+                <img (click)="deleteSubtask(i)" src="assets/icons/delete.png" alt="Delete" />
+
+
+                <img (click)="confirmEdit(i, task.text)" src="assets/icons/check.png" alt="Confirm" />
+
             </div>
 
             <ng-template #viewMode>
-                <span>• {{ task.text }}</span>
-                <button type="button" (click)="startEdit(i)">
-                    <img src="assets/icons/edit.png" alt="Edit" />
-                </button>
-                <button type="button" (click)="deleteSubtask(i)">
-                    <img src="assets/icons/delete.png" alt="Delete" />
-                </button>
+
+                <div class="edit-delete-container">
+                    <span>• {{ task.text }}</span>
+
+                    <div class="edit-delete-buttons">
+                        <img (click)="startEdit(i)" src="assets/icons/edit.png" alt="Edit" />
+
+                        <img (click)="deleteSubtask(i)" src="assets/icons/delete.png" alt="Delete" />
+                    </div>
+                </div>
             </ng-template>
         </li>
     </ul>
 
-  
+
+
+
 </div>

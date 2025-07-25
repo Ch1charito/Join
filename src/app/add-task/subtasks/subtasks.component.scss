@@ -2,7 +2,6 @@
   font-family: sans-serif;
   height: 48px;
 
-
   .input-group {
     display: flex;
     align-items: center;
@@ -17,10 +16,10 @@
       font-size: 16px;
       border: 1px solid #d1d1d1;
 
-    &:focus {
-    border-color: #29abe2;
-    outline: none;
-  }
+      &:focus {
+        border-color: #29abe2;
+        outline: none;
+      }
     }
 
     .plus-icon {
@@ -33,6 +32,36 @@
       height: 20px;
       margin-top: 5px;
     }
+
+    .subtask-x-ok {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 10px;
+      margin-top: 5px;
+
+      .ok-x {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .asterisk {
+    color: red;
+    margin-right: 1em;
+  }
+
+  #required-text {
+    display: none;
+
+    @media (max-width: 1030px) {
+      margin-top: 50px;
+      display: block;
+    }
   }
 
   .subtask-list {
@@ -43,7 +72,6 @@
     margin: 15px 25px 15px 50px;
 
     li {
-      display: flex;
       align-items: center;
       gap: 0.5rem;
       margin-bottom: 0.5rem;
@@ -51,6 +79,12 @@
 
       &.editable {
         margin: 5px 0 5px;
+      }
+      &:hover {
+        background-color: rgb(232, 232, 233);
+        .edit-delete-buttons {
+          opacity: 1;
+        }
       }
 
       .no-input {
@@ -78,6 +112,33 @@
           right: 25px;
         }
       }
+
+      .edit-delete-buttons {
+        display: flex;
+        opacity: 0;
+      }
+
+      img {
+        margin-right: 15px;
+      }
+    }
+
+    .edit-delete-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .edit-mode {
+      display: flex;
+
+       input {
+          width: 100%;
+         height: 30px;
+          font-size: 16px;
+          outline: none;
+          border: none;
+          border-bottom: solid 1px lightblue;
+        }
     }
   }
 }

@@ -177,3 +177,18 @@
     }
   }
 }
+.board .board-actions .board-add-task.show-mobile {
+  display: none;
+}
+.board .board-actions .board-add-task.show-desktop {
+  display: inline-flex;
+}
+
+@media (max-width: 1030px) {
+  .board .board-actions .board-add-task.show-mobile {
+    display: inline-flex;
+  }
+  .board .board-actions .board-add-task.show-desktop {
+    display: none;
+  }
+}

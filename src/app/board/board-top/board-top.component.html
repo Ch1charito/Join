@@ -15,9 +15,12 @@
           <img src="./assets/icons/search.png" alt="" />
         </button>
       </div>
-      <button (click)="openOverlay()" type="button" class="board-add-task">
+      <button (click)="openOverlay()" type="button" class="board-add-task show-desktop">
         <span>Add Task</span>
         <img src="./assets/icons/add.png" alt="" />
+      </button>
+      <button routerLink="/" type="button" class="board-add-task show-mobile">
+          <img src="./assets/icons/add.png" alt="" />
       </button>
       <app-add-task-overlay
         *ngIf="showAddTaskOverlay"

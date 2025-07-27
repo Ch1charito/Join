@@ -44,6 +44,12 @@
         border-radius: 8px;
         background: #ffffff;
         padding: 0 1rem;
+        border: 1px solid #d1d1d1;
+
+
+        &:focus-within {
+          border-color: #29abe2;
+        }
 
         input {
           width: 100%;
@@ -56,11 +62,11 @@
         .line {
           width: 1px;
           height: 2rem;
-          background-color: #ccc;
-          margin-left: 1rem;
+          margin: 0 1rem;
         }
 
         .search-task-btn {
+          display: flex;
           background-color: transparent;
           border: none;
           cursor: pointer;
@@ -68,6 +74,11 @@
           img {
             width: 1.5rem;
             height: 1.5rem;
+          }
+          &:hover {
+            opacity: 0.8;
+            background: rgba(0, 0, 0, 0.048);
+            border-radius: 50%;
           }
         }
       }

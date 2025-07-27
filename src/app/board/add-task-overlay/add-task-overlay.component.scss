@@ -25,12 +25,18 @@
 
   .close-btn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 5rem;
+    right: 4rem;
     background: transparent;
     border: none;
     font-size: 1rem;
     cursor: pointer;
     z-index: 5;
+  }
+  .close-btn:hover {
+    background: rgba(0, 0, 0, 0.048);
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
   }
 }

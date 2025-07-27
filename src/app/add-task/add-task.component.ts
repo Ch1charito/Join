@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, Input, OnInit } from '@angular/core';
+import { Component, inject, ViewChild, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { SideBarComponent } from '../shared/side-bar/side-bar.component';
 import { HeaderComponent } from '../shared/header/header.component';
 import { PriorityComponent } from './priority/priority.component';
@@ -41,6 +41,8 @@ export class AddTaskComponent implements OnInit {
   showOverlay: boolean = false;
   minDate: string = new Date().toISOString().split('T')[0];
 
+  @Output() taskSubmitted = new EventEmitter<void>();
+
   saveTask() {
     console.log('Priorität:', this.selectedPriority);
   }
@@ -73,6 +75,7 @@ export class AddTaskComponent implements OnInit {
     setTimeout(() => (this.showOverlay = false), 1000);
     form.resetForm();
     this.clearInputFields();
+    this.taskSubmitted.emit();
   }
 
   clearInputFields() {

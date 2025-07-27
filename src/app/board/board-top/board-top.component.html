@@ -25,6 +25,7 @@
       <app-add-task-overlay
         *ngIf="showAddTaskOverlay"
         (closeOverlay)="closeOverlay()"
+        (taskSubmitted)="closeOverlay()"
       >
       </app-add-task-overlay>
     </div>

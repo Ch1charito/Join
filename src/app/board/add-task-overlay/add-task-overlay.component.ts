@@ -10,6 +10,7 @@ import { AddTaskComponent } from '../../add-task/add-task.component';
 export class AddTaskOverlayComponent {
   @Input() status: string = 'todo';  // Beispiel, default todo
   @Output() closeOverlay = new EventEmitter<void>();
+  @Output() taskSubmitted = new EventEmitter<void>();
   close() {
     this.closeOverlay.emit();
   }

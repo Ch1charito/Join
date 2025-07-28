@@ -122,6 +122,7 @@ applyFilter(term: string) {
 
   closeCardOverlay() {
     this.showCardOverlay = false;
+    this.loadTasks();
   }
   //#endregion
 

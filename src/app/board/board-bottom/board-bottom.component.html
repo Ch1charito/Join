@@ -1,8 +1,10 @@
 <div class="board-columns" cdkDropListGroup>
 
   <div class="column">
-    <h2>To do</h2>
-	<button (click)="openOverlay('todo')">+</button>
+    <div class="column-header">
+      <h2>To do</h2>
+      <button (click)="openOverlay('todo')">+</button>
+    </div>
     <div
       cdkDropList
       id="todoList"
@@ -20,8 +22,10 @@
   </div>
 
   <div class="column">
-    <h2>In Progress</h2>
-<button (click)="openOverlay('progress')">+</button>
+    <div class="column-header">
+      <h2>In Progress</h2>
+      <button (click)="openOverlay('progress')">+</button>
+    </div>
     <div
       cdkDropList
       id="progressList"
@@ -39,8 +43,10 @@
   </div>
 
   <div class="column">
-    <h2>Await Feedback</h2>
-<button (click)="openOverlay('feedback')">+</button>
+    <div class="column-header">
+      <h2>Await Feedback</h2>
+      <button (click)="openOverlay('feedback')">+</button>
+    </div>
     <div
       cdkDropList
       id="feedbackList"
@@ -58,7 +64,9 @@
   </div>
 
   <div class="column">
-    <h2>Done</h2>
+    <div class="column-header">
+      <h2>Done</h2>
+    </div>
     <div
       cdkDropList
       id="doneList"

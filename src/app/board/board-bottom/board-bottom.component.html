@@ -15,6 +15,7 @@
         cdkDrag
         [task]="item"
       ></app-card>
+      <div *ngIf="!todo.length" class="empty-list">No tasks to do</div>
     </div>
   </div>
 
@@ -33,6 +34,7 @@
         cdkDrag
         [task]="item"
       ></app-card>
+      <div *ngIf="!progress.length" class="empty-list">No tasks in progress</div>
     </div>
   </div>
 
@@ -51,6 +53,7 @@
         cdkDrag
         [task]="item"
       ></app-card>
+      <div *ngIf="!feedback.length" class="empty-list">No tasks awaiting feedback</div>
     </div>
   </div>
 
@@ -68,6 +71,7 @@
         cdkDrag
         [task]="item"
       ></app-card>
+      <div *ngIf="!done.length" class="empty-list">No tasks done</div>
     </div>
   </div>
 

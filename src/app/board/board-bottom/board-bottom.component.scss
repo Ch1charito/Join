@@ -1,8 +1,8 @@
 .board-columns {
   display: flex;
-  gap: 24px;
+  gap: 0.5rem;
   flex-wrap: nowrap;
-  padding: 16px;
+  padding: 0 2rem;
   height: 70.5vh;
   overflow-x: auto;
 }
@@ -17,11 +17,49 @@
 .drop-list {
   min-height: 600px;
   background: transparent;
-  padding: 8px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   border: none;
+}
+.empty-list {
+  color: #888;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  border: 2px dashed #bbb;
+  background: #f3f3f3;
+  border-radius: 8px;
+  max-width: 252px;
+  width: 100%;
+}
+
+.column-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  max-width: 252px;
+  padding: 0 0.25rem;
+  h2 {
+    font-size: 1.2rem;
+    color: #333;
+  }
+}
+
+.column-header button {
+  font-size: 1rem;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &:hover {
+  border: 2px solid #29abe2;
+  color: #29abe2;
+  }
 }
 
 /* Drag + Animation Styles */
@@ -51,39 +89,3 @@
   background: transparent !important;
 }
 
-.empty-list {
-  color: #888;
-  padding: 0.5rem;
-  text-align: center;
-  font-size: 1rem;
-  border: 2px dashed #bbb;
-  background: #f3f3f3;
-  border-radius: 8px;
-  margin: 8px 0;
-}
-
-.column-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.5rem;
-  h2 {
-    font-size: 1.2rem;
-    color: #333;
-  }
-}
-
-.column-header button {
-  font-size: 1rem;
-  border-radius: 4px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  &:hover {
-  border: 2px solid #29abe2;
-  color: #29abe2;
-  }
-}

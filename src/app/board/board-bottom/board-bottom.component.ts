@@ -124,5 +124,5 @@ applyFilter(term: string) {
     this.showCardOverlay = false;
   }
   //#endregion
-
+  
 }

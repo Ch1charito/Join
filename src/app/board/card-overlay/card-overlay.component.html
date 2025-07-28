@@ -21,27 +21,19 @@
     </div>
 
     <span class="title">Assigned To:</span>
-    <div class="task-contact">
-        <div class="initials" style="background-color: green;">CR</div>
-        <span>Cristiano Ronaldo</span>
-    </div>
-    <div class="task-contact">
-        <div class="initials" style="background-color: blue;">BK</div>
-        <span>Burak Keles</span>
+    <div *ngFor="let contact of task.assignedContacts" class="task-contact">
+        <div
+        class="initials"
+        [style.backgroundColor]="getColorForName(contact.name)"
+        >
+        {{ getInitials(contact.name) }}
+        </div>
+    <span>{{ contact.name }}</span>
     </div>
 
-    <span class="title">Subtasks</span>
-    <div class="subtask">
-        <input type="checkbox" />
-        <span>Subtask 1</span>
-    </div>
-    <div class="subtask">
-        <input type="checkbox" />
-        <span>Subtask 2</span>
-    </div>
-    <div class="subtask">
-        <input type="checkbox" />
-        <span>Subtask 3</span>
+    <div *ngFor="let subtask of task.subtasks" class="subtask">
+    <input type="checkbox" />
+    <span>{{ subtask }}</span>
     </div>
 
     <div class="task-buttons">

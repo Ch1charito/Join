@@ -14,7 +14,7 @@
         *ngFor="let item of todo; trackBy: trackById"
         cdkDrag
         [task]="item"
-        (cardClicked)="openCardOverlay()"
+        (cardClicked)="openCardOverlay(item)"
       ></app-card>
     </div>
   </div>
@@ -33,7 +33,7 @@
         *ngFor="let item of progress; trackBy: trackById"
         cdkDrag
         [task]="item"
-        (cardClicked)="openCardOverlay()"
+        (cardClicked)="openCardOverlay(item)"
       ></app-card>
     </div>
   </div>
@@ -52,7 +52,7 @@
         *ngFor="let item of feedback; trackBy: trackById"
         cdkDrag
         [task]="item"
-        (cardClicked)="openCardOverlay()"
+        (cardClicked)="openCardOverlay(item)"
       ></app-card>
     </div>
   </div>
@@ -70,7 +70,7 @@
         *ngFor="let item of done; trackBy: trackById"
         cdkDrag
         [task]="item"
-        (cardClicked)="openCardOverlay()"
+        (cardClicked)="openCardOverlay(item)"
       ></app-card>
     </div>
   </div>
@@ -78,4 +78,4 @@
 </div>
 
 <app-add-task-overlay *ngIf="showAddTaskOverlay" [status]="currentStatus" (closeOverlay)="closeOverlay()"></app-add-task-overlay>
-<app-card-overlay *ngIf="showCardOverlay" (closeOverlay)="closeCardOverlay()"></app-card-overlay>
+<app-card-overlay *ngIf="showCardOverlay" [task]="selectedTask" (closeOverlay)="closeCardOverlay()"></app-card-overlay>

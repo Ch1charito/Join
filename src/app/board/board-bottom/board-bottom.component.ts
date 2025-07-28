@@ -113,8 +113,10 @@ applyFilter(term: string) {
   //#region card-overlay
   showCardOverlay = false;
 
+  selectedTask!: TaskInterface;
 
-  openCardOverlay() {
+  openCardOverlay(task: TaskInterface) {
+    this.selectedTask = task;
     this.showCardOverlay = true;
   }
 

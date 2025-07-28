@@ -110,4 +110,17 @@ applyFilter(term: string) {
   }
   //#endregion
 
+  //#region card-overlay
+  showCardOverlay = false;
+
+
+  openCardOverlay() {
+    this.showCardOverlay = true;
+  }
+
+  closeCardOverlay() {
+    this.showCardOverlay = false;
+  }
+  //#endregion
+
 }

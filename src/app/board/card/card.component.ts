@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TaskInterface } from '../../interfaces/task.interface';
 import { CommonModule } from '@angular/common';
 
@@ -11,6 +11,11 @@ import { CommonModule } from '@angular/common';
 })
 export class CardComponent {
   @Input() task!: TaskInterface;
+  @Output() cardClicked = new EventEmitter<void>();
+
+  onCardClick() {
+    this.cardClicked.emit();
+  }
 
   /**
    * Berechnet den Fortschritt in Prozent (optional verwendbar)

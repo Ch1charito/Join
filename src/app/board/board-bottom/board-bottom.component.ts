@@ -125,5 +125,5 @@ applyFilter(term: string) {
     this.loadTasks();
   }
   //#endregion
-
+  
 }

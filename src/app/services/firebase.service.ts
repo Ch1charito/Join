@@ -44,7 +44,7 @@ export class FirebaseService implements OnDestroy {
             this.setTaskObject(element.id, element.data())
           );
         });
-        this.taskList.sort((a, b) => a.title.localeCompare(b.title));
+        // this.taskList.sort((a, b) => a.title.localeCompare(b.title));
       }
     );
   }

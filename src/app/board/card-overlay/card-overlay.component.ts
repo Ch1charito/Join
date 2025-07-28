@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TaskInterface } from '../../interfaces/task.interface';
 import { CommonModule } from '@angular/common';
+import { FirebaseService } from '../../services/firebase.service';
 
 @Component({
   selector: 'app-card-overlay',
@@ -9,6 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './card-overlay.component.scss'
 })
 export class CardOverlayComponent {
+  firebaseService = inject(FirebaseService);
   @Input() task!: TaskInterface;
   @Output() closeOverlay = new EventEmitter<void>();
 
@@ -48,4 +50,8 @@ export class CardOverlayComponent {
   return this.colors[index];
 }
 
+  deleteTask() {
+    this.firebaseService.deleteTaskFromDatabase(this.task.id!);
+    this.onCloseClick();
+  }
 }

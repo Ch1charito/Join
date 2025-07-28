@@ -62,12 +62,17 @@ export class SubtasksComponent {
     this.isInputFocused = true;
   }
 
-  onInputBlur() {
-   
-    setTimeout(() => {
-      this.isInputFocused = false;
-    }, 100);
+ onInputBlur(event: FocusEvent) {
+  const relatedTarget = event.relatedTarget as HTMLElement;
+  
+  if (relatedTarget && relatedTarget.closest('.input-group')) {
+    return; 
   }
+
+  setTimeout(() => {
+    this.isInputFocused = false;
+  }, 100);
+}
 
   clearNewSubtask() { 
     this.newSubtask = '';

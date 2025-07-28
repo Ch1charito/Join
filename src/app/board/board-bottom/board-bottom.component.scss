@@ -1,9 +1,10 @@
 .board-columns {
   display: flex;
   gap: 24px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding: 16px;
   height: 70.5vh;
+  overflow-x: auto;
 }
 
 .column {

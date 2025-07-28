@@ -39,7 +39,7 @@
           <app-priority [(selectedPriority)]="selectedPriority"></app-priority>
           <app-assigned-to [selectedAssignedContacts]="selectedAssignedContacts"
             (selectedContactsChange)="onAssignedContactsChange($event)"></app-assigned-to>
-          <app-category (taskListChange)="handleSubtasksChange($event)"></app-category>
+          <app-category (taskListChange)="onCategoryChange($event)"></app-category>
           <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
         </div>
       </div>

@@ -73,11 +73,14 @@ form {
     border-color: #29abe2;
     outline: none;
   }
+
+  
 }
 
-// .title-input.errorborder {
-//   border-color: #dc3545;
-// }
+.title-input.errorborder {
+  border-color: #dc3545; 
+}
+
 
 .description-input {
   padding: 12px;
@@ -125,6 +128,10 @@ form {
     cursor: pointer;
     opacity: 0.7;
   }
+}
+
+.date-input.errorborder {
+  border-color: #dc3545; 
 }
 
 .middle-line {
@@ -203,15 +210,19 @@ form {
   justify-content: space-between;
 }
 
-@media (max-width: 1420px) {
+@media (max-width: 1480px) {
   form {
-    height: 100vh;
+     height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+   
   }
   .div-add-task {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100%;
+    min-height: 120%;
   }
 
   .left-side {
@@ -232,7 +243,7 @@ form {
   }
 
   .bottom-container {
-    bottom: 17%;
+    bottom: 10%;
   }
 }
 

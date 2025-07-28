@@ -20,6 +20,7 @@
             name="description"
             [(ngModel)]="tasks.description"
             placeholder="Enter a Description"
+            required #description="ngModel" [class.errorborder]="description.invalid && description.touched"
           ></textarea>
 
           <label> Due Date <span class="asterisk">*</span></label>

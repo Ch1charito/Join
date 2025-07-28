@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 export class SubtasksComponent {
   newSubtask: string = '';
   subtasks: { text: string; editing: boolean }[] = [];
+  isInputFocused: boolean = false;
 
   @Output() subtasksChange = new EventEmitter<string[]>();
 
@@ -55,5 +56,20 @@ export class SubtasksComponent {
     this.subtasks = [];
     this.newSubtask = '';
     this.subtasksChange.emit([]);
+  }
+
+  onInputFocus() {
+    this.isInputFocused = true;
+  }
+
+  onInputBlur() {
+   
+    setTimeout(() => {
+      this.isInputFocused = false;
+    }, 100);
+  }
+
+  clearNewSubtask() { 
+    this.newSubtask = '';
   }
 }

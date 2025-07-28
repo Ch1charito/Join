@@ -2,22 +2,22 @@
     <div>
     <div class="top-card">
         <div class="task-name">
-        <span>Design</span>
+        <span>{{task.category}}</span>
         </div>
         <button (click)="onCloseClick()">X</button>
     </div>
 
-    <h2>Überschrift Task</h2>
-    <span>Beschreibung Task</span>
+    <h2>{{task.title}}</h2>
+    <span>{{task.description}}</span>
 
     <div class="task-date">
         <span>Due date:</span>
-        <span>2025-08-15</span>
+        <span>{{task.date}}</span>
     </div>
 
     <div class="task-priority">
         <span>Priority:</span>
-        <span>High</span>
+        <span>{{task.priority}}</span>
     </div>
 
     <span class="title">Assigned To:</span>

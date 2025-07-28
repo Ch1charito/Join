@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { TaskInterface } from '../../interfaces/task.interface';
 
 @Component({
   selector: 'app-card-overlay',
@@ -7,6 +8,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './card-overlay.component.scss'
 })
 export class CardOverlayComponent {
+  @Input() task!: TaskInterface;
   @Output() closeOverlay = new EventEmitter<void>();
 
   onCloseClick() {

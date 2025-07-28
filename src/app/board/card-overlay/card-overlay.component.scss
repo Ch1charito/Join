@@ -11,7 +11,7 @@ section{
     left: 0;
     transition: opacity 300ms ease;
     opacity: 1;
-    pointer-events: none;
+    pointer-events: auto;
 
     &.hidden {
         opacity: 0;

@@ -20,17 +20,26 @@
   background: #fff;
   border-radius: 2rem;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  overflow: auto;
+  overflow-y: hidden;
   z-index: 3;
 
   .close-btn {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 5rem;
+    right: 4rem;
     background: transparent;
     border: none;
     font-size: 1rem;
     cursor: pointer;
     z-index: 5;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .close-btn:hover {
+    background: rgba(0, 0, 0, 0.048);
+    border-radius: 50%;
   }
 }

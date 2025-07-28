@@ -14,6 +14,7 @@ import { TaskInterface } from '../../interfaces/task.interface';
 import { FirebaseService } from '../../services/firebase.service';
 import { AddTaskOverlayComponent } from "../add-task-overlay/add-task-overlay.component";
 import { NgIf } from '@angular/common';
+import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-board-bottom',
@@ -24,24 +25,49 @@ import { NgIf } from '@angular/common';
 })
 export class BoardBottomComponent implements OnInit {
   firebaseService = inject(FirebaseService);
+  searchService = inject(SearchService);
   todo: TaskInterface[] = [];
   progress: TaskInterface[] = [];
   feedback: TaskInterface[] = [];
   done: TaskInterface[] = [];
 
+  private allTasks: TaskInterface[] = [];
+
+
   ngOnInit() {
-    this.filterTasksByStatus();
+    this.loadTasks();
+    this.searchService.searchTerm$.subscribe(term => {
+      this.applyFilter(term);
+    });
   }
-
-  filterTasksByStatus() {
+  loadTasks() {
     setTimeout(() => {
-      this.todo = this.firebaseService.taskList.filter(task => task.status === 'todo');
-      this.progress = this.firebaseService.taskList.filter(task => task.status === 'progress');
-      this.feedback = this.firebaseService.taskList.filter(task => task.status === 'feedback');
-      this.done = this.firebaseService.taskList.filter(task => task.status === 'done');
-    }, 100); 
+      this.allTasks = this.firebaseService.taskList;
+      this.filterTasksByStatus();
+    }, 100);
   }
-
+  filterTasksByStatus() {
+    this.todo = this.allTasks.filter(task => task.status === 'todo');
+    this.progress = this.allTasks.filter(task => task.status === 'progress');
+    this.feedback = this.allTasks.filter(task => task.status === 'feedback');
+    this.done = this.allTasks.filter(task => task.status === 'done');
+  }
+applyFilter(term: string) {
+    if (!term) {
+      this.filterTasksByStatus();
+      return;
+    }
+    this.todo = this.allTasks.filter(t => t.status === 'todo' && this.matches(t, term));
+    this.progress = this.allTasks.filter(t => t.status === 'progress' && this.matches(t, term));
+    this.feedback = this.allTasks.filter(t => t.status === 'feedback' && this.matches(t, term));
+    this.done = this.allTasks.filter(t => t.status === 'done' && this.matches(t, term));
+  }
+  matches(task: TaskInterface, term: string): boolean {
+    return (
+      task.title?.toLowerCase().includes(term) ||
+      task.description?.toLowerCase().includes(term)
+    );
+  }
   trackById(index: number, item: TaskInterface): string {
   return item.id!;
 }

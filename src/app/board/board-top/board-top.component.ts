@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
 import { AddTaskOverlayComponent } from '../add-task-overlay/add-task-overlay.component';
 import { NgIf } from '@angular/common';
+import { SearchService } from '../../services/search.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-board-top',
-  imports: [AddTaskOverlayComponent, NgIf],
+  imports: [AddTaskOverlayComponent, NgIf, RouterLink],
   templateUrl: './board-top.component.html',
   styleUrl: './board-top.component.scss',
 })
 export class BoardTopComponent {
+    constructor(private searchService: SearchService) {}
+
+  onSearch(event: Event) {
+    const value = (event.target as HTMLInputElement).value.trim().toLowerCase();
+    this.searchService.setSearchTerm(value);
+  }
   showAddTaskOverlay = false;
 
   openOverlay() {

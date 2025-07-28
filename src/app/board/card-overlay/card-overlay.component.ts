@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-overlay',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './card-overlay.component.scss'
 })
 export class CardOverlayComponent {
+  @Output() closeOverlay = new EventEmitter<void>();
+
+  onCloseClick() {
+    this.closeOverlay.emit();
+  }
 
 }

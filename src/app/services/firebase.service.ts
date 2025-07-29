@@ -1,4 +1,4 @@
-import { Injectable, inject, OnDestroy } from '@angular/core';
+import { Injectable, inject, OnDestroy, NgZone } from '@angular/core';
 import {
   Firestore,
   collection,
@@ -10,17 +10,21 @@ import {
 } from '@angular/fire/firestore';
 import { ContactInterface } from '../interfaces/contact.interface';
 import { TaskInterface } from '../interfaces/task.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FirebaseService implements OnDestroy {
   firestore = inject(Firestore);
+  private ngZone = inject(NgZone);
   /* unsubscribe: () => void; */
   contactList: ContactInterface[] = [];
   taskList: TaskInterface[] = [];       // für add-task
   unsubscribeContacts: () => void;
   unsubscribeTasks: () => void; 
+  private taskListSubject = new BehaviorSubject<TaskInterface[]>([]);
+  taskList$: Observable<TaskInterface[]> = this.taskListSubject.asObservable();
 
   constructor() {
     this.unsubscribeContacts = onSnapshot(
@@ -44,6 +48,7 @@ export class FirebaseService implements OnDestroy {
             this.setTaskObject(element.id, element.data())
           );
         });
+        this.taskListSubject.next([...this.taskList]);
         // this.taskList.sort((a, b) => a.title.localeCompare(b.title));
       }
     );
@@ -94,14 +99,17 @@ export class FirebaseService implements OnDestroy {
       category: obj.category,
       subtasks: obj.subtasks,
       status: obj.status,
+      order: obj.order ?? 0,
     };
   }
 
   async addTaskToDatabase(tasks: TaskInterface) {
+      tasks.order = tasks.order ?? 0;
     await addDoc(collection(this.firestore, 'tasks'), tasks);
   }
 
   async updateTaskInDatabase(id: string, tasks: TaskInterface) {
+    return this.ngZone.run(async () => {
     await updateDoc(doc(this.firestore, 'tasks', id), {
       title: tasks.title,
       description: tasks.description,
@@ -111,7 +119,9 @@ export class FirebaseService implements OnDestroy {
       category: tasks.category,
       subtasks: tasks.subtasks,
       status: tasks.status,
+      order: tasks.order ?? 0
     });
+  });
   }
 
   async deleteTaskFromDatabase(id: string) {

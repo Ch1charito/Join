@@ -6,7 +6,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, OnDestroy, NgZone} from '@angular/core';
 import { CardComponent } from "../card/card.component";
 import { CommonModule } from '@angular/common';
 import { CardOverlayComponent } from "../card-overlay/card-overlay.component";
@@ -15,6 +15,7 @@ import { FirebaseService } from '../../services/firebase.service';
 import { AddTaskOverlayComponent } from "../add-task-overlay/add-task-overlay.component";
 import { NgIf } from '@angular/common';
 import { SearchService } from '../../services/search.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-board-bottom',
@@ -23,7 +24,7 @@ import { SearchService } from '../../services/search.service';
   templateUrl: './board-bottom.component.html',
   styleUrl: './board-bottom.component.scss'
 })
-export class BoardBottomComponent implements OnInit {
+export class BoardBottomComponent implements OnInit, OnDestroy {
   firebaseService = inject(FirebaseService);
   searchService = inject(SearchService);
   todo: TaskInterface[] = [];
@@ -32,26 +33,44 @@ export class BoardBottomComponent implements OnInit {
   done: TaskInterface[] = [];
 
   private allTasks: TaskInterface[] = [];
-
+  private taskListSub?: Subscription;
 
   ngOnInit() {
-    this.loadTasks();
+    // Subscribe tasks FirebaseService
+    this.taskListSub = this.firebaseService.taskList$.subscribe(tasks => {
+      this.allTasks = tasks;
+      this.filterTasksByStatus();
+    });
     this.searchService.searchTerm$.subscribe(term => {
       this.applyFilter(term);
     });
   }
+
+  ngOnDestroy() {
+    this.taskListSub?.unsubscribe();
+  }
+
   loadTasks() {
-    setTimeout(() => {
-      this.allTasks = this.firebaseService.taskList;
-      this.filterTasksByStatus();
-    }, 100);
+    this.allTasks = this.firebaseService.taskList;
+    this.filterTasksByStatus();
   }
-  filterTasksByStatus() {
-    this.todo = this.allTasks.filter(task => task.status === 'todo');
-    this.progress = this.allTasks.filter(task => task.status === 'progress');
-    this.feedback = this.allTasks.filter(task => task.status === 'feedback');
-    this.done = this.allTasks.filter(task => task.status === 'done');
-  }
+filterTasksByStatus() {
+  this.todo = this.allTasks
+    .filter(task => task.status === 'todo')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+
+  this.progress = this.allTasks
+    .filter(task => task.status === 'progress')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+
+  this.feedback = this.allTasks
+    .filter(task => task.status === 'feedback')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+
+  this.done = this.allTasks
+    .filter(task => task.status === 'done')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+}
 applyFilter(term: string) {
     if (!term) {
       this.filterTasksByStatus();
@@ -73,6 +92,7 @@ applyFilter(term: string) {
 }
 
   drop(event: CdkDragDrop<TaskInterface[]>) {
+    console.log(NgZone.isInAngularZone());
   if (event.previousContainer === event.container) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   } else {
@@ -91,10 +111,16 @@ applyFilter(term: string) {
       case 'doneList': newStatus = 'done'; break;
     }
     movedTask.status = newStatus;
+    this.updateTaskOrders(event.container.data);
     this.firebaseService.updateTaskInDatabase(movedTask.id!, movedTask);
-    this.filterTasksByStatus();
     }
   }
+  updateTaskOrders(tasks: TaskInterface[]) {
+  tasks.forEach((task, index) => {
+    task.order = index;
+    this.firebaseService.updateTaskInDatabase(task.id!, task);
+  });
+}
   //#region add-task-overlay
   showAddTaskOverlay = false;
 

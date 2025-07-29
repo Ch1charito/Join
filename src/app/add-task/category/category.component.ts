@@ -13,7 +13,7 @@ export class CategoryComponent {
   taskList: any = {
     category: ''
   };
-
+  @Input() category: string = '';
   @Output() taskListChange = new EventEmitter<any>();
   showCategoryDropdown: boolean = false; 
 
@@ -51,5 +51,9 @@ export class CategoryComponent {
     this.taskList.category = category;
     this.onCategoryChange(); 
     this.showCategoryDropdown = false; 
+  }
+
+  ngOnChanges() {
+    this.taskList.category = this.category;
   }
 }

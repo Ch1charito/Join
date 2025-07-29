@@ -1,1 +1,17 @@
-<p>edit-card-overlay works!</p>
+<section>
+    <div class="edit-overlay">
+        <button type="button" (click)="onClose()">X</button>
+        <form (ngSubmit)="saveTask()">
+            <input type="text" [(ngModel)]="editedTask.title" name="title">
+            <textarea [(ngModel)]="editedTask.description" name="description"></textarea>
+            <input type="date" [(ngModel)]="editedTask.date" name="date">
+            <app-priority [(selectedPriority)]="editedTask.priority"></app-priority>
+            <app-assigned-to [selectedAssignedContacts]="editedTask.assignedContacts" (selectedContactsChange)="editedTask.assignedContacts = $event"></app-assigned-to>
+            <app-category [category]="editedTask.category" (taskListChange)="editedTask.category = $event"></app-category>
+            <button type="submit">OK ✓</button>
+        </form>
+        <app-subtasks></app-subtasks>
+        
+    </div>
+</section>
+

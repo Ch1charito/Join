@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TaskInterface } from '../../interfaces/task.interface';
 import { CommonModule } from '@angular/common';
 import { FirebaseService } from '../../services/firebase.service';
+import { EditCardOverlayComponent } from "../edit-card-overlay/edit-card-overlay.component";
 
 @Component({
   selector: 'app-card-overlay',
-  imports: [CommonModule],
+  imports: [CommonModule, EditCardOverlayComponent],
   templateUrl: './card-overlay.component.html',
   styleUrl: './card-overlay.component.scss'
 })
@@ -53,5 +54,33 @@ export class CardOverlayComponent {
   deleteTask() {
     this.firebaseService.deleteTaskFromDatabase(this.task.id!);
     this.onCloseClick();
+  }
+
+  //#region edit-task-overlay
+  showEditTaskOverlay = false;
+
+  selectedTask!: TaskInterface;
+
+  /* openEditOverlay(task: TaskInterface) {
+    this.selectedTask = task;
+    this.showEditTaskOverlay = true;
+  } */
+
+  originalTaskId!: string;
+
+  openEditOverlay(task: TaskInterface) {
+    this.selectedTask = structuredClone(task); // macht eine tiefe Kopie der Task
+    this.originalTaskId = task.id!; // falls du die ID fürs Update brauchst
+    this.showEditTaskOverlay = true;
+  }
+
+  closeEditOverlay() {
+    this.showEditTaskOverlay = false;
+  }
+  //#endregion
+
+  onTaskSaved(editedTask: TaskInterface) {
+    this.task = editedTask; // aktualisiere die angezeigte Task
+    this.closeEditOverlay(); // schließe das Edit-Overlay
   }
 }

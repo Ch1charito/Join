@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { TaskInterface } from '../../interfaces/task.interface';
 import { CommonModule } from '@angular/common';
 import { FirebaseService } from '../../services/firebase.service';
+import { EditCardOverlayComponent } from "../edit-card-overlay/edit-card-overlay.component";
 
 @Component({
   selector: 'app-card-overlay',
-  imports: [CommonModule],
+  imports: [CommonModule, EditCardOverlayComponent],
   templateUrl: './card-overlay.component.html',
   styleUrl: './card-overlay.component.scss'
 })
@@ -54,4 +55,19 @@ export class CardOverlayComponent {
     this.firebaseService.deleteTaskFromDatabase(this.task.id!);
     this.onCloseClick();
   }
+
+  //#region edit-task-overlay
+  showEditTaskOverlay = false;
+
+  selectedTask!: TaskInterface;
+
+  openEditOverlay(task: TaskInterface) {
+    this.selectedTask = task;
+    this.showEditTaskOverlay = true;
+  }
+
+  closeEditOverlay() {
+    this.showEditTaskOverlay = false;
+  }
+  //#endregion
 }

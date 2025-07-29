@@ -1,0 +1,24 @@
+section{
+    height: 100%;
+    width: 100%;
+    background: rgb(0 0 0 / 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 111;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: opacity 300ms ease;
+
+    .edit-overlay{
+        width: 450px;
+        height: 750px;
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        overflow: auto;
+    }
+}

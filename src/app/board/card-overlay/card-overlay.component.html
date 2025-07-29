@@ -41,10 +41,11 @@
         <img src="assets/icons/delete.png" alt="" />
         <span>Delete</span>
         </button>
-        <button>
+        <button (click)="openEditOverlay(task)">
         <img src="assets/icons/edit.png" alt="" />
         <span>Edit</span>
         </button>
     </div>
     </div>
 </section>
+<app-edit-card-overlay *ngIf="showEditTaskOverlay" [task]="selectedTask" (close)="closeEditOverlay()"></app-edit-card-overlay>

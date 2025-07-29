@@ -1,1 +1,12 @@
-<p>edit-card-overlay works!</p>
+<section>
+    <div class="edit-overlay">
+        <button type="button" (click)="onClose()">X</button>
+        <form (ngSubmit)="saveTask()">
+            <input type="text" [(ngModel)]="task.title" name="title">
+            <textarea [(ngModel)]="task.description" name="description"></textarea>
+            <input type="date" [(ngModel)]="task.date" name="date">
+            <button type="submit">OK ✓</button>
+        </form>
+    </div>
+</section>
+

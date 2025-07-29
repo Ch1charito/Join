@@ -9,6 +9,7 @@
     background: white;
     box-shadow: 0 0 10px 3px #00000014;
     font-size: 16px;
+    cursor: pointer;
 
     .category {
         background: #0038FF;
@@ -85,4 +86,9 @@
             }
         }
     }
+}
+
+.task-card:hover {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
+    transform: rotate(10deg) scale(1.03);
 }

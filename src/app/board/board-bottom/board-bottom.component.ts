@@ -92,7 +92,6 @@ applyFilter(term: string) {
     }
     movedTask.status = newStatus;
     this.firebaseService.updateTaskInDatabase(movedTask.id!, movedTask);
-    this.filterTasksByStatus();
     }
   }
   //#region add-task-overlay

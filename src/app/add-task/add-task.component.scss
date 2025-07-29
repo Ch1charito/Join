@@ -3,8 +3,6 @@ form {
   flex-direction: column;
   width: 100%;
   height: 90vh;
-  margin-top: 8rem;
-  // overflow: hidden; ????
 }
 
 .div-add-task {
@@ -33,15 +31,38 @@ form {
   h1 {
     font-size: 60px;
     margin-bottom: 40px;
+    margin-top: 40px;
 
     @media (max-width: 560px) {
-      font-size: 40px;
-      margin-left: 10px;
-    }
-    @media (max-width: 400px) {
       font-size: 30px;
       margin-left: 10px;
+      margin-top: -90px;
     }
+    @media (max-width: 400px) {
+      font-size: 31px;
+      margin-left: 10px;
+    }
+
+    @media (max-width: 700px) {
+      position: fixed;
+      top: 8%;
+      left: 0;
+      width: 100%;
+      background-color: rgb(246, 247, 248);
+      padding: 30px 10px;
+      margin-left: 0;
+      box-sizing: border-box;
+      z-index: 10;
+      margin-top: 0;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .div-add-task {
+    padding-top: 100px;
   }
 }
 
@@ -53,7 +74,13 @@ form {
 .invalid-input {
   color: #dc3545;
   font-size: 0.875rem;
-  margin-top: 0.25rem;
+  margin-top: -15px;
+  height: 1.25rem;
+}
+
+.invalid-input-date {
+  color: #dc3545;
+  font-size: 0.875rem;
   height: 1.25rem;
 }
 
@@ -69,18 +96,15 @@ form {
   font-size: 18px;
   margin-bottom: 20px;
   margin-top: 10px;
-    &:focus {
+  &:focus {
     border-color: #29abe2;
     outline: none;
   }
-
-  
 }
 
 .title-input.errorborder {
-  border-color: #dc3545; 
+  border-color: #dc3545;
 }
-
 
 .description-input {
   padding: 12px;
@@ -94,7 +118,7 @@ form {
   font-size: 18px;
   margin-bottom: 20px;
   margin-top: 10px;
-    &:focus {
+  &:focus {
     display: flex;
     border-color: #29abe2;
     outline: none;
@@ -131,7 +155,7 @@ form {
 }
 
 .date-input.errorborder {
-  border-color: #dc3545; 
+  border-color: #dc3545;
 }
 
 .middle-line {
@@ -160,13 +184,14 @@ form {
 .task-buttons {
   display: flex;
   gap: 16px;
+  background-color: transparent;
 }
 
 .clear-button {
   width: 110px;
   height: 56px;
   border-radius: 10px;
-  background-color: transparent;
+  background-color: rgb(246, 247, 249);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -212,11 +237,10 @@ form {
 
 @media (max-width: 1480px) {
   form {
-     height: 90vh;
+    height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-   
   }
   .div-add-task {
     display: flex;
@@ -254,6 +278,7 @@ form {
     overflow-x: hidden;
     position: relative;
     padding-bottom: 80px;
+    margin-top: 0;
   }
 
   .bottom-container {
@@ -267,7 +292,6 @@ form {
     display: flex;
     justify-content: center;
     padding: 10px 0;
-    background-color: rgb(246, 247, 249);
   }
 
   #required-text {
@@ -312,6 +336,6 @@ form {
   .title-input,
   .description-input,
   .date-input {
-    width: 300px;
+    width: 290px;
   }
 }

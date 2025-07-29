@@ -8,6 +8,7 @@
 .form-label {
   display: block;
   margin-bottom: 0.5rem;
+  margin-top: 10px;
   font-weight: 500;
   color: #333;
 }
@@ -64,9 +65,7 @@
 }
 }
 
-// .select-category.errorborder {
-//   border-color: #dc3545;
-// }
+
 
 .invalid-input {
   color: #dc3545;

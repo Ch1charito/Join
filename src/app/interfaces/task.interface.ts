@@ -10,4 +10,5 @@ export interface TaskInterface{
     category: string;
     subtasks: string[];
     status: string;
+    order?: number;
 }

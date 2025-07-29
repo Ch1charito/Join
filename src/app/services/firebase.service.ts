@@ -98,10 +98,12 @@ export class FirebaseService implements OnDestroy {
       category: obj.category,
       subtasks: obj.subtasks,
       status: obj.status,
+      order: obj.order ?? 0,
     };
   }
 
   async addTaskToDatabase(tasks: TaskInterface) {
+      tasks.order = tasks.order ?? 0;
     await addDoc(collection(this.firestore, 'tasks'), tasks);
   }
 
@@ -115,6 +117,7 @@ export class FirebaseService implements OnDestroy {
       category: tasks.category,
       subtasks: tasks.subtasks,
       status: tasks.status,
+      order: tasks.order ?? 0
     });
   }
 

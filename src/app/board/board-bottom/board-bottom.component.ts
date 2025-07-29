@@ -54,12 +54,23 @@ export class BoardBottomComponent implements OnInit, OnDestroy {
     this.allTasks = this.firebaseService.taskList;
     this.filterTasksByStatus();
   }
-  filterTasksByStatus() {
-    this.todo = this.allTasks.filter(task => task.status === 'todo');
-    this.progress = this.allTasks.filter(task => task.status === 'progress');
-    this.feedback = this.allTasks.filter(task => task.status === 'feedback');
-    this.done = this.allTasks.filter(task => task.status === 'done');
-  }
+filterTasksByStatus() {
+  this.todo = this.allTasks
+    .filter(task => task.status === 'todo')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+
+  this.progress = this.allTasks
+    .filter(task => task.status === 'progress')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+
+  this.feedback = this.allTasks
+    .filter(task => task.status === 'feedback')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+
+  this.done = this.allTasks
+    .filter(task => task.status === 'done')
+    .sort((taskA, taskB) => (taskA.order ?? 0) - (taskB.order ?? 0));
+}
 applyFilter(term: string) {
     if (!term) {
       this.filterTasksByStatus();
@@ -99,9 +110,16 @@ applyFilter(term: string) {
       case 'doneList': newStatus = 'done'; break;
     }
     movedTask.status = newStatus;
+    this.updateTaskOrders(event.container.data);
     this.firebaseService.updateTaskInDatabase(movedTask.id!, movedTask);
     }
   }
+  updateTaskOrders(tasks: TaskInterface[]) {
+  tasks.forEach((task, index) => {
+    task.order = index;
+    this.firebaseService.updateTaskInDatabase(task.id!, task);
+  });
+}
   //#region add-task-overlay
   showAddTaskOverlay = false;
 

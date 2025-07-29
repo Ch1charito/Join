@@ -3,7 +3,7 @@
 .board-container {
   @include dFlex($jc: space-between, $fd: row);
   width: 100%;
-  height: 20vh;
+  height: calc(0.2 * (100vh - 96px));
 
   .board {
     @include dFlex($jc: space-between, $ai: center);

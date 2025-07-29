@@ -3,8 +3,26 @@
   gap: 1.5rem;
   flex-wrap: nowrap;
   padding: 0 2rem;
-  height: 70.5vh;
+  height: calc(0.8 * (100vh - 96px));
   overflow-x: auto;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+  width: 8px;
+}
+&::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 2px;
+
+}
+&::-webkit-scrollbar-thumb {
+  background: #c4c4c4; 
+}
+
+&::-webkit-scrollbar-thumb:hover {
+  background: #8f8e8e; 
+  cursor: pointer;
+}
 }
 
 .column {

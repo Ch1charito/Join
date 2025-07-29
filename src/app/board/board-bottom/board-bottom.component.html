@@ -1,8 +1,10 @@
 <div class="board-columns" cdkDropListGroup>
 
   <div class="column">
-    <h2>To do</h2>
-	<button (click)="openOverlay('todo')">+</button>
+    <div class="column-header">
+      <h2>To do</h2>
+      <button (click)="openOverlay('todo')">+</button>
+    </div>
     <div
       cdkDropList
       id="todoList"
@@ -16,12 +18,15 @@
         [task]="item"
         (cardClicked)="openCardOverlay(item)"
       ></app-card>
+      <div *ngIf="!todo.length" class="empty-list">No tasks to do</div>
     </div>
   </div>
 
   <div class="column">
-    <h2>In Progress</h2>
-<button (click)="openOverlay('progress')">+</button>
+    <div class="column-header">
+      <h2>In Progress</h2>
+      <button (click)="openOverlay('progress')">+</button>
+    </div>
     <div
       cdkDropList
       id="progressList"
@@ -35,12 +40,15 @@
         [task]="item"
         (cardClicked)="openCardOverlay(item)"
       ></app-card>
+      <div *ngIf="!progress.length" class="empty-list">No tasks in progress</div>
     </div>
   </div>
 
   <div class="column">
-    <h2>Await Feedback</h2>
-<button (click)="openOverlay('feedback')">+</button>
+    <div class="column-header">
+      <h2>Await Feedback</h2>
+      <button (click)="openOverlay('feedback')">+</button>
+    </div>
     <div
       cdkDropList
       id="feedbackList"
@@ -54,11 +62,14 @@
         [task]="item"
         (cardClicked)="openCardOverlay(item)"
       ></app-card>
+      <div *ngIf="!feedback.length" class="empty-list">No tasks awaiting feedback</div>
     </div>
   </div>
 
   <div class="column">
-    <h2>Done</h2>
+    <div class="column-header">
+      <h2>Done</h2>
+    </div>
     <div
       cdkDropList
       id="doneList"
@@ -72,6 +83,7 @@
         [task]="item"
         (cardClicked)="openCardOverlay(item)"
       ></app-card>
+      <div *ngIf="!done.length" class="empty-list">No tasks done</div>
     </div>
   </div>
 

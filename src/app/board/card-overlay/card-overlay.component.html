@@ -48,4 +48,4 @@
     </div>
     </div>
 </section>
-<app-edit-card-overlay *ngIf="showEditTaskOverlay" [task]="selectedTask" (close)="closeEditOverlay()"></app-edit-card-overlay>
+<app-edit-card-overlay *ngIf="showEditTaskOverlay" [editedTask]="selectedTask" [taskId]="originalTaskId" (close)="closeEditOverlay()" (saved)="onTaskSaved($event)"></app-edit-card-overlay>

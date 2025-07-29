@@ -61,8 +61,16 @@ export class CardOverlayComponent {
 
   selectedTask!: TaskInterface;
 
-  openEditOverlay(task: TaskInterface) {
+  /* openEditOverlay(task: TaskInterface) {
     this.selectedTask = task;
+    this.showEditTaskOverlay = true;
+  } */
+
+  originalTaskId!: string;
+
+  openEditOverlay(task: TaskInterface) {
+    this.selectedTask = structuredClone(task); // macht eine tiefe Kopie der Task
+    this.originalTaskId = task.id!; // falls du die ID fürs Update brauchst
     this.showEditTaskOverlay = true;
   }
 
@@ -70,4 +78,9 @@ export class CardOverlayComponent {
     this.showEditTaskOverlay = false;
   }
   //#endregion
+
+  onTaskSaved(editedTask: TaskInterface) {
+    this.task = editedTask; // aktualisiere die angezeigte Task
+    this.closeEditOverlay(); // schließe das Edit-Overlay
+  }
 }

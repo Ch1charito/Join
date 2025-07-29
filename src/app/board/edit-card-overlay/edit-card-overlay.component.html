@@ -2,11 +2,16 @@
     <div class="edit-overlay">
         <button type="button" (click)="onClose()">X</button>
         <form (ngSubmit)="saveTask()">
-            <input type="text" [(ngModel)]="task.title" name="title">
-            <textarea [(ngModel)]="task.description" name="description"></textarea>
-            <input type="date" [(ngModel)]="task.date" name="date">
+            <input type="text" [(ngModel)]="editedTask.title" name="title">
+            <textarea [(ngModel)]="editedTask.description" name="description"></textarea>
+            <input type="date" [(ngModel)]="editedTask.date" name="date">
+            <app-priority [(selectedPriority)]="editedTask.priority"></app-priority>
             <button type="submit">OK ✓</button>
         </form>
+        <app-assigned-to></app-assigned-to>
+        <app-category></app-category>
+        <app-subtasks></app-subtasks>
+        
     </div>
 </section>
 

@@ -52,7 +52,7 @@ export class AddTaskComponent implements OnInit {
     title: '',
     description: '',
     date: '',
-    priority: '',
+    priority: 'medium',
     assignedContacts: [],
     category: '',
     subtasks: [],
@@ -68,7 +68,7 @@ export class AddTaskComponent implements OnInit {
       console.warn('Formular ungültig');
       return;
     }
-    this.tasks.priority = this.selectedPriority ?? '';
+    this.tasks.priority = this.selectedPriority ?? 'medium';
     this.tasks.assignedContacts = this.selectedAssignedContacts;
     this.firebaseService.addTaskToDatabase(this.tasks);
     this.showOverlay = true;

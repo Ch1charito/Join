@@ -30,6 +30,11 @@
         </div>
     <span>{{ contact.name }}</span>
     </div>
+    
+    <div class="task-priority">
+        <span>category:</span>
+        <span>{{task.category}}</span>
+    </div>
 
     <div *ngFor="let subtask of task.subtasks" class="subtask">
     <input type="checkbox" />

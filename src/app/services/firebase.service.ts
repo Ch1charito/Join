@@ -10,6 +10,7 @@ import {
 } from '@angular/fire/firestore';
 import { ContactInterface } from '../interfaces/contact.interface';
 import { TaskInterface } from '../interfaces/task.interface';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,8 @@ export class FirebaseService implements OnDestroy {
   taskList: TaskInterface[] = [];       // für add-task
   unsubscribeContacts: () => void;
   unsubscribeTasks: () => void; 
+  private taskListSubject = new BehaviorSubject<TaskInterface[]>([]);
+  taskList$: Observable<TaskInterface[]> = this.taskListSubject.asObservable();
 
   constructor() {
     this.unsubscribeContacts = onSnapshot(
@@ -44,6 +47,7 @@ export class FirebaseService implements OnDestroy {
             this.setTaskObject(element.id, element.data())
           );
         });
+        this.taskListSubject.next([...this.taskList]);
         // this.taskList.sort((a, b) => a.title.localeCompare(b.title));
       }
     );

@@ -1,4 +1,4 @@
-import { Injectable, inject, OnDestroy } from '@angular/core';
+import { Injectable, inject, OnDestroy, NgZone } from '@angular/core';
 import {
   Firestore,
   collection,
@@ -17,6 +17,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class FirebaseService implements OnDestroy {
   firestore = inject(Firestore);
+  private ngZone = inject(NgZone);
   /* unsubscribe: () => void; */
   contactList: ContactInterface[] = [];
   taskList: TaskInterface[] = [];       // für add-task
@@ -108,6 +109,7 @@ export class FirebaseService implements OnDestroy {
   }
 
   async updateTaskInDatabase(id: string, tasks: TaskInterface) {
+    return this.ngZone.run(async () => {
     await updateDoc(doc(this.firestore, 'tasks', id), {
       title: tasks.title,
       description: tasks.description,
@@ -119,6 +121,7 @@ export class FirebaseService implements OnDestroy {
       status: tasks.status,
       order: tasks.order ?? 0
     });
+  });
   }
 
   async deleteTaskFromDatabase(id: string) {

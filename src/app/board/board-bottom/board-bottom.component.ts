@@ -6,7 +6,7 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import {Component, inject, OnInit, OnDestroy} from '@angular/core';
+import {Component, inject, OnInit, OnDestroy, NgZone} from '@angular/core';
 import { CardComponent } from "../card/card.component";
 import { CommonModule } from '@angular/common';
 import { CardOverlayComponent } from "../card-overlay/card-overlay.component";
@@ -92,6 +92,7 @@ applyFilter(term: string) {
 }
 
   drop(event: CdkDragDrop<TaskInterface[]>) {
+    console.log(NgZone.isInAngularZone());
   if (event.previousContainer === event.container) {
     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
   } else {

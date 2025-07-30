@@ -65,7 +65,10 @@ section{
           position: sticky;
           top: 0;
           z-index: 5;
-          padding: 2rem 1rem 0 1rem;
+          padding: 2rem 3rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
 
           @media (max-width: 800px) {
             display: none;

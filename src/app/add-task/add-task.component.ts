@@ -12,6 +12,7 @@ import { ContactInterface } from '../interfaces/contact.interface';
 import { TaskInterface } from '../interfaces/task.interface';
 import { NgIf } from '@angular/common';
 import { AddTaskBtnOverlayComponent } from './add-task-btn-overlay/add-task-btn-overlay.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-task',
@@ -47,6 +48,7 @@ export class AddTaskComponent implements OnInit {
     console.log('Priorität:', this.selectedPriority);
   }
 
+  router = inject(Router);
   firebaseService = inject(FirebaseService);
   tasks: TaskInterface = {
     title: '',
@@ -76,6 +78,9 @@ export class AddTaskComponent implements OnInit {
     form.resetForm();
     this.clearInputFields();
     this.taskSubmitted.emit();
+    setTimeout(() => {
+      this.router.navigate(['/board']);
+    }, 2000);
   }
 
   clearInputFields() {

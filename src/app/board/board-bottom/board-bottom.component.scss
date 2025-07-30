@@ -6,7 +6,7 @@
   padding: 0 3rem;
   height: calc(0.8 * (100vh - 96px));
 
-  &::-webkit-scrollbar {
+&::-webkit-scrollbar {
   width: 8px;
 }
 &::-webkit-scrollbar-track {
@@ -24,13 +24,13 @@
 }
   @media (max-width: 1030px) {
     flex-direction: column;
-    padding: 1rem;
-    height: calc(0.8 * (100dvh - 96px - 96px));
+    height: calc(0.8 * (100vh - 96px - 96px));
+    padding: 0 0 6rem 1rem;
   }
     @media (max-width: 640px) {
     flex-direction: column;
-    padding: 1rem 0.5rem;
-    height: calc(0.8 * (100dvh - 96px - 80px));
+    height: calc(0.8 * (100vh - 96px - 80px));
+    padding: 0 0 5rem 1rem;
   }
 }
 
@@ -121,6 +121,7 @@
 
 /* Versteckt Rahmen und Hintergrund beim Dragging */
 .drop-list.cdk-drop-list-dragging {
-  border: none;
-  background: transparent;
+  border: 2px dashed #333333b0;
+  background-color: #adadad36;
+  border-radius: 8px;
 }

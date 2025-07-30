@@ -60,7 +60,8 @@
     display: none;
 
     @media (max-width: 1030px) {
-      margin-top: 50px;
+      margin-top: 40px;
+      margin-bottom: auto;
       display: block;
     }
   }
@@ -71,6 +72,11 @@
     list-style-type: none;
     padding: 0;
     margin: 15px 25px 15px 50px;
+    max-height: 200px;
+    overflow-y: auto;
+    @media (max-width: 500px) {
+      max-height: 150px; 
+    }
 
     li {
       align-items: center;
@@ -154,7 +160,7 @@
       input {
         margin-top: 10px;
         height: 48px;
-        width: 400px;
+        width: 300px;
         border-radius: 10px;
         padding: 12px;
         padding-right: 40px;
@@ -188,7 +194,7 @@
       input {
         margin-top: 10px;
         height: 48px;
-        width: 300px;
+        width: 270px;
         border-radius: 10px;
         padding: 12px;
         padding-right: 40px;

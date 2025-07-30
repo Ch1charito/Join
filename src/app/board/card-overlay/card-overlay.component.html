@@ -36,10 +36,14 @@
         <span>{{task.category}}</span>
     </div>
 
-    <div *ngFor="let subtask of task.subtasks" class="subtask">
-    <input type="checkbox" />
-    <span>{{ subtask }}</span>
-    </div>
+    <div *ngFor="let subtask of task.subtasks; let i = index" class="subtask">
+    <input 
+    type="checkbox" 
+    [checked]="subtask.completed"
+    (change)="toggleSubtaskCompleted(i)"
+    />
+    <span [class.completed]="subtask.completed">{{ subtask.title }}</span>
+</div>
 
     <div class="task-buttons">
         <button (click)="deleteTask()">

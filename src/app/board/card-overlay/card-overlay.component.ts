@@ -83,4 +83,9 @@ export class CardOverlayComponent {
     this.task = editedTask; // aktualisiere die angezeigte Task
     this.closeEditOverlay(); // schließe das Edit-Overlay
   }
+
+  toggleSubtaskCompleted(index: number) {
+  this.task.subtasks[index].completed = !this.task.subtasks[index].completed;
+  this.firebaseService.updateTaskInDatabase(this.task.id!, this.task);
+}
 }

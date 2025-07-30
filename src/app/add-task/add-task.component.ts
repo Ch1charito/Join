@@ -96,7 +96,9 @@ export class AddTaskComponent implements OnInit {
   }
 
   handleSubtasksChange(subtasks: string[]) {
-    console.log('Daten für Robin', subtasks);
-    this.tasks.subtasks = subtasks;
+    this.tasks.subtasks = subtasks.map(title => ({
+      title: title,
+      completed: false
+    }));
   }
 }

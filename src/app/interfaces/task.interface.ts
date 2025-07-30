@@ -9,7 +9,7 @@ export interface TaskInterface{
     priority: PriorityKey;
     assignedContacts: ContactInterface[];
     category: string;
-    subtasks: string[];
+    subtasks: { title: string; completed: boolean }[];
     status: string;
     order?: number;
 }

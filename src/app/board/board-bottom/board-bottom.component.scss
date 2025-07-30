@@ -1,11 +1,10 @@
 .board-columns {
   display: flex;
-  gap: 1.5rem;
-  flex-wrap: nowrap;
-  padding: 0 2rem;
-  height: calc(0.8 * (100vh - 96px));
   overflow-x: auto;
-  box-sizing: border-box;
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+  padding: 0 3rem;
+  height: calc(0.8 * (100vh - 96px));
 
   &::-webkit-scrollbar {
   width: 8px;
@@ -23,33 +22,46 @@
   background: #8f8e8e; 
   cursor: pointer;
 }
+  @media (max-width: 1030px) {
+    flex-direction: column;
+    padding: 1rem;
+    height: calc(0.8 * (100dvh - 96px - 96px));
+  }
+    @media (max-width: 640px) {
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+    height: calc(0.8 * (100dvh - 96px - 80px));
+  }
 }
 
 .column {
-  flex: 1 1 252px;
-  max-width: 100%;
   display: flex;
   flex-direction: column;
+  flex: 1 1 0;
   gap: 1.5rem;
 }
 
 .drop-list {
-  min-height: 600px;
-  background: transparent;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  background: transparent;
   border: none;
+  min-height: unset;
+  flex-grow: 1;
+  gap: 1.5rem;
+
+  @media (max-width: 1030px) {
+    min-height: 0;
+  }
 }
 .empty-list {
   color: #888;
-  padding: 0.5rem 0;
   text-align: center;
-  font-size: 1rem;
-  border: 2px dashed #bbb;
   background: #f3f3f3;
+  border: 2px dashed #bbb;
+  padding: 0.5rem 0;
+  font-size: 1rem;
   border-radius: 8px;
-  max-width: 252px;
   width: 100%;
 }
 
@@ -57,26 +69,29 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.5rem;
-  max-width: 252px;
-  padding: 0 0.25rem;
   white-space: nowrap;
+  margin-bottom: 0.5rem;
+  padding: 0 0.25rem;
 
   h2 {
     font-size: 1.2rem;
-    color: #333;
+    color: #333333b0;
   }
 }
 
 .column-header button {
-  font-size: 1rem;
-  border-radius: 4px;
-  width: 20px;
-  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: #333333b0;
+  border: 2px solid #333333b0;
+  font-size: 1rem;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+
+
 
   &:hover {
   border: 2px solid #29abe2;
@@ -86,10 +101,10 @@
 
 /* Drag + Animation Styles */
 .cdk-drag-preview {
-  border-radius: 8px;
   background: transparent;
   border: none;
   box-shadow: none;
+  border-radius: 8px;
 }
 
 .cdk-drag-placeholder {

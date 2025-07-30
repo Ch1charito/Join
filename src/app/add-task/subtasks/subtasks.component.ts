@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 })
 export class SubtasksComponent {
   newSubtask: string = '';
-  subtasks: { text: string; editing: boolean }[] = [];
+  // subtasks: { text: string; editing: boolean }[] = [];
   isInputFocused: boolean = false;
 
+  @Input() subtasks: { text: string; editing: boolean }[] = [];
   @Output() subtasksChange = new EventEmitter<string[]>();
 
   private emitSubtasks() {

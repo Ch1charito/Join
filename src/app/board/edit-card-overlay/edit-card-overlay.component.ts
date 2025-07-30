@@ -19,7 +19,7 @@ export class EditCardOverlayComponent {
   @Input() taskId!: string;
   @Output() close = new EventEmitter<void>();
   @Output() saved = new EventEmitter<TaskInterface>();
-  
+  editableSubtasks: { text: string; editing: boolean }[] = [];
 
   onClose() {
     this.close.emit();
@@ -31,4 +31,17 @@ export class EditCardOverlayComponent {
     this.onClose();
   }
 
+  ngOnInit() {
+  this.editableSubtasks = this.editedTask.subtasks.map(s => ({
+    text: s.title,
+    editing: false
+  }));
+}
+
+  handleSubtasksUpdate(updatedSubtaskTitles: string[]) {
+  this.editedTask.subtasks = updatedSubtaskTitles.map(title => ({
+    title,
+    completed: false
+  }));
+}
 }

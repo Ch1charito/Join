@@ -1,16 +1,40 @@
 <section>
     <div class="edit-overlay">
-        <button type="button" (click)="onClose()">X</button>
+
+        <img (click)="onClose()" id="close-edit" src="assets/icons/close-overlay.png" alt="">
         <form (ngSubmit)="saveTask()">
-            <input type="text" [(ngModel)]="editedTask.title" name="title">
-            <textarea [(ngModel)]="editedTask.description" name="description"></textarea>
-            <input type="date" [(ngModel)]="editedTask.date" name="date">
+
+            <label class="label-title" for="title">
+
+                <div class="star">
+                    <span>Title</span>
+                    <span class="asterisk">*</span>
+                </div>
+                <input type="text" [(ngModel)]="editedTask.title" name="title">
+            </label>
+
+            <label for="description" class="label-description">
+                <div class="star">
+                    <span>Description</span>
+                    <span class="asterisk">*</span>
+                </div>
+                <textarea [(ngModel)]="editedTask.description" name="description"></textarea>
+            </label>
+
+            <label for="date" class="label-date">
+                <div class="star">
+                    <span>Due Date</span>
+                    <span class="asterisk">*</span>
+                </div>
+                <input type="date" [(ngModel)]="editedTask.date" name="date">
+            </label>
             <app-priority [(selectedPriority)]="editedTask.priority"></app-priority>
-            <app-assigned-to [selectedAssignedContacts]="editedTask.assignedContacts" (selectedContactsChange)="editedTask.assignedContacts = $event"></app-assigned-to>
-            <app-category [category]="editedTask.category" (taskListChange)="editedTask.category = $event"></app-category>
+            <app-assigned-to [selectedAssignedContacts]="editedTask.assignedContacts"
+                (selectedContactsChange)="editedTask.assignedContacts = $event"></app-assigned-to>
+            <app-category [category]="editedTask.category"
+                (taskListChange)="editedTask.category = $event"></app-category>
             <app-subtasks [subtasks]="editableSubtasks" (subtasksChange)="handleSubtasksUpdate($event)"></app-subtasks>
-            <button type="submit">OK ✓</button>
+            <button id="ok-button" type="submit">OK ✓</button>
         </form>
     </div>
 </section>
-

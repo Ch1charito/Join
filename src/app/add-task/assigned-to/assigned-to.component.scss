@@ -1,3 +1,10 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
 .assigned-to {
   width: 420px;
   height: 48px;
@@ -111,12 +118,12 @@
 
 @media (max-width: 550px) {
 
-  label {
-    margin-left: 14%;
-  }
+  // label {
+  //   margin-left: 14%;
+  // }
   .assigned-to {
     width: 300px;
-    margin-left: 14%;
+    // margin-left: 14%;
     
   }
 
@@ -163,12 +170,12 @@
 }
 
 @media (max-width: 400px) {
-  label {
-    margin-left: 17%;
-  }
+  // label {
+  //   margin-left: 17%;
+  // }
   .assigned-to {
     width: 270px;
-    margin-left: 17%;
+    // margin-left: 17%;
 
     input {
       width: 250px;

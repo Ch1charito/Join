@@ -1,60 +1,54 @@
 <section>
-    <div>
-    <div class="top-card">
-        <div class="task-name">
-        <span>{{task.category}}</span>
+    <div class="contant-card">
+        <div class="top-card">
+            <div class="task-name">
+                <span>{{task.category}}</span>
+            </div>
+            <button (click)="onCloseClick()">X</button>
         </div>
-        <button (click)="onCloseClick()">X</button>
-    </div>
 
-    <h2>{{task.title}}</h2>
-    <span>{{task.description}}</span>
+        <h2>{{task.title}}</h2>
+        <span>{{task.description}}</span>
 
-    <div class="task-date">
-        <span>Due date:</span>
-        <span>{{task.date}}</span>
-    </div>
-
-    <div class="task-priority">
-        <span>Priority:</span>
-        <span>{{task.priority}}</span>
-    </div>
-
-    <span class="title">Assigned To:</span>
-    <div *ngFor="let contact of task.assignedContacts" class="task-contact">
-        <div
-        class="initials"
-        [style.backgroundColor]="getColorForName(contact.name)"
-        >
-        {{ getInitials(contact.name) }}
+        <div class="task-date">
+            <span>Due date:</span>
+            <span>{{task.date}}</span>
         </div>
-    <span>{{ contact.name }}</span>
-    </div>
-    
-    <div class="task-priority">
-        <span>category:</span>
-        <span>{{task.category}}</span>
-    </div>
 
-    <div *ngFor="let subtask of task.subtasks; let i = index" class="subtask">
-    <input 
-    type="checkbox" 
-    [checked]="subtask.completed"
-    (change)="toggleSubtaskCompleted(i)"
-    />
-    <span [class.completed]="subtask.completed">{{ subtask.title }}</span>
-</div>
+        <div class="task-priority">
+            <span>Priority:</span>
+            <span>{{task.priority}}</span>
+        </div>
 
-    <div class="task-buttons">
-        <button (click)="deleteTask()">
-        <img src="assets/icons/delete.png" alt="" />
-        <span>Delete</span>
-        </button>
-        <button (click)="openEditOverlay(task)">
-        <img src="assets/icons/edit.png" alt="" />
-        <span>Edit</span>
-        </button>
-    </div>
+        <span class="title">Assigned To:</span>
+        <div *ngFor="let contact of task.assignedContacts" class="task-contact">
+            <div class="initials" [style.backgroundColor]="getColorForName(contact.name)">
+                {{ getInitials(contact.name) }}
+            </div>
+            <span>{{ contact.name }}</span>
+        </div>
+
+        <div class="task-priority">
+            <span>category:</span>
+            <span>{{task.category}}</span>
+        </div>
+        <span class="title">Subtasks :</span>
+        <div *ngFor="let subtask of task.subtasks; let i = index" class="subtask">
+            <input type="checkbox" [checked]="subtask.completed" (change)="toggleSubtaskCompleted(i)" />
+            <span [class.completed]="subtask.completed">{{ subtask.title }}</span>
+        </div>
+
+        <div class="task-buttons">
+            <button (click)="deleteTask()">
+                <img src="assets/icons/delete.png" alt="" />
+                <span>Delete</span>
+            </button>
+            <button (click)="openEditOverlay(task)">
+                <img src="assets/icons/edit.png" alt="" />
+                <span>Edit</span>
+            </button>
+        </div>
     </div>
 </section>
-<app-edit-card-overlay *ngIf="showEditTaskOverlay" [editedTask]="selectedTask" [taskId]="originalTaskId" (close)="closeEditOverlay()" (saved)="onTaskSaved($event)"></app-edit-card-overlay>
+<app-edit-card-overlay *ngIf="showEditTaskOverlay" [editedTask]="selectedTask" [taskId]="originalTaskId"
+    (close)="closeEditOverlay()" (saved)="onTaskSaved($event)"></app-edit-card-overlay>

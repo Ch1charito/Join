@@ -35,6 +35,12 @@ export class AssignedToComponent {
     '#FFBB2B',
   ];
 
+  getColorForContact(contact: ContactInterface): string {
+  const index = this.firebaseService.contactList.findIndex(c => c.id === contact.id);
+  if (index === -1) return '#D1D1D1'; // fallback color
+  return this.colors[index % this.colors.length];
+}
+
   //Diese Methode reagiert auf Klickereignisse überall im Dokument (document).
   @HostListener('document:click', ['$event'])
   // Holt eine Referenz auf das Hauptelement, das das Input-Feld und das Dropdown-Icon enthält.

@@ -1,6 +1,7 @@
 <app-header *ngIf="showLayout"></app-header>
 <app-side-bar *ngIf="showLayout"></app-side-bar>
 <section>
+  <div class="content">
   <form #form="ngForm" (ngSubmit)="submitTask(form)">
 
     <div class="div-add-task">
@@ -66,4 +67,5 @@
   </form>
   <app-add-task-btn-overlay [showOverlay]="showOverlay">
   </app-add-task-btn-overlay>
+</div>
 </section>

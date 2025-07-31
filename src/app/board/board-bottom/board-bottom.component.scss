@@ -1,10 +1,24 @@
 .board-columns {
   display: flex;
+  justify-content: space-around;
   overflow-x: auto;
   flex-wrap: nowrap;
+  width: 100%;
   gap: 1.5rem;
-  padding: 0 3rem;
+  padding: 0 0 0 3rem;
   height: calc(0.8 * (100vh - 96px));
+
+  @media (max-width: 1030px) {
+    flex-direction: column;
+    height: calc(0.8 * (100vh - 96px - 96px));
+    padding: 0 1rem 6rem 1rem;
+  }
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+    height: calc(0.8 * (100vh - 96px - 80px));
+    padding: 0 1rem 5rem 1rem;
+  }
 
 &::-webkit-scrollbar {
   width: 8px;
@@ -23,22 +37,27 @@
   cursor: pointer;
 }
   @media (max-width: 1030px) {
-    flex-direction: column;
-    height: calc(0.8 * (100vh - 96px - 96px));
-    padding: 0 1rem 6rem 1rem;
+  .board-columns::-webkit-scrollbar,
+  .drop-list::-webkit-scrollbar {
+    display: none;
   }
-    @media (max-width: 640px) {
-    flex-direction: column;
-    height: calc(0.8 * (100vh - 96px - 80px));
-    padding: 0 1rem 5rem 1rem;
+  .board-columns,
+  .drop-list {
+    scrollbar-width: none;
+    padding: 1rem 0.25rem;
   }
+}
 }
 
 .column {
   display: flex;
   flex-direction: column;
-  flex: 1 1 0;
   gap: 1.5rem;
+  width: 15.75rem;
+
+  @media(max-width: 1030px){
+    width: 100%;
+  }
 }
 
 .drop-list {
@@ -52,8 +71,20 @@
 
   @media (max-width: 1030px) {
     min-height: 0;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+
+    //all direct children (tasks) fixed
+    > * {
+      flex: 0 0 auto;
+      width: 12rem;
+      min-width: 12rem;
+    }
   }
 }
+
 .empty-list {
   color: #888;
   text-align: center;
@@ -77,6 +108,10 @@
     font-size: 1.2rem;
     color: #333333b0;
   }
+
+  @media(max-width: 1030px) {
+    width: 100%;
+  }
 }
 
 .column-header button {
@@ -90,8 +125,6 @@
   border-radius: 4px;
   width: 20px;
   height: 20px;
-
-
 
   &:hover {
   border: 2px solid #29abe2;

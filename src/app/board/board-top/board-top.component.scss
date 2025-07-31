@@ -9,7 +9,7 @@
     @include dFlex($jc: space-between, $ai: center);
     border-radius: 0.5rem;
     width: 100%;
-    padding: 2rem;
+    padding: 2rem 3rem 0 3rem;
 
     h1 {
       font-size: 3rem;
@@ -133,7 +133,6 @@
         .search-task {
           width: 100%;
           justify-content: space-between;
-          padding: 0;
         }
         input{
           width: 100%;
@@ -158,11 +157,11 @@
   .board-container {
     width: 100%;
     max-width: 100vw;
-    padding: 0.5rem;
+    gap: 2rem;
 
     .board {
       max-width: 100%;
-      padding: 2rem 0;
+      padding: 2rem 0 0 0 ;
 
       h1 {
         font-size: 1.8rem;
@@ -171,12 +170,11 @@
       }
 
       .board-actions {
-        padding: 1rem 0;
+        padding: 1rem 0 0 0;
 
         .search-task {
           height: 2.2rem;
           padding: 0 0.5rem;
-          width: calc(100% - 1rem);
         }
 
         .board-add-task {

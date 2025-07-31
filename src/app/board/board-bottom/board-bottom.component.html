@@ -89,5 +89,5 @@
 
 </div>
 
-<app-add-task-overlay *ngIf="showAddTaskOverlay" [status]="currentStatus" (closeOverlay)="closeOverlay()"></app-add-task-overlay>
+<app-add-task-overlay *ngIf="showAddTaskOverlay" [status]="currentStatus" (closeOverlay)="closeOverlay()" (taskSubmitted)="onTaskSubmittedFromOverlay()"></app-add-task-overlay>
 <app-card-overlay *ngIf="showCardOverlay" [task]="selectedTask" (closeOverlay)="closeCardOverlay()"></app-card-overlay>

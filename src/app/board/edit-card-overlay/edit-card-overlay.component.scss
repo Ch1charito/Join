@@ -19,6 +19,7 @@ section {
     padding: 40px;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     #close-edit {
       width: 13px;
@@ -43,6 +44,7 @@ section {
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
     gap: 8px;
     .star {
       display: flex;
@@ -71,6 +73,7 @@ section {
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
     gap: 8px;
 
     span {
@@ -99,6 +102,7 @@ section {
     position: relative;
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
     gap: 8px;
   }
 
@@ -133,9 +137,9 @@ section {
   }
 
   #ok-button {
-    position: fixed;
-    bottom: 12%;
-    right: 31%;
+    position: absolute;
+    bottom: -100px;
+    right: 1px;
     width: 90px;
     height: 50px;
     border: none;
@@ -164,19 +168,14 @@ section {
       width: 300px;
     }
 
-     #ok-button {
-    position: fixed;
-    bottom: 12%;
-    right: 21%;
-     }
     .edit-overlay {
       width: 368px;
       height: 900px;
     }
   }
 
-  @media(max-width:400px) {
-     .edit-overlay {
+  @media (max-width: 400px) {
+    .edit-overlay {
       width: 350px;
       height: 900px;
     }

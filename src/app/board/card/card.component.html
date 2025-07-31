@@ -1,5 +1,6 @@
 <div class="task-card" (click)="onCardClick()">
-    <div class="category">
+    <div class="category" [class.user-story]="task.category.toLowerCase() === 'user story'"
+        [class.technical-task]="task.category.toLowerCase() === 'technical task'">
         <span>{{ task.category }}</span>
     </div>
     <div class="description">
@@ -28,10 +29,7 @@
             </div>
         </div>
         <div class="priority-icon">
-            <img
-    [src]="'assets/icons/Property-1=' + formatPriority(task.priority) + '.png'"
-    [alt]="task.priority"
-/>
+            <img [src]="'assets/icons/Property-1=' + formatPriority(task.priority) + '.png'" [alt]="task.priority" />
         </div>
     </div>
 </div>

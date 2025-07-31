@@ -3,7 +3,7 @@
 .priority-container {
   @include dFlex($ai: start, $jc: center, $fd: column);
   gap: 0.5rem;
-  padding: 2rem;
+  margin-bottom: 20px;
 }
 .title {
   font-size: 18px;
@@ -75,13 +75,13 @@
     padding: 0.75rem 1rem;
     width: 100%;
 
-    @media(max-width:500px) {
+    @media (max-width: 500px) {
       padding: 0.75rem 0.75rem;
     }
 
     .priority-container {
-  justify-content: center;
-}
+      justify-content: center;
+    }
 
     img {
       width: 12px;

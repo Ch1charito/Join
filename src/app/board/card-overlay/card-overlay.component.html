@@ -1,9 +1,10 @@
 <section>
     <div class="contant-card">
         <div class="top-card">
-            <div class="task-name">
-                <span>{{task.category}}</span>
-            </div>
+             <div class="task-name" [class.user-story]="task.category.toLowerCase() === 'user story'"
+        [class.technical-task]="task.category.toLowerCase() === 'technical task'">
+        <span>{{ task.category }}</span>
+    </div>
             <button (click)="onCloseClick()">X</button>
         </div>
 

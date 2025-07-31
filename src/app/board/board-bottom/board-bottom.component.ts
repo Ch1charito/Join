@@ -132,7 +132,7 @@ applyFilter(term: string) {
 
   closeOverlay() {
     this.showAddTaskOverlay = false;
-  }
+}
   //#endregion
 
   //#region card-overlay
@@ -148,6 +148,12 @@ applyFilter(term: string) {
   closeCardOverlay() {
     this.showCardOverlay = false;
     this.loadTasks();
+  }
+
+  onTaskSubmittedFromOverlay() {
+    setTimeout(() => {
+      this.showAddTaskOverlay = false;
+    }, 100);
   }
   //#endregion
   

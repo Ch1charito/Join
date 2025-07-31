@@ -8,10 +8,15 @@ import { AddTaskComponent } from '../../add-task/add-task.component';
   styleUrl: './add-task-overlay.component.scss',
 })
 export class AddTaskOverlayComponent {
-  @Input() status: string = 'todo';  // Beispiel, default todo
+  @Input() status: string = 'todo';
   @Output() closeOverlay = new EventEmitter<void>();
   @Output() taskSubmitted = new EventEmitter<void>();
   close() {
     this.closeOverlay.emit();
   }
+  onDelayedTaskSubmitted() {
+  setTimeout(() => {
+    this.taskSubmitted.emit();
+  }, 1000);
+}
 }

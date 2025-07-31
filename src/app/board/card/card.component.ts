@@ -18,7 +18,18 @@ export class CardComponent {
   }
 
   /**
-   * Berechnet den Fortschritt in Prozent (optional verwendbar)
+   * Gibt Initialen aus Vor- und Nachnamen zurück (z. B. "John Doe" → "JD")
+   */
+  getInitials(name: string): string {
+    if (!name) return '';
+    const parts = name.trim().split(' ');
+    const first = parts[0]?.charAt(0).toUpperCase() || '';
+    const last = parts[1]?.charAt(0).toUpperCase() || '';
+    return first + last;
+  }
+
+  /**
+   * Berechnet den Fortschritt in Prozent
    */
   calculateProgress(): number {
     const total = this.getTotalSubtasks();
@@ -27,7 +38,7 @@ export class CardComponent {
   }
 
   /**
-   * Gibt Anzahl der erledigten Subtasks zurück, falls gültig
+   * Gibt Anzahl der erledigten Subtasks zurück
    */
   getCompletedSubtasks(): number {
     if (Array.isArray(this.task?.subtasks)) {
@@ -39,7 +50,7 @@ export class CardComponent {
   }
 
   /**
-   * Gibt Gesamtzahl der Subtasks zurück, falls gültig
+   * Gibt Gesamtzahl der Subtasks zurück
    */
   getTotalSubtasks(): number {
     return Array.isArray(this.task?.subtasks) ? this.task.subtasks.length : 0;

@@ -1,9 +1,11 @@
 <div class="subtasks-container">
     <label>Subtasks</label>
     <div class="input-group">
+        <div>
         <input type="text" [(ngModel)]="newSubtask" placeholder="Add new subtask" (focus)="onInputFocus()"
             (blur)="onInputBlur($event)" />
         <img (click)="addSubtask()" src="assets/icons/plus-icon.png" alt="" class="plus-icon" *ngIf="!isInputFocused">
+        </div>
         <div class="subtask-x-ok" *ngIf="isInputFocused">
             <img class="ok-x" src="assets/icons/x.png" alt="" (click)="clearNewSubtask()"
                 (mousedown)="$event.preventDefault()">

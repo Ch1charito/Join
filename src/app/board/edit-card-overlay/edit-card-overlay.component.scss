@@ -13,13 +13,12 @@ section {
 
   .edit-overlay {
     width: 540px;
-    height: 750px;
+    height: 900px;
     background: white;
     border-radius: 20px;
     padding: 40px;
     display: flex;
     flex-direction: column;
-    overflow: auto;
 
     #close-edit {
       width: 13px;
@@ -27,6 +26,11 @@ section {
       position: absolute;
       right: 30px;
       top: 30px;
+
+      &:hover {
+        background-color: #dee2e7;
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -130,7 +134,7 @@ section {
 
   #ok-button {
     position: fixed;
-    bottom: 17%;
+    bottom: 12%;
     right: 31%;
     width: 90px;
     height: 50px;
@@ -140,5 +144,47 @@ section {
     font-size: 21px;
     border-radius: 10px;
     transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgb(41, 171, 226);
+      transform: scale(1.05);
+    }
+  }
+  @media (max-width: 700px) {
+    .edit-overlay {
+      width: 468px;
+      height: 900px;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .label-title,
+    .label-description,
+    .label-date {
+      width: 300px;
+    }
+
+     #ok-button {
+    position: fixed;
+    bottom: 12%;
+    right: 21%;
+     }
+    .edit-overlay {
+      width: 368px;
+      height: 900px;
+    }
+  }
+
+  @media(max-width:400px) {
+     .edit-overlay {
+      width: 350px;
+      height: 900px;
+    }
+
+    .label-title,
+    .label-description,
+    .label-date {
+      width: 260px;
+    }
   }
 }

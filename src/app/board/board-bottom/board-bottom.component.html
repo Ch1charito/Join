@@ -10,6 +10,7 @@
       id="todoList"
       [cdkDropListData]="todo"
       [cdkDropListAutoScrollStep]="100"
+      [cdkDropListOrientation]="listOrientation"
       class="drop-list"
       (cdkDropListDropped)="drop($event)"
     >
@@ -33,6 +34,7 @@
       id="progressList"
       [cdkDropListData]="progress"
       [cdkDropListAutoScrollStep]="100"
+      [cdkDropListOrientation]="listOrientation"
       class="drop-list"
       (cdkDropListDropped)="drop($event)"
     >
@@ -56,6 +58,7 @@
       id="feedbackList"
       [cdkDropListData]="feedback"
       [cdkDropListAutoScrollStep]="100"
+      [cdkDropListOrientation]="listOrientation"
       class="drop-list"
       (cdkDropListDropped)="drop($event)"
     >
@@ -78,6 +81,7 @@
       id="doneList"
       [cdkDropListData]="done"
       [cdkDropListAutoScrollStep]="100"
+      [cdkDropListOrientation]="listOrientation"
       class="drop-list"
       (cdkDropListDropped)="drop($event)"
     >

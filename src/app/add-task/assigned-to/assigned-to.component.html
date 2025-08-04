@@ -14,9 +14,7 @@
 
     <div id="selectedAssignedContactsDisplay" class="selected-contacts-display">
         @for (contact of selectedAssignedContacts; track contact.id) {
-        <div class="initials-bubble" [style.backgroundColor]="
-      colors[firebaseService.contactList.indexOf(contact) % colors.length]
-    ">
+        <div class="initials-bubble" [style.backgroundColor]="getColorForContact(contact)">
             {{ getInitials(contact.name) }}
         </div>
         }

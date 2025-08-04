@@ -34,6 +34,7 @@ export class BoardBottomComponent implements OnInit, OnDestroy {
 
   private allTasks: TaskInterface[] = [];
   private taskListSub?: Subscription;
+  listOrientation: 'vertical' | 'horizontal' = 'vertical';
 
   ngOnInit() {
     // Subscribe tasks FirebaseService
@@ -44,11 +45,18 @@ export class BoardBottomComponent implements OnInit, OnDestroy {
     this.searchService.searchTerm$.subscribe(term => {
       this.applyFilter(term);
     });
+    this.updateOrientation();
+    window.addEventListener('resize', this.updateOrientation);
   }
 
   ngOnDestroy() {
     this.taskListSub?.unsubscribe();
+    window.removeEventListener('resize', this.updateOrientation);
   }
+  updateOrientation = () => {
+    this.listOrientation =
+      window.innerWidth <= 1030 ? 'horizontal' : 'vertical';
+  };
 
   loadTasks() {
     this.allTasks = this.firebaseService.taskList;

@@ -3,6 +3,7 @@
         [class.technical-task]="task.category.toLowerCase() === 'technical task'">
         <span>{{ task.category }}</span>
     </div>
+
     <div class="description">
         <h4>{{ task.title }}</h4>
         <span>{{ task.description }}</span>
@@ -20,8 +21,8 @@
     <div class="overview">
         <div class="user-icons">
             <ng-container *ngFor="let contact of task.assignedContacts.slice(0, 2); let i = index">
-                <div class="user-initials" [style.background]="'#'+(i === 0 ? 'FF5733' : '33C1FF')">
-                    {{ contact.name.charAt(0).toUpperCase() }}
+                <div class="user-initials" [style.background]="'#' + (i === 0 ? 'FF5733' : '33C1FF')">
+                    {{ getInitials(contact.name) }}
                 </div>
             </ng-container>
             <div class="user-initials extra" *ngIf="task.assignedContacts.length > 2">

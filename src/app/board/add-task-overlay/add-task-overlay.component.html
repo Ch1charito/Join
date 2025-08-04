@@ -1,12 +1,84 @@
-<section>
+<div class="container">
   <div class="overlay-backdrop" (click)="close()"></div>
   <div class="overlay-container">
     <button class="close-btn" (click)="close()">X</button>
 
-    <app-add-task
-  [status]="status"
-  [showLayout]="false"
-  (taskSubmitted)="onDelayedTaskSubmitted()"
-></app-add-task>
+    <form #form="ngForm" (ngSubmit)="submitTask(form)">
+      <div class="div-add-task">
+        <div class="left-side">
+          <h1>Add Task</h1>
+          <div class="left-side-content">
+            <label> Title <span class="asterisk">*</span></label>
+            <input
+              class="title-input"
+              type="text"
+              name="title"
+              [(ngModel)]="tasks.title"
+              placeholder="Enter a title"
+              required
+              #title="ngModel"
+              [class.errorborder]="title.invalid && title.touched"
+            />
+            <div *ngIf="title.invalid && title.touched" class="invalid-input">
+              This field is required
+            </div>
+
+            <label> Description <span class="asterisk">*</span></label>
+            <textarea
+              class="description-input"
+              type="text"
+              name="description"
+              [(ngModel)]="tasks.description"
+              placeholder="Enter a Description"
+              required
+              #description="ngModel"
+              [class.errorborder]="description.invalid && description.touched"
+            ></textarea>
+            <div *ngIf="description.invalid && description.touched" class="invalid-input">
+              This field is required
+            </div>
+
+            <label> Due Date <span class="asterisk">*</span></label>
+            <input
+              class="date-input"
+              type="date"
+              name="date"
+              [(ngModel)]="tasks.date"
+              required
+              #date="ngModel"
+              [class.errorborder]="date.invalid && date.touched"
+            />
+            <div *ngIf="date.invalid && date.touched" class="invalid-input-date">
+              This field is required
+            </div>
+          </div>
+        </div>
+
+        <div class="middle-line"></div>
+
+        <div class="right-side">
+          <div class="right-side-wrapper">
+            <app-priority [(selectedPriority)]="selectedPriority"></app-priority>
+            <app-assigned-to
+              [selectedAssignedContacts]="selectedAssignedContacts"
+              (selectedContactsChange)="onAssignedContactsChange($event)"
+            ></app-assigned-to>
+            <app-category (taskListChange)="onCategoryChange($event)"></app-category>
+            <app-subtasks (subtasksChange)="handleSubtasksChange($event)"></app-subtasks>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-container">
+        <label id="required-text"><span class="asterisk">*</span> this field is required </label>
+        <div class="task-buttons">
+          <button class="clear-button" (click)="clearInputFields()" type="button">Clear</button>
+          <button class="creat-button" type="submit">
+            Create Task <img src="assets/icons/check-white.png" alt="" />
+          </button>
+        </div>
+      </div>
+    </form>
+    <app-add-task-btn-overlay [showOverlay]="showOverlay"></app-add-task-btn-overlay>
   </div>
-</section>
+</div>

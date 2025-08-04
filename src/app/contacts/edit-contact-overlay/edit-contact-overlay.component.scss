@@ -148,23 +148,28 @@
       }
     }
 
-    #close-overlay {
+    .close-overlay-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: absolute;
-      right: 4vw;
-      top: 4vh;
-      width: 16px;
-      height: 16px;
-
-      &:hover {
-        cursor: pointer;
-        background-color: rgb(226, 227, 228);
-        width: 1.6vw;
-        height: 1.6vw;
-      }
+      background: transparent;
+      cursor: pointer;
+      border: none;
+      top: 2rem;
+      right: 4rem;
+      font-size: 1rem;
+      z-index: 5;
+      height: 2rem;
+      width: 2rem;
       @media (max-width: 1200px) {
         display: none;
       }
     }
+    .close-overlay-btn:hover {
+        background: rgba(0, 0, 0, 0.048);
+        border-radius: 50%;
+      }
 
     #inputs {
       display: flex;

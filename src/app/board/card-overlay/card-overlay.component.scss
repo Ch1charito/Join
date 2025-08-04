@@ -75,18 +75,21 @@ section {
       }
 
       button {
-        padding: 9px;
-        background: none;
-        border: none;
-        border-radius: 50%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        background: transparent;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        z-index: 5;
+        height: 2rem;
+        width: 2rem;
+      }
 
-        &:hover {
-          cursor: pointer;
-          background: #0c2e621f;
-        }
+      button:hover {
+        background: rgba(0, 0, 0, 0.048);
+        border-radius: 50%;
       }
     }
 

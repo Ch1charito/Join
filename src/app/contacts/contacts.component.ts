@@ -202,13 +202,11 @@ export class ContactsComponent {
     '#FF4646',
     '#FFBB2B',
   ];
-  // add initial contacts
-  getInitials(name: string) {
-    if (!name) return '';
-    return name
-      .split(' ')
-      .map((part) => part.charAt(0))
-      .join('')
-      .toUpperCase();
-  }
+  // add initial contacts first name and last name
+getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0][0];
+  const last  = parts.length > 1 ? parts[parts.length - 1][0] : '';
+  return (first + last).toUpperCase();
+}
 }

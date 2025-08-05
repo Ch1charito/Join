@@ -24,7 +24,7 @@
           <div class="input-text-img">
 
             <input name="name" [(ngModel)]="contacts.name" type="text" placeholder="Name" required
-              pattern="^[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]+(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$"
+              pattern="^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*)+$"
               #name="ngModel" />
 
             <img src="assets/icons/person.png" alt="" />
@@ -38,8 +38,9 @@
         <div class="input-container">
           <div class="input-text-img">
 
-            <input name="email" [(ngModel)]="contacts.email" required type="text" placeholder="Email"
-              pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" #email="ngModel" />
+            <input name="email" [(ngModel)]="contacts.email" required type="email" 
+            pattern="^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,}$"
+            placeholder="Email" #email="ngModel" />
 
             <img src="assets/icons/mail.png" alt="" />
           </div>
@@ -52,9 +53,15 @@
         <div class="input-container">
           <div class="input-text-img">
 
-            <input name="phone" [(ngModel)]="contacts.phone" required type="text" placeholder="Phone"
-              pattern="^\+?\d{7,15}$" #phone="ngModel" />
-
+            <input name="phone"
+            [(ngModel)]="contacts.phone"
+            type="tel"
+            placeholder="Phone"
+            required
+            minlength="10"
+            maxlength="15"
+            pattern="^(?:\+49|0)(?:\s?\d){10,14}$" #phone="ngModel" />
+            
             <img src="assets/icons/call.png" alt="" />
           </div>
           <div class="validation-error" *ngIf="phone.invalid && phone.touched">

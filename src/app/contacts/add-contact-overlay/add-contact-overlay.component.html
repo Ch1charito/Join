@@ -14,8 +14,7 @@
     </div>
 
     <div id="right-side">
-      <img (click)="onCloseClick()" id="close-overlay" src="assets/icons/close-overlay.png" alt="" />
-
+      <button (click)="onCloseClick()" class="close-overlay-btn">X</button>
       <img src="assets/icons/person-add-contact.png" alt="" />
 
       <form id="inputs" (ngSubmit)="submitContact(addContactForm)" #addContactForm="ngForm">

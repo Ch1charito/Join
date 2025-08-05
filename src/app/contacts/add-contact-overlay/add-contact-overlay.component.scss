@@ -10,7 +10,6 @@
   display: flex;
   justify-content: center;
   overflow: hidden;
- 
 
   @media (max-width: 1200px) {
     display: flex;
@@ -148,7 +147,6 @@
 
       @media (max-width: 500px) {
         margin-right: 0;
-       
       }
     }
     
@@ -175,24 +173,6 @@
         border-radius: 50%;
       }
     }
-
-    // #close-overlay {
-    //   position: absolute;
-    //   right: 4vw;
-    //   top: 4vh;
-    //   width: 16px;
-    //   height: 16px;
-
-    //   &:hover {
-    //     cursor: pointer;
-    //     background-color: rgb(226, 227, 228);
-    //     width: 1.6vw;
-    //     height: 1.6vw;
-    //   }
-    //   @media (max-width: 1200px) {
-    //     display: none;
-    //   }
-    // }
 
     #inputs {
       display: flex;

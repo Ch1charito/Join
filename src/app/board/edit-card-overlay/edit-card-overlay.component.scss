@@ -13,26 +13,45 @@ section {
 
   .edit-overlay {
     width: 540px;
-    height: 900px;
+    max-height: 80%;
     background: white;
     border-radius: 20px;
     padding: 40px;
     display: flex;
     flex-direction: column;
     position: relative;
-
-    #close-edit {
-      width: 13px;
-      height: 13px;
-      position: absolute;
-      right: 30px;
-      top: 30px;
-
-      &:hover {
-        background-color: #dee2e7;
-        transform: scale(1.05);
-      }
+    overflow-y: hidden;
+    .scroll-area {
+      overflow-y: auto;
+      max-height: 100%;
+      padding-right: 12px;
     }
+    @media (max-width: 570px){
+      width: 90%;
+
+    }
+
+    .close-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    top: 2rem;
+    right: 4rem;
+    font-size: 1rem;
+    z-index: 5;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .close-edit:hover {
+    background: rgba(0, 0, 0, 0.048);
+    border-radius: 50%;
+  }
+}
   }
 
   .asterisk {
@@ -137,9 +156,9 @@ section {
   }
 
   #ok-button {
-    position: absolute;
-    bottom: -100px;
-    right: 1px;
+    position: sticky;
+    bottom: 0;
+    left: 100%;
     width: 90px;
     height: 50px;
     border: none;
@@ -148,42 +167,43 @@ section {
     font-size: 21px;
     border-radius: 10px;
     transition: all 0.2s ease;
+    margin-top: 15px;
+    cursor: pointer;
 
     &:hover {
       background-color: rgb(41, 171, 226);
       transform: scale(1.05);
     }
   }
-  @media (max-width: 700px) {
-    .edit-overlay {
-      width: 468px;
-      height: 900px;
-    }
-  }
+//   @media (max-width: 700px) {
+//     .edit-overlay {
+//       width: 468px;
+//       height: 900px;
+//     }
+//   }
 
-  @media (max-width: 550px) {
-    .label-title,
-    .label-description,
-    .label-date {
-      width: 300px;
-    }
+//   @media (max-width: 550px) {
+//     .label-title,
+//     .label-description,
+//     .label-date {
+//       width: 300px;
+//     }
 
-    .edit-overlay {
-      width: 368px;
-      height: 900px;
-    }
-  }
+//     .edit-overlay {
+//       width: 368px;
+//       height: 900px;
+//     }
+//   }
 
-  @media (max-width: 400px) {
-    .edit-overlay {
-      width: 320px;
-      height: 900px;
-    }
+//   @media (max-width: 400px) {
+//     .edit-overlay {
+//       width: 320px;
+//       height: 900px;
+//     }
 
-    .label-title,
-    .label-description,
-    .label-date {
-      width: 260px;
-    }
-  }
-}
+//     .label-title,
+//     .label-description,
+//     .label-date {
+//       width: 260px;
+//     }
+//   }

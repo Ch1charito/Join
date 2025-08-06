@@ -86,12 +86,10 @@ export class AssignedToComponent {
     this.selectedContactsChange.emit(this.selectedAssignedContacts);
   }
 
-  getInitials(name: string): string {
-    if (!name) return '';
-    return name
-      .split(' ')
-      .map((part) => part.charAt(0))
-      .join('')
-      .toUpperCase();
-  }
+getInitials(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0][0];
+  const last  = parts.length > 1 ? parts[parts.length - 1][0] : '';
+  return (first + last).toUpperCase();
+}
 }

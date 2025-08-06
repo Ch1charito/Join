@@ -47,6 +47,7 @@
               required
               #date="ngModel"
               [class.errorborder]="date.invalid && date.touched"
+              [min]="minDate"
             />
             <div *ngIf="date.invalid && date.touched" class="invalid-input-date">
               This field is required

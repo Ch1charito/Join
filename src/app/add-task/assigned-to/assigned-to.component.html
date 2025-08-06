@@ -21,14 +21,14 @@
     </div>
 </div>
 
-<div class="content-dropdown">
-
+<div class="content-dropdown" [class.has-selected]="selectedAssignedContacts.length > 0">
+    
     <div id="assignedContacts">
         <div id="contactDropdown" class="assigned-dropdown" *ngIf="showContactDropdown">
             @for (item of firebaseService.contactList; track item.id) {
             <div class="assigned-to-contact" (click)="selectContact(item)" [class.selected-contact]="isSelected(item)">
                 <div class="contact-img-name" [style.backgroundColor]="
-          colors[firebaseService.contactList.indexOf(item) % colors.length]">
+                colors[firebaseService.contactList.indexOf(item) % colors.length]">
                     {{ getInitials(item.name) }}
                 </div>
                 <span>{{ item.name }}</span>

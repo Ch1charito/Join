@@ -14,12 +14,29 @@ section {
   pointer-events: auto;
 
   .contant-card {
-    width: 450px;
+    width: 540px;
     max-height: 80%;
     background: #fff;
     border-radius: 20px;
     padding: 40px;
     overflow: auto;
+    @media (max-width: 570px){
+      width: 90%;
+      h2{
+        font-size: 36px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+  .scroll-area {
+      overflow-y: auto;
+      max-height: 100%;
+      padding-right: 12px;
   }
 
   &.hidden {
@@ -75,18 +92,21 @@ section {
       }
 
       button {
-        padding: 9px;
-        background: none;
-        border: none;
-        border-radius: 50%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        background: transparent;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        z-index: 5;
+        height: 2rem;
+        width: 2rem;
+      }
 
-        &:hover {
-          cursor: pointer;
-          background: #0c2e621f;
-        }
+      button:hover {
+        background: rgba(0, 0, 0, 0.048);
+        border-radius: 50%;
       }
     }
 
@@ -119,8 +139,7 @@ section {
     }
 
     .title {
-      color: #2a3647;
-      margin: 15px 0px;
+      margin-top: 15px;
     }
 
     .task-contact {
@@ -131,22 +150,29 @@ section {
       display: flex;
       align-items: center;
 
+      span{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+
       .initials {
-        height: 30px;
-        width: 30px;
+        height: 3rem;
+        width: 4rem;
         border-radius: 50%;
-        border: solid 3px white;
+        border: solid 1px white;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 10px;
+        font-size: 1rem;
       }
     }
 
     .subtask {
       font-size: 13px;
-      margin-bottom: 10px;
+      margin-top: 10px;
       padding: 2px 15px;
       border-radius: 5px;
       display: flex;
@@ -168,6 +194,9 @@ section {
       justify-content: flex-end;
       gap: 10px;
       padding-top: 15px;
+      @media (max-width: 570px){
+        justify-content: center;
+      }
 
       button {
         display: flex;

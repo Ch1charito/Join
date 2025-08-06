@@ -134,16 +134,23 @@ section {
       display: flex;
       align-items: center;
 
+      span{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+
       .initials {
-        height: 30px;
-        width: 30px;
+        height: 3rem;
+        width: 4rem;
         border-radius: 50%;
-        border: solid 3px white;
+        border: solid 1px white;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 10px;
+        font-size: 1rem;
       }
     }
 

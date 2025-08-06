@@ -20,6 +20,7 @@ export class EditCardOverlayComponent {
   @Output() close = new EventEmitter<void>();
   @Output() saved = new EventEmitter<TaskInterface>();
   editableSubtasks: { text: string; editing: boolean }[] = [];
+  today: string = new Date().toISOString().split('T')[0];
 
   onClose() {
     this.close.emit();

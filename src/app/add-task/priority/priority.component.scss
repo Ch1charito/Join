@@ -57,7 +57,7 @@
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 550px) {
   .button-group {
     @include dFlex($jc: space-between);
     gap: 10px;
@@ -75,7 +75,7 @@
     padding: 0.75rem 1rem;
     width: 100%;
 
-    @media (max-width: 500px) {
+    @media (max-width: 400px) {
       padding: 0.75rem 0.75rem;
     }
 

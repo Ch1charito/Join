@@ -21,8 +21,6 @@ export class AddContactOverlayComponent {
     phone: ''
   };
 
-  
-
   submitContact(form: NgForm) {
     if (!form.valid) {
       console.warn('Formular ungültig');
@@ -41,12 +39,8 @@ export class AddContactOverlayComponent {
     this.contacts.email = '';
     this.contacts.phone = '';
   }
-
   //#region overlay
-
-  
   @Output() close = new EventEmitter<void>();
- 
   onCloseClick() {
     this.close.emit();
     this.addContactForm.resetForm();

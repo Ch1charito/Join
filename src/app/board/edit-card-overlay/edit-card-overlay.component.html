@@ -1,8 +1,9 @@
 <section>
     <div class="edit-overlay">
-        <img (click)="onClose()" id="close-edit" src="assets/icons/close-overlay.png" alt="">
+        <button (click)="onClose()" class="close-edit"  alt="">
+            X
+        </button>
         <div class="scroll-area">
-        
         <form #myForm="ngForm" (ngSubmit)="saveTask()">
 
             <label class="label-title" for="title">

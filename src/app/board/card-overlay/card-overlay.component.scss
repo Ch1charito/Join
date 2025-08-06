@@ -92,18 +92,21 @@ section {
       }
 
       button {
-        padding: 9px;
-        background: none;
-        border: none;
-        border-radius: 50%;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        background: transparent;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+        z-index: 5;
+        height: 2rem;
+        width: 2rem;
+      }
 
-        &:hover {
-          cursor: pointer;
-          background: #0c2e621f;
-        }
+      button:hover {
+        background: rgba(0, 0, 0, 0.048);
+        border-radius: 50%;
       }
     }
 
@@ -147,16 +150,23 @@ section {
       display: flex;
       align-items: center;
 
+      span{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
+      }
+
       .initials {
-        height: 30px;
-        width: 30px;
+        height: 3rem;
+        width: 4rem;
         border-radius: 50%;
-        border: solid 3px white;
+        border: solid 1px white;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
-        font-size: 10px;
+        font-size: 1rem;
       }
     }
 

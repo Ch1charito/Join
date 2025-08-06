@@ -31,19 +31,27 @@ section {
 
     }
 
-    #close-edit {
-      width: 13px;
-      height: 13px;
-      position: absolute;
-      right: 30px;
-      top: 20px;
-      cursor: pointer;
+    .close-edit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    top: 2rem;
+    right: 4rem;
+    font-size: 1rem;
+    z-index: 5;
+    height: 2rem;
+    width: 2rem;
+  }
 
-      &:hover {
-        background-color: #dee2e7;
-        transform: scale(1.05);
-      }
-    }
+  .close-edit:hover {
+    background: rgba(0, 0, 0, 0.048);
+    border-radius: 50%;
+  }
+}
   }
 
   .asterisk {
@@ -167,4 +175,36 @@ section {
       transform: scale(1.05);
     }
   }
+//   @media (max-width: 700px) {
+//     .edit-overlay {
+//       width: 468px;
+//       height: 900px;
+//     }
+//   }
+
+//   @media (max-width: 550px) {
+//     .label-title,
+//     .label-description,
+//     .label-date {
+//       width: 300px;
+//     }
+
+//     .edit-overlay {
+//       width: 368px;
+//       height: 900px;
+//     }
+//   }
+
+//   @media (max-width: 400px) {
+//     .edit-overlay {
+//       width: 320px;
+//       height: 900px;
+//     }
+
+//     .label-title,
+//     .label-description,
+//     .label-date {
+//       width: 260px;
+//     }
+//   }
 }

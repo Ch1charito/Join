@@ -27,7 +27,7 @@
                     <span>Due Date</span>
                     <span class="asterisk">*</span>
                 </div>
-                <input type="date" [(ngModel)]="editedTask.date" name="date">
+                <input type="date" [(ngModel)]="editedTask.date" name="date" [min]="today">
             </label>
             <app-priority [(selectedPriority)]="editedTask.priority"></app-priority>
             <app-assigned-to [selectedAssignedContacts]="editedTask.assignedContacts"

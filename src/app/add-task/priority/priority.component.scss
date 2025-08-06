@@ -6,7 +6,7 @@
   margin-bottom: 20px;
 }
 .title {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: lighter;
 
   @media (max-width: 500px) {
@@ -60,7 +60,8 @@
 @media (max-width: 550px) {
   .button-group {
     @include dFlex($jc: space-between);
-    gap: 10px;
+    gap: 7px;
+    width: 100%;
   }
 
   .priority-btn {

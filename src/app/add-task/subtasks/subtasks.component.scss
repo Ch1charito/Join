@@ -59,7 +59,7 @@
     display: none;
 
     @media (max-width: 1550px) {
-      margin-top: 40px;
+      margin-top: 20px;
       margin-bottom: auto;
       display: block;
     }
@@ -75,6 +75,8 @@
     max-height: 200px;
     overflow-y: auto;
     @media (max-width: 500px) {
+      max-height: 75px;
+      padding-left: 10px;
 
       img {
         width: 15px;
@@ -203,7 +205,7 @@
       input {
         margin-top: 10px;
         height: 48px;
-        width: 270px;
+        width: 250px;
         border-radius: 10px;
         padding: 12px;
         padding-right: 40px;

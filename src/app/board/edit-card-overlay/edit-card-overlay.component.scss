@@ -16,7 +16,7 @@ section {
     max-height: 80%;
     background: white;
     border-radius: 20px;
-    padding: 40px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -30,6 +30,11 @@ section {
       width: 90%;
 
     }
+    @media (max-width: 418px){
+      padding: 7px;
+
+    }
+
 
     .close-edit {
     display: flex;
@@ -39,8 +44,8 @@ section {
     background: transparent;
     cursor: pointer;
     border: none;
-    top: 2rem;
-    right: 4rem;
+    top: 0.5rem;
+    right: 1rem;
     font-size: 1rem;
     z-index: 5;
     height: 2rem;
@@ -67,6 +72,7 @@ section {
     gap: 8px;
     .star {
       display: flex;
+      margin-top: 8px;
       .asterisk {
         color: red;
         margin-right: 1em;
@@ -74,13 +80,12 @@ section {
     }
 
     span {
-      font-size: 20px;
+      font-size: 16px;
       color: black;
     }
 
     input {
       font-size: 20px;
-      padding: 13px 61px 13px 21px;
       border: solid 1px #d1d1d1;
       border-radius: 10px;
       width: 100%;
@@ -96,7 +101,7 @@ section {
     gap: 8px;
 
     span {
-      font-size: 20px;
+      font-size: 16px;
       color: black;
     }
 
@@ -126,7 +131,7 @@ section {
   }
 
   span {
-    font-size: 20px;
+    font-size: 16px;
     color: black;
   }
 
@@ -175,35 +180,3 @@ section {
       transform: scale(1.05);
     }
   }
-//   @media (max-width: 700px) {
-//     .edit-overlay {
-//       width: 468px;
-//       height: 900px;
-//     }
-//   }
-
-//   @media (max-width: 550px) {
-//     .label-title,
-//     .label-description,
-//     .label-date {
-//       width: 300px;
-//     }
-
-//     .edit-overlay {
-//       width: 368px;
-//       height: 900px;
-//     }
-//   }
-
-//   @media (max-width: 400px) {
-//     .edit-overlay {
-//       width: 320px;
-//       height: 900px;
-//     }
-
-//     .label-title,
-//     .label-description,
-//     .label-date {
-//       width: 260px;
-//     }
-//   }

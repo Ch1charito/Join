@@ -64,14 +64,13 @@
   min-height: unset;
   flex-grow: 1;
   gap: 1.5rem;
-
+  
   @media (max-width: 1030px) {
     min-height: 0;
     flex-direction: row;
     flex-wrap: nowrap;
     overflow-x: auto;
     gap: 1rem;
-    -webkit-overflow-scrolling: touch;
 
     //all direct children (tasks) fixed
     > * {
@@ -81,7 +80,7 @@
     }
 
     &::-webkit-scrollbar {
-      height: 8px;
+      height: 12px;
     }
     &::-webkit-scrollbar-track {
       background: #f1f1f1;

@@ -1,10 +1,10 @@
 <section>
     <div class="edit-overlay">
-
         <button (click)="onClose()" class="close-edit"  alt="">
             X
         </button>
-        <form (ngSubmit)="saveTask()">
+        <div class="scroll-area">
+        <form #myForm="ngForm" (ngSubmit)="saveTask()">
 
             <label class="label-title" for="title">
 
@@ -28,7 +28,7 @@
                     <span>Due Date</span>
                     <span class="asterisk">*</span>
                 </div>
-                <input type="date" [(ngModel)]="editedTask.date" name="date">
+                <input type="date" [(ngModel)]="editedTask.date" name="date" [min]="today">
             </label>
             <app-priority [(selectedPriority)]="editedTask.priority"></app-priority>
             <app-assigned-to [selectedAssignedContacts]="editedTask.assignedContacts"
@@ -36,7 +36,9 @@
             <app-category [category]="editedTask.category"
                 (taskListChange)="editedTask.category = $event"></app-category>
             <app-subtasks [subtasks]="editableSubtasks" (subtasksChange)="handleSubtasksUpdate($event)"></app-subtasks>
-            <button id="ok-button" type="submit">OK ✓</button>
+            
         </form>
+        </div>
+        <button id="ok-button" type="button" (click)="myForm.ngSubmit.emit()">OK ✓</button>
     </div>
 </section>

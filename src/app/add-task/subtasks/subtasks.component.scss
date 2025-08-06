@@ -57,12 +57,6 @@
 
   #required-text {
     display: none;
-
-    @media (max-width: 1030px) {
-      margin-top: 40px;
-      margin-bottom: auto;
-      display: block;
-    }
   }
 
   .subtask-list {
@@ -70,11 +64,11 @@
     flex-direction: column;
     list-style-type: none;
     padding: 0;
-    margin: 15px 25px 15px 50px;
+    margin-top: 8px;
+    width: 100%;
     max-height: 200px;
     overflow-y: auto;
     @media (max-width: 500px) {
-      max-height: 70px;
 
       img {
         width: 15px;
@@ -138,6 +132,11 @@
     .edit-delete-container {
       display: flex;
       justify-content: space-between;
+      span{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
 
     .edit-mode {

@@ -1,4 +1,5 @@
 <section>
+    
     <div class="contant-card">
         <div class="top-card">
         <div class="task-name" [class.user-story]="task.category.toLowerCase() === 'user story'"
@@ -7,6 +8,7 @@
     </div>
             <button (click)="onCloseClick()">X</button>
         </div>
+        <div class="scroll-area">
 
         <h2>{{task.title}}</h2>
         <span>{{task.description}}</span>
@@ -21,7 +23,7 @@
             <span>{{task.priority}}</span>
         </div>
 
-        <span class="title">Assigned To:</span>
+        <div class="title"><span>Assigned To:</span></div>
         <div *ngFor="let contact of task.assignedContacts" class="task-contact">
             <div class="initials" [style.backgroundColor]="getColorForName(contact.name)">
                 {{ getInitials(contact.name) }}
@@ -33,7 +35,7 @@
             <span>category:</span>
             <span>{{task.category}}</span>
         </div>
-        <span class="title">Subtasks :</span>
+        <div class="title"><span>Subtasks :</span></div>
         <div *ngFor="let subtask of task.subtasks; let i = index" class="subtask">
             <input type="checkbox" [checked]="subtask.completed" (change)="toggleSubtaskCompleted(i)" />
             <span [class.completed]="subtask.completed">{{ subtask.title }}</span>
@@ -48,6 +50,8 @@
                 <img src="assets/icons/edit.png" alt="" />
                 <span>Edit</span>
             </button>
+        </div>
+
         </div>
     </div>
 </section>

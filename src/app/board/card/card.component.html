@@ -13,9 +13,12 @@
         <div class="progress-bar">
             <div class="progress-fill" [style.width.%]="calculateProgress()"></div>
         </div>
-        <div class="subtasks-text">
-            {{ getCompletedSubtasks() }}/{{ task.subtasks.length }} Subtasks
-        </div>
+            <ng-container *ngIf="showSubtasks">
+                <p class="subtasks">
+                    {{ getCompletedSubtasks() }}/{{ getTotalSubtasks() }}
+                    Subtask{{ getTotalSubtasks() > 1 ? 's' : '' }}
+                </p>
+            </ng-container>
     </div>
 
     <div class="overview">

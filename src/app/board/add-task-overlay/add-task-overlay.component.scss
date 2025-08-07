@@ -42,6 +42,15 @@
       background: rgba(0, 0, 0, 0.048);
       border-radius: 50%;
     }
+
+    @media (max-width:1550px){
+      top: 1rem;
+      right: 2rem;
+    }
+
+    @media (max-width:700px){
+      right: 1.5rem;
+    }
   }
 }
 

@@ -1,6 +1,6 @@
 <div class="content">
 
-    <div class="width">
+    <div class="width" [ngClass]="customClass">
         <div class="ast"><label>Assigned to</label></div>
         <div class="assigned-to" id="assignedDiv">
             <input id="assignedInput" type="text" class="assigned-input" (click)="toggleContactDropdown()"

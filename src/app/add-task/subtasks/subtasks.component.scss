@@ -35,7 +35,7 @@
 
     .subtask-x-ok {
       position: absolute;
-      right: 15px;
+      right: 20px;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
@@ -47,6 +47,14 @@
         width: 20px;
         height: 20px;
       }
+
+      // @media (max-width:570px){
+      //   right: 20px;
+      // }
+
+      // @media (max-width:570px){
+      //   right: 26px;
+      // }
     }
   }
 

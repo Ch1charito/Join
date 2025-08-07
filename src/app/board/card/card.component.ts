@@ -63,4 +63,14 @@ export class CardComponent {
     if (!priority) return '';
     return priority.charAt(0).toUpperCase() + priority.slice(1).toLowerCase();
   }
+    /**
+   * Zeigt Subtasks an, wenn:
+   * - mindestens 1 Subtask vorhanden
+   * - nicht exakt 1 Subtask, die noch nicht erledigt ist (vermeidet 0/1)
+   */
+  get showSubtasks(): boolean {
+    const total = this.getTotalSubtasks();
+    const completed = this.getCompletedSubtasks();
+    return total > 0 && !(total === 1 && completed === 0);
+  }
 }

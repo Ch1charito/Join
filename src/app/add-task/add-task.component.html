@@ -31,7 +31,7 @@
 
           <label> Due Date <span class="asterisk">*</span></label>
           <input class="date-input" type="date" name="date" [(ngModel)]="tasks.date" (ngModelChange)="checkMinDate($event)" required #date="ngModel"
-            [class.errorborder]="date.invalid && date.touched" [min]="minDate">
+            [class.errorborder]="(date.invalid && date.touched) || isDateInvalid" [min]="minDate">
           <div *ngIf="date.invalid && date.touched" class="invalid-input-date">
             This field is required
           </div>

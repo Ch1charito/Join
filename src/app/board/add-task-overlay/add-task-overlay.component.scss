@@ -37,15 +37,15 @@
     z-index: 5;
     height: 2rem;
     width: 2rem;
-  }
 
-  .close-btn:hover {
-    background: rgba(0, 0, 0, 0.048);
-    border-radius: 50%;
+    &:hover {
+      background: rgba(0, 0, 0, 0.048);
+      border-radius: 50%;
+    }
   }
 }
 
-Form {
+form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,6 +60,7 @@ Form {
   justify-content: center;
   align-items: center;
   background: rgb(246, 247, 248);
+
   @media (max-width: 1030px) {
     padding-left: 0;
   }
@@ -93,21 +94,18 @@ Form {
       margin-bottom: 0;
       text-align: center;
     }
+
     @media (max-width: 560px) {
       font-size: 50px;
     }
+
     @media (max-width: 467px) {
       font-size: 40px;
     }
+
     @media (max-width: 377px) {
       font-size: 32px;
     }
-  }
-}
-
-@media (max-width: 500px) {
-  .div-add-task {
-    padding-top: 100px;
   }
 }
 
@@ -239,9 +237,10 @@ Form {
   justify-content: space-between;
 }
 
+/* MEDIA QUERIES */
+
 @media (max-width: 1550px) {
   form {
-    height: 90vh;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
@@ -250,13 +249,15 @@ Form {
   .div-add-task {
     flex-direction: column;
     align-items: center;
-    min-height: 120%;
+    margin-bottom:40%;
+    margin-top: 30%;
   }
 
   .left-side,
   .right-side {
     justify-content: center;
     align-items: center;
+    margin-top: 0;
   }
 
   .right-side {
@@ -267,19 +268,19 @@ Form {
     display: none;
   }
 
+  .left-side-content{
+    display: flex;
+    flex-direction: column;
+  }
+
   .bottom-container {
     bottom: 10%;
-  }
-}
-
-@media (max-width: 1030px) {
-  form {
-    padding-bottom: 80px;
-    margin-top: 0;
-  }
-
-  .bottom-container {
-    margin-left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 8px;
   }
 
   .task-buttons {
@@ -287,8 +288,40 @@ Form {
     z-index: 10;
     bottom: 9%;
     width: 65%;
+    display: flex;
     justify-content: center;
     padding: 10px 0;
+  }
+
+  #required-text {
+    display: none;
+    margin-top: 40px;
+    margin-bottom: auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .div-add-task {
+    margin-bottom: 47%;
+    margin-top: 37%;
+  }
+}
+
+@media (max-width: 1030px) {
+  form {
+    // padding-bottom: 80px;
+    margin-top: 0;
+
+    
+  }
+
+  .div-add-task {
+    margin-bottom: 75%;
+    margin-top: 60%;
+
+    h1{
+    font-size: 49px;
+  }
   }
 
   #required-text {
@@ -300,6 +333,15 @@ Form {
   .task-buttons {
     bottom: 8%;
   }
+
+  .div-add-task {
+    margin-bottom: 86%;
+    margin-top: 65%;
+
+    h1{
+    font-size: 42px;
+  }
+  }
 }
 
 @media (max-width: 550px) {
@@ -307,6 +349,15 @@ Form {
   .description-input,
   .date-input {
     width: 300px;
+  }
+
+  .div-add-task {
+    margin-bottom: 95%;
+    margin-top: 65%;
+
+    h1{
+    font-size: 38px;
+  }
   }
 
   .creat-button {
@@ -324,10 +375,43 @@ Form {
   }
 }
 
+@media (max-width: 500px) {
+  .div-add-task {
+    margin-bottom: 88%;
+    margin-top: 46%;
+
+    h1{
+    font-size: 30px;
+  }
+  }
+}
+
 @media (max-width: 400px) {
   .title-input,
   .description-input,
   .date-input {
     width: 270px;
+  }
+
+  .creat-button {
+    font-size: 16px;
+
+    img {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .clear-button {
+    font-size: 16px;
+  }
+
+  .div-add-task {
+    margin-top: 54%;
+    margin-bottom: 112%;
+
+    h1{
+    font-size: 24px;
+  }
   }
 }

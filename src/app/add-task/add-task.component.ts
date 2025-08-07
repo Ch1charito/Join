@@ -66,7 +66,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   submitTask(form: NgForm) {
-    if (!form.valid) {
+    if (!form.valid || !this.tasks.category) {
       console.warn('Formular ungültig');
       return;
     }
@@ -106,4 +106,9 @@ export class AddTaskComponent implements OnInit {
       completed: false
     }));
   }
+  checkMinDate(value: string) {
+  if (value < this.minDate) {
+    this.tasks.date = this.minDate;
+  }
+}
 }

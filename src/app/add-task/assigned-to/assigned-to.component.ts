@@ -13,6 +13,7 @@ import { ContactInterface } from '../../interfaces/contact.interface';
 export class AssignedToComponent {
   @Output() selectedContactsChange = new EventEmitter<ContactInterface[]>();
   @Input() selectedAssignedContacts: ContactInterface[] = [];
+  @Input() customClass: string = '';
   firebaseService = inject(FirebaseService);
   showContactDropdown: boolean = false;
   /* selectedAssignedContacts: ContactInterface[] = []; */

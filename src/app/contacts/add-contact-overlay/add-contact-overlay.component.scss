@@ -269,6 +269,7 @@
       display: flex;
       justify-content: space-between;
       gap: 2%;
+      
       @media (max-width: 1200px) {
         margin-bottom: 4vh;
         margin-top: 2vh;
@@ -301,6 +302,7 @@
           color: #29abe2;
           transform: scale(1.05);
           border: 1px solid #29abe2;
+          cursor: pointer;
         }
         &:hover img {
           filter: brightness(0) saturate(100%) invert(50%) sepia(100%)
@@ -329,6 +331,7 @@
         &:hover {
           background-color: rgb(41, 171, 226);
           transform: scale(1.05);
+          cursor: pointer;
         }
       }
     }

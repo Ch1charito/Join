@@ -17,7 +17,7 @@
     <ul class="subtask-list">
         <li *ngFor="let task of subtasks; let i = index">
             <div *ngIf="task.editing; else viewMode" class="edit-mode">
-                <input [(ngModel)]="task.text" />
+                <input [(ngModel)]="task.text" (blur)="onSubtaskBlur(i, task.text)" data-subtask-input/>
                 <img (click)="deleteSubtask(i)" src="assets/icons/delete.png" alt="Delete" />
                 <img (click)="confirmEdit(i, task.text)" src="assets/icons/check.png" alt="Confirm" />
             </div>

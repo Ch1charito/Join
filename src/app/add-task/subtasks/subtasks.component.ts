@@ -38,6 +38,10 @@ export class SubtasksComponent {
 
   startEdit(index: number) {
     this.subtasks[index].editing = true;
+    setTimeout(() => {
+    const input = document.querySelectorAll<HTMLInputElement>('input[data-subtask-input]')[index];
+    input?.focus();
+  });
   }
 
   confirmEdit(index: number, newText: string) {
@@ -63,7 +67,7 @@ export class SubtasksComponent {
     this.isInputFocused = true;
   }
 
- onInputBlur(event: FocusEvent) {
+  onInputBlur(event: FocusEvent) {
   const relatedTarget = event.relatedTarget as HTMLElement;
   
   if (relatedTarget && relatedTarget.closest('.input-group')) {
@@ -78,4 +82,13 @@ export class SubtasksComponent {
   clearNewSubtask() { 
     this.newSubtask = '';
   }
+
+  onSubtaskBlur(index: number, text: string) {
+  const trimmed = text.trim();
+  if (trimmed) {
+    this.confirmEdit(index, trimmed);
+  } else {
+    this.deleteSubtask(index);
+  }
+}
 }

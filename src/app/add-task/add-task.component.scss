@@ -107,6 +107,10 @@ form {
   padding: 12px;
   width: 430px;
   height: 96px;
+  max-height: 96px;
+  max-width: 430px;
+  min-height: 96px;
+  min-width: 430px;
   border-radius: 10px;
   border: 1px solid #d1d1d1;
   cursor: pointer;

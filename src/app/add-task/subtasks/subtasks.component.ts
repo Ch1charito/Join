@@ -25,7 +25,7 @@ export class SubtasksComponent {
   addSubtask() {
     const trimmed = this.newSubtask.trim();
     if (trimmed) {
-      this.subtasks.push({ text: trimmed, editing: false });
+      this.subtasks.unshift({ text: trimmed, editing: false });
       this.newSubtask = '';
       this.emitSubtasks();
     }

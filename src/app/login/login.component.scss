@@ -1,0 +1,23 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3rem;
+    margin: 1rem;
+}
+.main-content{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex: 1;
+}
+.footer-content{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}

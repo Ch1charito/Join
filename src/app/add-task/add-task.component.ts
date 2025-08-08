@@ -40,7 +40,7 @@ export class AddTaskComponent implements OnInit {
 
   selectedPriority: PriorityKey | null = 'medium';
   showOverlay: boolean = false;
-  minDate: string = new Date().toISOString().split('T')[0];
+  minDate: string = this.formatLocalDate();
 
   @Output() taskSubmitted = new EventEmitter<void>();
 
@@ -64,7 +64,12 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
     this.tasks.status = this.status;
   }
-
+  private formatLocalDate(d = new Date()) {
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  }
   submitTask(form: NgForm) {
     if (!form.valid || !this.tasks.category || this.isDateInvalid) {
       console.warn('Formular ungültig');

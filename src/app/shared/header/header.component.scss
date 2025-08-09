@@ -118,6 +118,26 @@ header {
     }
   }
 }
+#help{
+  display: none;
+  @media (max-width: 1200px) {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    width: 98%;
+    height: 48px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 16px;
+
+    &:hover {
+      background: #3c4a5f;
+    }
+  }
+}
+
 
 .d-none {
   display: none;

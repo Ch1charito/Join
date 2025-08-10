@@ -3,7 +3,16 @@
     flex-direction: column;
     height: 100vh;
     background: #F5F5F5;
+    animation: content-fadein 2s ease forwards;
+    opacity: 0;
+    
+    @keyframes content-fadein {
+    to {
+        opacity: 1;
+    }
+    }
 }
+
 .topbar{
     display: flex;
     justify-content: space-between;
@@ -12,14 +21,30 @@
     margin: 1rem;
 }
 .logo{
-    //keyframes
+    animation: logo-slide 2s ease forwards;
+    z-index: 2;
+    
     @media(max-width: 575px){
         img{
         width: 72px;
         max-width: 100%;
     }
         }
+    @keyframes logo-slide {
+        
+        0% {
+            transform: translate(40vw, 40vh) scale(1.5);
+            opacity: 0;
+        }
+        30% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 1;
+        }
     }
+}
 .signup-desktop{
     display: flex;
     align-items: center;

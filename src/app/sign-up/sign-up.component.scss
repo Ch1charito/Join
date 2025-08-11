@@ -24,29 +24,13 @@
     margin: 1rem;
 }
 .logo{
-    animation: logo-slide 2s ease forwards;
-    z-index: 2;
-    
     @media(max-width: 575px){
         img{
         width: 72px;
         max-width: 100%;
     }
         }
-    @keyframes logo-slide {
-        
-        0% {
-            transform: translate(40vw, 40vh) scale(1.5);
-            opacity: 0;
-        }
-        30% {
-            opacity: 1;
-        }
-        100% {
-            transform: translate(0, 0) scale(1);
-            opacity: 1;
-        }
-    }
+    
 }
 .main-content{
     display: flex;

@@ -1,10 +1,13 @@
 .content{
     display: flex;
     flex-direction: column;
+    justify-content: start;
     height: 100vh;
     background: #F5F5F5;
     animation: content-fadein 2s ease forwards;
     opacity: 0;
+    max-width: 1920px;
+    width: 100%;
     
     @keyframes content-fadein {
     to {

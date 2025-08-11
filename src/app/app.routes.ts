@@ -9,7 +9,6 @@ import { HelpPageComponent } from './help-page/help-page.component';
 import { LegalNoticeComponent } from './legal-notice/legal-notice.component';
 import { LegalNoticeGuestComponent } from './legal-notice-guest/legal-notice-guest.component';
 import { PrivacyPolicyGuestComponent } from './privacy-policy-guest/privacy-policy-guest.component';
-import { LoginComponent } from './login/login.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [

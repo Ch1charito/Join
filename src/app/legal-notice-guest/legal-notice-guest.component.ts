@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Location, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-legal-notice-guest',
@@ -9,4 +10,11 @@ import { RouterLink } from '@angular/router';
 })
 export class LegalNoticeGuestComponent {
 
+  constructor(private location: Location) {
+
+    }
+
+  goBack(): void {
+    this.location.back();
+  }
 }

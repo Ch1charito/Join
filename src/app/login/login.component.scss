@@ -1,0 +1,285 @@
+.content{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: #F5F5F5;
+    animation: content-fadein 2s ease forwards;
+    opacity: 0;
+    
+    @keyframes content-fadein {
+    to {
+        opacity: 1;
+    }
+    }
+}
+
+.topbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 3rem;
+    margin: 1rem;
+}
+.logo{
+    animation: logo-slide 2s ease forwards;
+    z-index: 2;
+    
+    @media(max-width: 575px){
+        img{
+        width: 72px;
+        max-width: 100%;
+    }
+        }
+    @keyframes logo-slide {
+        
+        0% {
+            transform: translate(40vw, 40vh) scale(1.5);
+            opacity: 0;
+        }
+        30% {
+            opacity: 1;
+        }
+        100% {
+            transform: translate(0, 0) scale(1);
+            opacity: 1;
+        }
+    }
+}
+.signup-desktop{
+    display: flex;
+    align-items: center;
+    padding: 0 2rem 2rem 0;
+    gap: 2rem;
+
+
+    span{
+        font-size: 1.2rem;
+    }
+
+    .signup-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2a3647;
+        cursor: pointer;
+        white-space: nowrap;
+        font-weight: bold;
+        font-size: 1rem;
+        color: white;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        height: 3rem;
+
+        &:hover {
+        background: #29abe2;
+        box-shadow: 0px 3px 7px -3px rgba(0, 0, 0, 0.3);
+        }
+    }
+    @media(max-width: 768px){
+        span{
+            font-size: 1rem;
+        }
+    }
+    @media(max-width: 575px){
+        display: none;
+    }
+}
+.signup-mobile{
+    display: none;
+    span{
+        font-size: 1.2rem;
+    }
+
+    .signup-mobile-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2a3647;
+        cursor: pointer;
+        white-space: nowrap;
+        font-weight: bold;
+        font-size: 1rem;
+        color: white;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        height: 3rem;
+
+        &:hover {
+        background: #29abe2;
+        box-shadow: 0px 3px 7px -3px rgba(0, 0, 0, 0.3);
+        }
+    }
+    @media(max-width: 575px){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 0;
+        margin: 0 0 4rem 0;
+        gap: 32px;
+    }
+}
+.main-content{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    flex: 1;
+
+    .login-card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        max-width: 720px;
+        width: 540px;
+        height: 100%;
+        max-height: 400px;
+        gap: 1.5rem;
+        
+        @media(max-width: 575px){
+            width: 100%;
+            max-width: 470px;
+            margin: 2rem;
+        }
+        @media(max-width: 375px){
+            max-width: 300px;
+            margin: 1rem;
+        }
+
+    .title-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        h1{
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .brake-line{
+        height: 3px;
+        border-radius: 12px;
+        background: #29abe2;
+        width: 100%;
+    }
+    }
+
+    .input-group{
+        display: flex;
+        justify-content: space-between;
+        border: 1px solid #eee;
+        cursor: pointer;
+        border-radius: 8px;
+        padding: 0.5rem;
+        width: 100%;
+        max-width: 320px;
+
+        @media(max-width: 575px){
+            width: 100%;
+            max-width: 270px;
+        }
+
+        .icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 0.5rem;
+        }
+
+        input{
+            border: none;
+            outline: none;
+            padding: 0 0.25rem;
+            width: 100%;
+        }
+        img{
+            width: 16px;
+            height: 16px;
+            object-fit: contain;
+        }
+    }
+    
+    .actions{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+        gap: 2rem;
+
+        @media(max-width: 575px){
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 80%;
+        }
+
+    .login-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #2a3647;
+        cursor: pointer;
+        white-space: nowrap;
+        font-weight: bold;
+        font-size: 1rem;
+        color: white;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        height: 3rem;
+
+        &:hover {
+        background: #29abe2;
+        box-shadow: 0px 3px 7px -3px rgba(0, 0, 0, 0.3);
+        }
+        @media(max-width: 575px){
+                width: 100%;
+            }
+        }
+
+    .guest-btn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: transparent;
+        cursor: pointer;
+        white-space: nowrap;
+        font-weight: bold;
+        font-size: 1rem;
+        color: #000000;
+        border: 1px solid black;
+        padding: 0.5rem 0.75rem;
+        border-radius: 8px;
+        height: 3rem;
+
+        &:hover {
+            box-shadow: 0px 3px 7px -3px rgba(0, 0, 0, 0.3);
+            color: #29abe2;
+            border-color: #29abe2;
+        }
+        @media(max-width: 575px){
+                width: 100%;
+            }
+        }
+    }
+    }
+}
+.footer-content{
+    display: flex;
+    justify-content: center;
+    padding: 0 0 4rem 0;
+    gap: 2rem;
+
+    a{
+        color: #00000060;
+        text-decoration: none;
+
+        &:hover{
+            color: #29abe2;
+        }
+    }
+}

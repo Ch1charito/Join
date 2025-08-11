@@ -3,12 +3,15 @@
     <p>Kanban Project Management Tool</p>
     <img id="logo-resp" src="assets/images/header/logo-resp.png" alt="" />
     <div class="help-and-menu">
-      <img src="assets/images/header/help.png" alt="" />
+      <a [routerLink]="['/help']">
+        <img src="assets/images/header/help.png" alt="Help" />
+      </a>
       <button (click)="toggleOverlay()">SM</button>
     </div>
-      <div class="overlay" [class.d-none]="!showOverlay">
-      <a href="">Legal Notice</a>
-      <a href="">Privacy Policy</a>
+    <div class="overlay" [class.d-none]="!showOverlay">
+      <a id="help" [routerLink]="['/help']">Help</a>
+      <a [routerLink]="'/legal-notice'">Legal Notice</a>
+      <a [routerLink]="'/privacy-policy'">Privacy Policy</a>
       <a href="">Log Out</a>
     </div>
   </div>

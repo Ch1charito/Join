@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-legal-notice-guest',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './legal-notice-guest.component.html',
   styleUrl: './legal-notice-guest.component.scss'
 })

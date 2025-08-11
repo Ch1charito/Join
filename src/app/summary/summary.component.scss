@@ -120,10 +120,19 @@
                 transform: scale(1.03);
                 background: #2A3647;
                 color: white;
-                .icon-check,
-                .icon-edit {
+                .icon-check{
                     color: #2A3647;
                     background: white;
+                    background-image: url('../../../public/assets/images/summary/vector-hover.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
+                }
+                .icon-edit{
+                    color: #2A3647;
+                    background: white;
+                    background-image: url('../../../public/assets/images/summary/edit-hover.png');
+                    background-repeat: no-repeat;
+                    background-position: center;
                 }
             }
             &:active {
@@ -353,6 +362,7 @@
     }
 }
 
+
 .icon-edit,
 .icon-check,
 .icon-urgent {
@@ -393,4 +403,19 @@
 
 .icon-urgent {
     background: #FF3D00;
+    background-image: url('../../../public/assets/images/summary/prio.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-edit{
+    background-image: url('../../../public/assets/images/summary/edit.png');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.icon-check{
+    background-image: url('../../../public/assets/images/summary/vector.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }

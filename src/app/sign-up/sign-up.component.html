@@ -64,7 +64,7 @@
     
     <!-- checkbox -->
     <div class="privacy-policy" [class.invalid]="policy.invalid && policy.touched">
-        <input type="checkbox" id="policy" name="policy" [(ngModel)]="formData.policy" required #policy="ngModel">I accept the<a href="">Privacy policy</a>
+        <input type="checkbox" id="policy" name="policy" [(ngModel)]="formData.policy" required #policy="ngModel">I accept the<a [routerLink]="'/privacy-policy-guest'">Privacy policy</a>
     </div>
     <div class="error" *ngIf="policy.invalid && policy.touched">
         You must accept the privacy policy.
@@ -76,7 +76,7 @@
 </main>
 
 <footer class="footer-content">
-    <a href="#">Privacy Policy</a>
-    <a href="#">Legal notice</a>
+    <a [routerLink]="'/privacy-policy-guest'">Privacy Policy</a>
+    <a [routerLink]="'/legal-notice-guest'">Legal notice</a>
 </footer>
 </div>

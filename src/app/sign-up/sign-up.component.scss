@@ -102,8 +102,13 @@
     }
     }
     }
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
 
-    .input-group{
+        .input-group{
         display: flex;
         justify-content: space-between;
         border: 1px solid #eee;
@@ -113,6 +118,17 @@
         width: 100%;
         max-width: 320px;
         margin: 0.5rem;
+        transition: border-color .15s ease, box-shadow .15s ease;
+
+        &:focus-within {
+            border-color: #29abe2;
+        }
+
+        &.invalid {
+            border-color: #e74c3c;
+        }
+
+        
 
         @media(max-width: 575px){
             width: 100%;
@@ -210,6 +226,9 @@
     box-shadow: none;
     }
 }
+    }
+
+    
 .footer-content{
     display: flex;
     justify-content: center;

@@ -6,6 +6,30 @@ section {
         height: 92dvh;
     }
 }
+.button-area{
+        justify-content: space-between;
+        display: flex;
+        button{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            color: #29ABE2;
+            font-size: 35px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 4px;
+            &:hover{
+                background: #0C2E621F;
+            }
+            @media(max-width: 965px) {
+                display: flex;
+            }
+        }
+}
 
 .main-content-input {
     display: flex;

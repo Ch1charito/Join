@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { HeaderComponent } from "../shared/header/header.component";
 import { SideBarComponent } from "../shared/side-bar/side-bar.component";
 import { RouterLink } from '@angular/router';
@@ -6,6 +6,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { TaskInterface } from '../interfaces/task.interface';
 import { Subscription } from 'rxjs';
 import { Firestore, doc, getDoc, serverTimestamp, setDoc } from '@angular/fire/firestore';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-summary',
@@ -24,12 +25,16 @@ export class SummaryComponent implements OnInit, OnDestroy {
   upcomingDeadline: string | null = null;
   greetingText = '';
 
+  private authService = inject(AuthService);
+  userEmail: string | null = null;
   private subscription!: Subscription;
 
   constructor(
     private firebaseService: FirebaseService,
     private firestore: Firestore
-  ) {}
+  ) {
+    this.userEmail = this.authService.loggedInUsername();
+  }
 
   async ngOnInit() {
     this.subscription = this.firebaseService.taskList$.subscribe((tasks: TaskInterface[]) => {

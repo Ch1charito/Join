@@ -66,6 +66,9 @@ header {
         @media (max-width: 1200px) {
           display: none;
         }
+        &:hover {
+                    transform: scale(1.3);
+                }
       }
 
       button {

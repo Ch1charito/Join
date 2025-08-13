@@ -1,3 +1,5 @@
+import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -6,35 +8,40 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [RouterLink, ReactiveFormsModule],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss'
 })
 export class SignUpComponent {
-  submitted = false;
   private authService = inject(AuthService);
-  namePattern = "^[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,}$";
-  passwordPattern = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[^\\w\\s]).{8,}$";
-  emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-
-  formData = {
-    name: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    policy: false
-  };
-  
-
-  onSubmit(form: NgForm) {
-    this.submitted = true;
-    const mismatch = this.formData.password !== this.formData.confirmPassword;
-    if (form.invalid || mismatch) {
-      form.form.markAllAsTouched();
+  signupForm;
+  constructor(private fb: FormBuilder) {
+    this.signupForm = this.fb.group(
+      {
+        name: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', [Validators.required]],
+        policy: [false, [Validators.requiredTrue]],
+  },
+  {
+    validators: [SignUpComponent.passwordsMatchValidator],
+  }
+);
+  }
+onSubmit() {
+    if (this.signupForm.invalid) {
+      this.signupForm.markAllAsTouched();
       return;
     }
-    console.log('Form submitted', this.formData);
-    // later Firebase-Auth
+    const { name, email } = this.signupForm.value;
+    console.log('loogg...', { name, email, password: '...' });
+  }
+
+  static passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {
+    const pw = group.get('password')?.value;
+    const cpw = group.get('confirmPassword')?.value;
+    return pw && cpw && pw !== cpw ? { passwordsMismatch: true } : null;
   }
 
   //#region account auth
@@ -50,3 +57,4 @@ export class SignUpComponent {
   }
   //#endregion
 }
+

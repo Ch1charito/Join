@@ -6,10 +6,11 @@
 </header>
 
 <main class="main-content">
-<form class="signup-card" (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
+<div class="signup-card">
+
     <div class="signup-header" >
         <a routerLink="/login" class="login-btn">
-        <img src="./assets/icons/arrow-left-line.png" alt="">
+        <img src="./assets/icons/arrow-left-line.png" alt="go back to login">
     </a>
     <div class="title-container">
         <h1>Sign up</h1>
@@ -17,62 +18,99 @@
     </div>
     </div>
 
-    <!-- name  -->
-    <div class="input-group" [class.invalid]="name.invalid && name.touched">
-    <input type="text" placeholder="Name" name="name" [(ngModel)]="formData.name" required    [pattern]="namePattern" #name="ngModel">
-        <span class="icon">
-            <img src="./assets/icons/person.png" alt="">
-        </span>
-    </div>
-    <div class="error" *ngIf="name.invalid && name.touched">Name is required.</div>
+    <!-- form  -->
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
 
-    <!-- email  -->
-    <div class="input-group" [class.invalid]="email.invalid && email.touched">
-    <input type="email" placeholder="Email" name="email" [(ngModel)]="formData.email" required
-    [pattern]="emailPattern" #email="ngModel">
-        <span class="icon">
-            <img src="./assets/icons/mail.png" alt="">
-        </span>
-    </div>
-    <div class="error" *ngIf="email.invalid && email.touched">
-        <span *ngIf="email.errors?.['required']">Email is required.</span>
-        <span *ngIf="email.errors?.['email']">Invalid email format.</span>
+    <!-- NAME -->
+    <div class="input-group"
+        [class.invalid]="signupForm.get('name')?.invalid && 
+                        (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)">
+    <input id="name" type="text" placeholder="Name"
+            formControlName="name"
+            [attr.aria-invalid]="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'true' : 'false'"
+            aria-describedby="err-name"/>
+    <span class="icon"><img src="./assets/icons/person.png" alt="person"></span>
     </div>
 
-    <!-- password  -->
-    <div class="input-group" [class.invalid]="password.invalid && password.touched">
-    <input type="password" placeholder="Password" name="password" [(ngModel)]="formData.password" required [pattern]="passwordPattern" #password="ngModel">
-        <span class="icon">
-            <img src="./assets/icons/lock.png" alt="">
-        </span>
+    @if (signupForm.get('name')?.errors && 
+        (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)) {
+    <div id="err-name" class="error">
+        @if (signupForm.get('name')?.errors?.['required']) { Name is required. }
     </div>
-    <div class="error" *ngIf="password.invalid && password.touched">
-        <span *ngIf="password.errors?.['required']">Password is required.</span>
-        <span *ngIf="password.errors?.['minlength']">Min 8 chars, 1 upper, 1 lower, 1 number, 1 special.</span>
+    }
+
+    <!-- EMAIL -->
+    <div class="input-group"
+        [class.invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
+        <input id="email" name="email" type="email" placeholder="Email"
+            inputmode="email" autocomplete="email"
+            formControlName="email"
+            [attr.aria-invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'true' : 'false'"
+            aria-describedby="err-email"/>
+        <span class="icon"><img src="./assets/icons/mail.png" alt="mail"></span>
+    </div>
+    @if (signupForm.get('email')?.errors && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)) {
+        <div id="err-email" class="error">
+        @if (signupForm.get('email')?.errors?.['required']) { Email is required. }
+        @if (signupForm.get('email')?.errors?.['email']) { Please enter a valid email. }
+        </div>
+    }
+
+    <!-- PASSWORD -->
+    <div class="input-group"
+        [class.invalid]="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
+        <input id="password" name="password" type="password" placeholder="Password"
+            autocomplete="new-password" formControlName="password"
+            [attr.aria-invalid]="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'true' : 'false'"
+            aria-describedby="err-password"/>
+        <span class="icon"><img src="./assets/icons/lock.png" alt="lock"></span>
+    </div>
+    @if (signupForm.get('password')?.errors && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)) {
+        <div id="err-password" class="error">
+        @if (signupForm.get('password')?.errors?.['required']) { Password is required. }
+        @if (signupForm.get('password')?.errors?.['minlength']) { Min. 8 characters. }
+        </div>
+    }
+
+    <!-- CONFIRM PASSWORD -->
+    <div class="input-group"
+        [class.invalid]="(signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
+                            (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch'))">
+        <input id="confirmPassword" name="confirmPassword" type="password"
+            placeholder="Confirm password" autocomplete="new-password"
+            formControlName="confirmPassword"
+            [attr.aria-invalid]="(signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
+                                (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch')) ? 'true' : 'false'"
+            aria-describedby="err-confirm"/>
+        <span class="icon"><img src="./assets/icons/lock.png" alt="lock"></span>
+
+    </div>
+    @if ((signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
+        (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch'))) {
+        <div id="err-confirm" class="error">
+        @if (signupForm.get('confirmPassword')?.errors?.['required']) { Please confirm your password. }
+        @if (signupForm.hasError('passwordsMismatch')) { Passwords do not match. }
+        </div>
+    }
+
+    <!-- POLICY -->
+        <div class="privacy-policy"
+        [class.invalid]="signupForm.get('policy')?.invalid && (signupForm.get('policy')?.dirty || signupForm.get('policy')?.touched)">
+        <input type="checkbox" id="policy" formControlName="policy"
+            [attr.aria-invalid]="signupForm.get('policy')?.invalid && (signupForm.get('policy')?.dirty || signupForm.get('policy')?.touched) ? 'true' : 'false'">
+        <label for="policy">
+        I accept the <a routerLink="/privacy-policy-guest">Privacy policy</a>
+        </label>
     </div>
 
-    <!-- confirm password  -->
-    <div class="input-group" [class.invalid]="confirmPassword.invalid && confirmPassword.touched">
-    <input type="password" placeholder="Confirm Password" name="confirmPassword" [(ngModel)]="formData.confirmPassword" required [pattern]="passwordPattern" #confirmPassword="ngModel">
-        <span class="icon">
-            <img src="./assets/icons/lock.png" alt="">
-        </span>
-    </div>
-    <div class="error" *ngIf="confirmPassword.touched && formData.password !== formData.confirmPassword">
-        Passwords do not match.
-    </div>
-    
-    <!-- checkbox -->
-    <div class="privacy-policy" [class.invalid]="policy.invalid && policy.touched">
-        <input type="checkbox" id="policy" name="policy" [(ngModel)]="formData.policy" required #policy="ngModel">I accept the<a [routerLink]="'/privacy-policy-guest'">Privacy policy</a>
-    </div>
-    <div class="error" *ngIf="policy.invalid && policy.touched">
-        You must accept the privacy policy.
-    </div>
     <div class="actions">
-        <button type="submit" class="signup-btn">Sign up</button>
+        <button class="signup-btn" type="submit"
+                [disabled]="signupForm.invalid || signupForm.pending">
+        Sign up
+        </button>
     </div>
-</form>
+    </form>
+</div>
 </main>
 
 <footer class="footer-content">

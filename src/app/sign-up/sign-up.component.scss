@@ -219,16 +219,41 @@
             }
         }
     }
-        .signup-btn[disabled] {
+    .signup-btn[disabled] {
     background: #b9c0cc;
     cursor: not-allowed;
     opacity: .8;
     box-shadow: none;
     }
+}}}
+.success-background {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    background: #2a364759;
 }
-    }
+    .success-overlay{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 60vh);
+        background: #2a3647;
+        color: #fff;
+        border-radius: 8px;
+        padding: 1rem;
+        font-size: 1rem;
+        white-space: nowrap;
+        animation: slide-up 1s forwards;
+        }
+            @keyframes slide-up {
+            from {
+                transform: translate(-50%, 60vh); opacity: 0; 
+            }
+            to   {
+                transform: translate(-50%, -50%); opacity: 1;
+            }
+            }
 
-    
 .footer-content{
     display: flex;
     justify-content: center;
@@ -243,5 +268,4 @@
             color: #29abe2;
         }
     }
-}
 }

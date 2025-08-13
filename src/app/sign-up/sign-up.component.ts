@@ -1,6 +1,6 @@
 import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Component, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -11,7 +11,12 @@ import { AuthService } from '../services/auth.service';
 })
 export class SignUpComponent {
   private authService = inject(AuthService);
+  private router = inject(Router)
   signupForm;
+  isSubmitting = false;
+  showSuccessMessage = false;
+  
+
   constructor(private fb: FormBuilder) {
     this.signupForm = this.fb.group(
       {
@@ -20,19 +25,36 @@ export class SignUpComponent {
         password: ['', [Validators.required, Validators.minLength(8)]],
         confirmPassword: ['', [Validators.required]],
         policy: [false, [Validators.requiredTrue]],
-  },
-  {
-    validators: [SignUpComponent.passwordsMatchValidator],
+      }, {
+        validators: [SignUpComponent.passwordsMatchValidator],
+      });
   }
-);
-  }
-onSubmit() {
+
+  onSubmit() {
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
       return;
     }
     const { name, email } = this.signupForm.value;
     console.log('loogg...', { name, email, password: '...' });
+
+    this.isSubmitting = true;
+    this.signupForm.disable({ emitEvent: false });
+
+    //  Overlay
+    this.showSuccessMessage  = true;
+
+    // Nach 1s zur Login-Page
+    setTimeout(() => {
+      this.goToLogin();
+    }, 1500);
+  }
+
+  goToLogin() {
+    this.router.navigateByUrl('/login');
+    this.signupForm.reset();
+    this.isSubmitting = false;
+    this.showSuccessMessage = false;;
   }
 
   static passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {

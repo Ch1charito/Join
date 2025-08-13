@@ -11,31 +11,33 @@
 </header>
 
 <main class="main-content">
-<div class="login-card">
-    <div class="title-container">
-        <h1>Log in</h1>
-        <div class="brake-line"></div>
-    </div>
+<form>
+    <div class="login-card">
+        <div class="title-container">
+            <h1>Log in</h1>
+            <div class="brake-line"></div>
+        </div>
 
-    <div class="input-group">
-    <input type="email" placeholder="Email">
-        <span class="icon">
-            <img src="./assets/icons/mail.png" alt="">
-        </span>
-    </div>
+        <div class="input-group">
+        <input type="email" placeholder="Email" autocomplete="email">
+            <span class="icon">
+                <img src="./assets/icons/mail.png" alt="">
+            </span>
+        </div>
 
-    <div class="input-group">
-    <input type="password" placeholder="Password">
-        <span class="icon">
-            <img src="./assets/icons/lock.png" alt="">
-        </span>
-    </div>
+        <div class="input-group">
+        <input type="password" placeholder="Password" autocomplete="current-password">
+            <span class="icon">
+                <img src="./assets/icons/lock.png" alt="">
+            </span>
+        </div>
 
-    <div class="actions">
-        <button class="login-btn">Log in</button>
-        <button (click)="guestLogIn()" class="guest-btn">Guest Log in</button>
+        <div class="actions">
+            <button class="login-btn">Log in</button>
+            <button (click)="guestLogIn()" class="guest-btn">Guest Log in</button>
+        </div>
     </div>
-</div>
+</form>
 </main>
 <div class="signup-mobile">
     <span>Not a Join user?</span>

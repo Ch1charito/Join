@@ -1,4 +1,4 @@
-import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, ValidationErrors, FormGroup} from '@angular/forms';
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
@@ -14,16 +14,21 @@ import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 export class SignUpComponent {
   private authService = inject(AuthService);
   private router = inject(Router)
-  
+
   private draftKey = 'signUpForm';
 
-  signupForm;
+  signupForm!: FormGroup;
   isSubmitting = false;
   showSuccessMessage = false;
   
-
   constructor(private fb: FormBuilder) {
-    this.signupForm = this.fb.group(
+    this.buildForm();
+    this.restoreDraft();
+    this.initAutosave();
+  }
+
+  private buildForm() {
+    this.signupForm = this.fb.nonNullable.group(
       {
         name: ['', [Validators.required]],
         email: ['', [Validators.required, Validators.email]],
@@ -33,17 +38,24 @@ export class SignUpComponent {
       }, {
         validators: [SignUpComponent.passwordsMatchValidator],
       });
-      const saved = sessionStorage.getItem(this.draftKey);
-    if (saved) {
-      this.signupForm.patchValue(JSON.parse(saved), { emitEvent: false });
-      this.signupForm.updateValueAndValidity({ emitEvent: false });
     }
-  this.signupForm.valueChanges
-    .pipe(debounceTime(150), takeUntilDestroyed())
-    .subscribe((_value) => {
-      const { name, email, policy } = this.signupForm.getRawValue();
-      sessionStorage.setItem(this.draftKey, JSON.stringify({ name, email, policy }));
-    });
+    
+  private restoreDraft(){
+    const saved = sessionStorage.getItem(this.draftKey);
+    if (!saved) return;
+      this.signupForm.patchValue(JSON.parse(saved), { emitEvent: false });
+    }
+  private initAutosave(){
+      this.signupForm.valueChanges
+      .pipe(debounceTime(150), takeUntilDestroyed())
+      .subscribe(() => this.saveDraft());
+  }
+  private saveDraft() {
+    const { name, email, policy } = this.signupForm.getRawValue();
+    sessionStorage.setItem(this.draftKey, JSON.stringify({ name, email, policy }));
+  }
+  private clearDraft(){
+    sessionStorage.removeItem(this.draftKey);
   }
 
   onSubmit() {
@@ -71,7 +83,7 @@ export class SignUpComponent {
     this.signupForm.reset();
     this.isSubmitting = false;
     this.showSuccessMessage = false;
-    sessionStorage.removeItem(this.draftKey); 
+    this.clearDraft();
   }
 
   static passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {

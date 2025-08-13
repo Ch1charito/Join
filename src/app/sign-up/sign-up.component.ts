@@ -2,6 +2,8 @@ import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl, Validati
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { debounceTime} from 'rxjs';
+import {takeUntilDestroyed} from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-sign-up',
@@ -12,6 +14,9 @@ import { AuthService } from '../services/auth.service';
 export class SignUpComponent {
   private authService = inject(AuthService);
   private router = inject(Router)
+  
+  private draftKey = 'signUpForm';
+
   signupForm;
   isSubmitting = false;
   showSuccessMessage = false;
@@ -28,6 +33,17 @@ export class SignUpComponent {
       }, {
         validators: [SignUpComponent.passwordsMatchValidator],
       });
+      const saved = sessionStorage.getItem(this.draftKey);
+    if (saved) {
+      this.signupForm.patchValue(JSON.parse(saved), { emitEvent: false });
+      this.signupForm.updateValueAndValidity({ emitEvent: false });
+    }
+  this.signupForm.valueChanges
+    .pipe(debounceTime(150), takeUntilDestroyed())
+    .subscribe((_value) => {
+      const { name, email, policy } = this.signupForm.getRawValue();
+      sessionStorage.setItem(this.draftKey, JSON.stringify({ name, email, policy }));
+    });
   }
 
   onSubmit() {
@@ -54,7 +70,8 @@ export class SignUpComponent {
     this.router.navigateByUrl('/login');
     this.signupForm.reset();
     this.isSubmitting = false;
-    this.showSuccessMessage = false;;
+    this.showSuccessMessage = false;
+    sessionStorage.removeItem(this.draftKey); 
   }
 
   static passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {
@@ -76,4 +93,3 @@ export class SignUpComponent {
   }
   //#endregion
 }
-

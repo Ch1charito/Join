@@ -93,7 +93,7 @@
             <input type="checkbox" id="policy" formControlName="policy"
                 [attr.aria-invalid]="signupForm.get('policy')?.invalid && (signupForm.get('policy')?.dirty || signupForm.get('policy')?.touched) ? 'true' : 'false'">
         <label for="policy">
-            I accept the <a routerLink="/privacy-policy-guest">Privacy policy</a>
+            I accept the <a routerLink="/privacy-policy-guest" rel="noopener noreferrer">Privacy policy</a>
         </label>
     </div>
 

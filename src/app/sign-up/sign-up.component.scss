@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: start;
     height: 100vh;
-    background: #F5F5F5;
     animation: content-fadein 2s ease forwards;
     opacity: 0;
     max-width: 1920px;
@@ -227,8 +226,7 @@
     }
 }
     }
-
-    
+}
 .footer-content{
     display: flex;
     justify-content: center;
@@ -243,5 +241,4 @@
             color: #29abe2;
         }
     }
-}
 }

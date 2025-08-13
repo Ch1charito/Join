@@ -15,14 +15,14 @@
                     <div class="medium-bubble" [routerLink]="['/board']">
                         <div class="icon-edit"></div>
                         <div class="flex-col">
-                            <span class="dynamic-number">3</span>
+                            <span class="dynamic-number">{{ todoCount }}</span>
                             <span>To-do</span>
                         </div>
                     </div>
                     <div class="medium-bubble" [routerLink]="['/board']">
                         <div class="icon-check"></div>
                         <div class="flex-col">
-                            <span class="dynamic-number">3</span>
+                            <span class="dynamic-number">{{ doneCount }}</span>
                             <span>Done</span>
                         </div>
                     </div>
@@ -31,37 +31,37 @@
                     <div id="urgent-box">
                         <div class="icon-urgent"></div>
                         <div class="flex-col">
-                            <span class="dynamic-number">3</span>
+                            <span class="dynamic-number">{{ urgentCount }}</span>
                             <span>Urgent</span>
                         </div>
                     </div>
                     <div class="grey-hyphen"></div>
                     <div id="date-box">
-                    <b>October 16, 2022</b>
-                    <span>Upcoming Deadline</span>
-                </div>
+                        <b>{{ upcomingDeadline || '—' }}</b>
+                        <span>Upcoming Deadline</span>
+                    </div>
                 </div>
                 <div id="third-row">
                     <div class="flex-col small-bubble" [routerLink]="['/board']">
-                        <span class="dynamic-number">3</span>
+                        <span class="dynamic-number">{{ allTasksCount }}</span>
                         <span>Tasks in <br> Board</span>
                     </div>
                     <div class="flex-col small-bubble" [routerLink]="['/board']">
-                        <span class="dynamic-number">3</span>
+                        <span class="dynamic-number">{{ inProgressCount }}</span>
                         <span>Tasks In <br> Progress</span>
                     </div>
                     <div class="flex-col small-bubble" [routerLink]="['/board']">
-                        <span class="dynamic-number">3</span>
+                        <span class="dynamic-number">{{ awaitingFeedbackCount }}</span>
                         <span>Awaiting <br> Feedback</span>
                     </div>
                 </div>
             </div>
             <div id="greeting">
                 <div class="flex-col">
-                    <span>Good Morning</span>
-                    <span id="username">Adems Ente</span>
+                    <span>{{ greetingText }}</span>
+                    <span id="username">{{userEmail}}</span>
                 </div>
-        </div>
+            </div>
         </div>
     </div>
 </section>

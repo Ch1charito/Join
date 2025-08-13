@@ -17,6 +17,33 @@ section {
 .display {
     display: flex;
 }
+.button-area{
+        justify-content: space-between;
+        display: flex;
+        button{
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            background: none;
+            border: none;
+            color: #29ABE2;
+            font-size: 35px;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 4px;
+            margin-right: 4dvh;
+            margin-top: 8dvh;
+
+            &:hover{
+                background: #0C2E621F;
+            }
+            @media(max-width: 965px) {
+                display: flex;
+            }
+        }
+}
 
 .contractDetails {
     padding-left: 4dvw;
@@ -27,6 +54,8 @@ section {
 
     h1 {
         margin-top: 8dvh;
+        font-size: 3.6em;
+        margin-bottom: 0.5em;
     }
 
     h2,

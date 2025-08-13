@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,12 @@ import { RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
   showOverlay = false;
+  private authService = inject(AuthService);
 
+  logout(event: Event) {
+    event.preventDefault(); // verhindert das Standardverhalten vom Link
+    this.authService.logout();
+  }
 
   toggleOverlay() {
     this.showOverlay = !this.showOverlay;

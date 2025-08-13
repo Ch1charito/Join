@@ -43,7 +43,11 @@ export class SummaryComponent implements OnInit, OnDestroy {
 
       if (matchingContact) {
         this.userEmail = matchingContact.name;
+      } else {
+        this.userEmail = 'Guest';
       }
+    } else {
+      this.userEmail = 'Guest';
     }
 
     this.subscription = this.firebaseService.taskList$.subscribe((tasks: TaskInterface[]) => {

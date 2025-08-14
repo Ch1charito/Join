@@ -11,21 +11,22 @@
 </header>
 
 <main class="main-content">
-<div class="login-card">
-    <div class="title-container">
-        <h1>Log in</h1>
-        <div class="brake-line"></div>
-    </div>
+<form>
+    <div class="login-card">
+        <div class="title-container">
+            <h1>Log in</h1>
+            <div class="brake-line"></div>
+        </div>
 
     <div class="input-group">
-        <input type="email" placeholder="Email" [(ngModel)]="email" name="email">
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" autocomplete="email">
         <span class="icon">
             <img src="./assets/icons/mail.png" alt="">
         </span>
     </div>
 
     <div class="input-group">
-        <input type="password" placeholder="Password" [(ngModel)]="password" name="password">
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" autocomplete="current-password">
         <span class="icon">
             <img src="./assets/icons/lock.png" alt="">
         </span>
@@ -35,7 +36,7 @@
         <button class="login-btn" (click)="onLogin()">Log in</button>
         <button (click)="guestLogIn()" class="guest-btn">Guest Log in</button>
     </div>
-</div>
+</form>
 </main>
 
 <div class="signup-mobile">

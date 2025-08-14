@@ -128,6 +128,13 @@
     align-self: center;
     flex: 1;
 
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
     .login-card{
         display: flex;
         flex-direction: column;
@@ -170,6 +177,7 @@
         width: 100%;
     }
     }
+
 
     .input-group{
         display: flex;

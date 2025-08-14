@@ -6,7 +6,7 @@
       <a [routerLink]="['/help']">
         <img src="assets/images/header/help.png" alt="Help" />
       </a>
-      <button (click)="toggleOverlay()">SM</button>
+      <button (click)="toggleOverlay()">{{ initials }}</button>
     </div>
     <div class="overlay" [class.d-none]="!showOverlay">
       <a id="help" [routerLink]="['/help']">Help</a>
@@ -15,7 +15,4 @@
       <a href="#" (click)="logout($event)">Log Out</a>
     </div>
   </div>
-  
-
 </header>
-

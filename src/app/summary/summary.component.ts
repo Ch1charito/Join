@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HeaderComponent } from "../shared/header/header.component";
 import { SideBarComponent } from "../shared/side-bar/side-bar.component";
 import { RouterLink } from '@angular/router';
@@ -24,19 +24,32 @@ export class SummaryComponent implements OnInit, OnDestroy {
   awaitingFeedbackCount = 0;
   upcomingDeadline: string | null = null;
   greetingText = '';
-
-  private authService = inject(AuthService);
   userEmail: string | null = null;
+
   private subscription!: Subscription;
 
   constructor(
     private firebaseService: FirebaseService,
-    private firestore: Firestore
-  ) {
-    this.userEmail = this.authService.loggedInUsername();
-  }
+    private firestore: Firestore,
+    private authService: AuthService
+  ) {}
 
   async ngOnInit() {
+    this.userEmail = this.authService.loggedInUsername();
+
+    if (this.userEmail) {
+      const matchingContact = this.firebaseService.contactList
+        .find(c => c.email.toLowerCase() === this.userEmail!.toLowerCase());
+
+      if (matchingContact) {
+        this.userEmail = matchingContact.name;
+      } else {
+        this.userEmail = 'Guest';
+      }
+    } else {
+      this.userEmail = 'Guest';
+    }
+
     this.subscription = this.firebaseService.taskList$.subscribe((tasks: TaskInterface[]) => {
       this.allTasksCount = tasks.length;
       this.todoCount = tasks.filter(t => t.status === 'todo').length;

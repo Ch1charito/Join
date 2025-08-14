@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: start;
     height: 100vh;
-    background: #F5F5F5;
     animation: content-fadein 0.3s ease forwards;
     opacity: 0;
     max-width: 1920px;
@@ -227,6 +226,7 @@
     box-shadow: none;
     }
 }}}
+
 .success-background {
     position: fixed;
     inset: 0;
@@ -246,14 +246,14 @@
         white-space: nowrap;
         animation: slide-up 1s forwards;
         }
-            @keyframes slide-up {
+        @keyframes slide-up {
             from {
                 transform: translate(-50%, -50%); opacity: 0; 
             }
             to   {
                 transform: translate(-50%, -50%); opacity: 1;
             }
-            }
+       }
 
 .footer-content{
     display: flex;

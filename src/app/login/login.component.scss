@@ -21,6 +21,10 @@
     align-items: center;
     padding: 2.5rem 3rem;
     margin: 1rem;
+    
+    @media(max-width: 575px){
+        padding: 1rem;
+    }
 }
 .logo{
     animation: logo-slide 2s ease forwards;
@@ -121,6 +125,15 @@
         margin: 0 0 4rem 0;
         gap: 32px;
     }
+    @media(max-width: 375px){
+        margin: 0;
+        span{
+            font-size: 1rem;
+        }
+        a{
+            font-size: 1rem;
+        }
+    }
 }
 .main-content{
     display: flex;
@@ -130,7 +143,6 @@
 
     form{
         display: flex;
-        flex-direction: column;
         align-items: center;
         width: 100%;
     }
@@ -153,11 +165,11 @@
         @media(max-width: 575px){
             width: 100%;
             max-width: 470px;
-            margin: 2rem;
+            margin: 0 2rem ;
         }
         @media(max-width: 375px){
             max-width: 300px;
-            margin: 1rem;
+            margin: 0 1rem;
         }
 
     .title-container{
@@ -283,6 +295,10 @@
     justify-content: center;
     padding: 0 0 4rem 0;
     gap: 2rem;
+
+    @media(max-width: 375px){
+        padding: 0 0 8rem 0;
+    }
 
     a{
         color: #00000060;

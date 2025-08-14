@@ -4,7 +4,7 @@
     justify-content: start;
     height: 100vh;
     background: #F5F5F5;
-    animation: content-fadein 2s ease forwards;
+    animation: content-fadein 0.3s ease forwards;
     opacity: 0;
     max-width: 1920px;
     width: 100%;
@@ -24,6 +24,7 @@
     margin: 1rem;
 }
 .logo{
+    width: 96px;
     @media(max-width: 575px){
         img{
         width: 72px;
@@ -236,7 +237,7 @@
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, 60vh);
+        transform: translate(-50%, -50%);
         background: #2a3647;
         color: #fff;
         border-radius: 8px;
@@ -247,7 +248,7 @@
         }
             @keyframes slide-up {
             from {
-                transform: translate(-50%, 60vh); opacity: 0; 
+                transform: translate(-50%, -50%); opacity: 0; 
             }
             to   {
                 transform: translate(-50%, -50%); opacity: 1;

@@ -19,12 +19,12 @@
     </div>
 
     <!-- form  -->
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()" novalidate>
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <!-- NAME -->
     <div class="input-group"
     [class.invalid]="signupForm.get('name')?.invalid && 
     (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)">
-        <input id="name" type="text" placeholder="Name" formControlName="name"
+        <input id="name" type="text" placeholder="Name" formControlName="name" 
                 [attr.aria-invalid]="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'true' : 'false'"
                 aria-describedby="err-name"/>
     <span class="icon"><img src="./assets/icons/person.png" alt="person"></span>
@@ -39,7 +39,7 @@
     <!-- EMAIL -->
     <div class="input-group"
         [class.invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
-            <input name="email" type="email" placeholder="Email" inputmode="email"autocomplete="email" formControlName="email"
+            <input name="email" type="email" placeholder="Email" inputmode="email"autocomplete="email" formControlName="email" pattern="^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,}$"
                 [attr.aria-invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'true' : 'false'"
                 aria-describedby="err-email"/>
         <span class="icon"><img src="./assets/icons/mail.png" alt="mail"></span>
@@ -55,7 +55,7 @@
     <div class="input-group"
         [class.invalid]="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
             <input  name="password" type="password" placeholder="Password"
-                autocomplete="new-password" formControlName="password"
+                autocomplete="new-password" formControlName="password" 
                 [attr.aria-invalid]="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'true' : 'false'"
                 aria-describedby="err-password"/>
         <span class="icon"><img src="./assets/icons/lock.png" alt="lock"></span>

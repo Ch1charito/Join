@@ -15,10 +15,18 @@ export class LoginComponent {
 
   email: string = '';
   password: string = '';
+  errorMessage: string = '';
+
+  showPassword: boolean = false; // Toggle-Status
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
 
   onLogin(): void {
+    this.errorMessage = '';
     if (!this.email || !this.password) {
-      alert('Please enter your email and password.');
+      this.errorMessage = 'Please enter your email and password.';
       return;
     }
 
@@ -26,9 +34,8 @@ export class LoginComponent {
       next: () => {
         this.router.navigateByUrl('/summary');
       },
-      error: (err) => {
-        console.error(err);
-        alert('Login failed. Please check your credentials.');
+      error: () => {
+        this.errorMessage = 'Email or password is incorrect!';
       }
     });
   }
@@ -41,3 +48,4 @@ export class LoginComponent {
     });
   }
 }
+

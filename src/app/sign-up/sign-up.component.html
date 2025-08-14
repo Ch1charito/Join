@@ -1,116 +1,131 @@
 <div class="content">
-<header class="topbar">
-    <div class="logo">
-        <img src="./assets/icons/dark-logo-join.png" alt="Logo">
-    </div>
-</header>
+    <header class="topbar">
+        <div class="logo">
+            <img src="./assets/icons/dark-logo-join.png" alt="Logo">
+        </div>
+    </header>
 
-<main class="main-content">
-<div class="signup-card">
+    <main class="main-content">
+        <div class="signup-card">
 
-    <div class="signup-header" >
-        <a routerLink="/login" class="login-btn">
-        <img src="./assets/icons/arrow-left-line.png" alt="go back to login">
-    </a>
-    <div class="title-container">
-        <h1>Sign up</h1>
-        <div class="brake-line"></div>
-    </div>
-    </div>
+            <div class="signup-header">
+                <a routerLink="/login" class="login-btn">
+                    <img src="./assets/icons/arrow-left-line.png" alt="go back to login">
+                </a>
+                <div class="title-container">
+                    <h1>Sign up</h1>
+                    <div class="brake-line"></div>
+                </div>
+            </div>
 
-    <!-- form  -->
-<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <!-- NAME -->
-    <div class="input-group"
-    [class.invalid]="signupForm.get('name')?.invalid && 
+            <!-- form  -->
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+                <!-- NAME -->
+                <div class="input-group" [class.invalid]="signupForm.get('name')?.invalid && 
     (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)">
-        <input id="name" type="text" placeholder="Name" formControlName="name" pattern="^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*)+$"
-                [attr.aria-invalid]="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'true' : 'false'"
-                aria-describedby="err-name"/>
-    <span class="icon"><img src="./assets/icons/person.png" alt="person"></span>
-    </div>
-    @if (signupForm.get('name')?.errors && 
-        (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)) {
-    <div class="error">
-        @if (signupForm.get('name')?.errors?.['required']) { Name is required. }
-    </div>
-    }
+                    <input id="name" type="text" placeholder="Name" formControlName="name"
+                        pattern="^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*)+$"
+                        [attr.aria-invalid]="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'true' : 'false'"
+                        aria-describedby="err-name" />
+                    <span class="icon"><img src="./assets/icons/person.png" alt="person"></span>
+                </div>
+                @if (signupForm.get('name')?.errors &&
+                (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)) {
+                <div class="error">
+                    @if (signupForm.get('name')?.errors?.['required']) { Name is required. }
+                </div>
+                }
 
-    <!-- EMAIL -->
-    <div class="input-group"
-        [class.invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
-            <input name="email" type="email" placeholder="Email" inputmode="email"autocomplete="email" formControlName="email" pattern="^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,}$"
-                [attr.aria-invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'true' : 'false'"
-                aria-describedby="err-email"/>
-        <span class="icon"><img src="./assets/icons/mail.png" alt="mail"></span>
-    </div>
-    @if (signupForm.get('email')?.errors && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)) {
-        <div class="error">
-        @if (signupForm.get('email')?.errors?.['required']) { Email is required. }
-        @if (signupForm.get('email')?.errors?.['email']) { Please enter a valid email. }
+                <!-- EMAIL -->
+                <div class="input-group"
+                    [class.invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched)">
+                    <input name="email" type="email" placeholder="Email" inputmode="email" autocomplete="email"
+                        formControlName="email"
+                        pattern="^[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@(?:[A-Za-z0-9-]+\.)+[A-Za-z]{2,}$"
+                        [attr.aria-invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.dirty || signupForm.get('email')?.touched) ? 'true' : 'false'"
+                        aria-describedby="err-email" />
+                    <span class="icon"><img src="./assets/icons/mail.png" alt="mail"></span>
+                </div>
+                @if (signupForm.get('email')?.errors && (signupForm.get('email')?.dirty ||
+                signupForm.get('email')?.touched)) {
+                <div class="error">
+                    @if (signupForm.get('email')?.errors?.['required']) { Email is required. }
+                    @if (signupForm.get('email')?.errors?.['email']) { Please enter a valid email. }
+                </div>
+                }
+
+                <!-- PASSWORD -->
+                <!-- PASSWORD -->
+                <div class="input-group" [class.invalid]="signupForm.get('password')?.invalid && 
+                    (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
+
+                    <input name="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password"
+                        autocomplete="new-password" formControlName="password" [attr.aria-invalid]="signupForm.get('password')?.invalid && 
+                        (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'true' : 'false'"
+                        aria-describedby="err-password" />
+
+                    <span class="icon" (click)="togglePasswordVisibility('password')" style="cursor:pointer">
+                        <img src="./assets/icons/lock.png" alt="toggle password visibility">
+                    </span>
+                </div>
+
+                @if (signupForm.get('password')?.errors && (signupForm.get('password')?.dirty ||
+                signupForm.get('password')?.touched)) {
+                <div class="error">
+                    @if (signupForm.get('password')?.errors?.['required']) { Password is required. }
+                    @if (signupForm.get('password')?.errors?.['minlength']) { Min. 8 characters. }
+                </div>
+                }
+
+                <!-- CONFIRM PASSWORD -->
+                <!-- PASSWORD -->
+                <div class="input-group" [class.invalid]="(signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
+                (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch'))">
+
+                    <input name="confirmPassword" [type]="showConfirmPassword ? 'text' : 'password'"
+                        placeholder="Confirm password" autocomplete="new-password" formControlName="confirmPassword"
+                        [attr.aria-invalid]="(signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
+                            (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch')) ? 'true' : 'false'"
+                        aria-describedby="err-confirm" />
+
+                    <span class="icon" (click)="togglePasswordVisibility('confirmPassword')" style="cursor:pointer">
+                        <img src="./assets/icons/lock.png" alt="toggle password visibility">
+                    </span>
+                </div>
+
+                @if ((signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
+                (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch'))) {
+                <div class="error">
+                    @if (signupForm.get('confirmPassword')?.errors?.['required']) { Please confirm your password. }
+                    @if (signupForm.hasError('passwordsMismatch')) { Passwords do not match. }
+                </div>
+                }
+
+                <!-- POLICY -->
+                <div class="privacy-policy"
+                    [class.invalid]="signupForm.get('policy')?.invalid && (signupForm.get('policy')?.dirty || signupForm.get('policy')?.touched)">
+                    <input type="checkbox" id="policy" formControlName="policy"
+                        [attr.aria-invalid]="signupForm.get('policy')?.invalid && (signupForm.get('policy')?.dirty || signupForm.get('policy')?.touched) ? 'true' : 'false'">
+                    <label for="policy">
+                        I accept the <a routerLink="/privacy-policy-guest" rel="noopener noreferrer">Privacy policy</a>
+                    </label>
+                </div>
+
+                <div class="actions">
+                    <button class="signup-btn" type="submit"
+                        [disabled]="signupForm.invalid || signupForm.pending || isSubmitting">
+                        Sign up
+                    </button>
+                </div>
+            </form>
         </div>
-    }
+    </main>
 
-    <!-- PASSWORD -->
-    <div class="input-group"
-        [class.invalid]="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)">
-            <input  name="password" type="password" placeholder="Password"
-                autocomplete="new-password" formControlName="password" 
-                [attr.aria-invalid]="signupForm.get('password')?.invalid && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched) ? 'true' : 'false'"
-                aria-describedby="err-password"/>
-        <span class="icon"><img src="./assets/icons/lock.png" alt="lock"></span>
-    </div>
-    @if (signupForm.get('password')?.errors && (signupForm.get('password')?.dirty || signupForm.get('password')?.touched)) {
-        <div class="error">
-        @if (signupForm.get('password')?.errors?.['required']) { Password is required. }
-        @if (signupForm.get('password')?.errors?.['minlength']) { Min. 8 characters. }
-        </div>
-    }
-
-    <!-- CONFIRM PASSWORD -->
-    <div class="input-group"
-        [class.invalid]="(signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
-        (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch'))">
-            <input name="confirmPassword" type="password"
-                placeholder="Confirm password" autocomplete="new-password"
-                formControlName="confirmPassword"
-                [attr.aria-invalid]="(signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
-                                    (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch')) ? 'true' : 'false'"
-                aria-describedby="err-confirm"/>
-        <span class="icon"><img src="./assets/icons/lock.png" alt="lock"></span>
-    </div>
-    @if ((signupForm.get('confirmPassword')?.dirty || signupForm.get('confirmPassword')?.touched) &&
-    (signupForm.get('confirmPassword')?.invalid || signupForm.hasError('passwordsMismatch'))) {
-        <div class="error">
-            @if (signupForm.get('confirmPassword')?.errors?.['required']) { Please confirm your password. }
-            @if (signupForm.hasError('passwordsMismatch')) { Passwords do not match. }
-        </div>
-    }
-
-    <!-- POLICY -->
-    <div class="privacy-policy"
-        [class.invalid]="signupForm.get('policy')?.invalid && (signupForm.get('policy')?.dirty || signupForm.get('policy')?.touched)">
-            <input type="checkbox" id="policy" formControlName="policy"
-                [attr.aria-invalid]="signupForm.get('policy')?.invalid && (signupForm.get('policy')?.dirty || signupForm.get('policy')?.touched) ? 'true' : 'false'">
-        <label for="policy">
-            I accept the <a routerLink="/privacy-policy-guest" rel="noopener noreferrer">Privacy policy</a>
-        </label>
-    </div>
-
-    <div class="actions">
-        <button class="signup-btn" type="submit" [disabled]="signupForm.invalid || signupForm.pending || isSubmitting">
-        Sign up
-        </button>
-    </div>
-    </form>
-</div>
-</main>
-
-<!-- Overlay -->
+    <!-- Overlay -->
     @if(showSuccessMessage){
     <div class="success-background">
         <div class="success-overlay" role="status" aria-live="polite">
-        You signed up successfully :)
+            You signed up successfully :)
         </div>
     </div>
     }

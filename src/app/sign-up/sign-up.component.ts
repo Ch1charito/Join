@@ -21,6 +21,8 @@ export class SignUpComponent {
   signupForm!: FormGroup;
   isSubmitting = false;
   showSuccessMessage = false;
+  showPassword = false;
+  showConfirmPassword = false;
 
   constructor(private fb: FormBuilder) {
     this.buildForm();
@@ -58,6 +60,14 @@ export class SignUpComponent {
   private clearDraft(){
     sessionStorage.removeItem(this.draftKey);
   }
+
+  togglePasswordVisibility(field: 'password' | 'confirmPassword') {
+  if (field === 'password') {
+    this.showPassword = !this.showPassword;
+  } else {
+    this.showConfirmPassword = !this.showConfirmPassword;
+  }
+}
 
   onSubmit() {
     if (this.signupForm.invalid) {

@@ -25,6 +25,10 @@
     @media(max-width: 575px){
         padding: 1rem;
     }
+    @media(max-width: 375px){
+        padding: 0.5rem;
+        margin: 0.5rem;
+    }
 }
 .logo{
     width: 96px;
@@ -50,7 +54,7 @@
         background: white;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 2rem;
+        padding: 0 2rem;
         max-width: 720px;
         width: 540px;
         height: 100%;
@@ -267,7 +271,7 @@
 
         @media(max-width: 375px){
         padding: 0 0 6rem 0;
-        margin: 1rem;
+        margin: 2rem;
     }
     
     a{

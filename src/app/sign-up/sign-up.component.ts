@@ -64,8 +64,19 @@ export class SignUpComponent {
       this.signupForm.markAllAsTouched();
       return;
     }
-    const { name, email } = this.signupForm.value;
-    console.log('loogg...', { name, email, password: '...' });
+    const { name, email, password } = this.signupForm.value as { name: string; email: string; password: string };
+
+    this.authService.signUp(email, password, name)
+      .then(() => {
+        const contactsRef = collection(this.firestore, 'contacts');
+        return addDoc(contactsRef, { name, email, phone: '' });
+      })
+      .then(() => {
+        this.router.navigateByUrl('/login');
+      })
+      .catch(error => {
+        console.error('Fehler beim SignUp:', error);
+      });
 
     this.isSubmitting = true;
     this.signupForm.disable({ emitEvent: false });
@@ -86,23 +97,7 @@ export class SignUpComponent {
     this.showSuccessMessage = false;
     this.clearDraft();
   }
-
-    const { name, email, password } = this.signupForm.value as { name: string; email: string; password: string };
-
-    this.authService.signUp(email, password, name)
-      .then(() => {
-        const contactsRef = collection(this.firestore, 'contacts');
-        return addDoc(contactsRef, { name, email, phone: '' });
-      })
-      .then(() => {
-        this.router.navigateByUrl('/login');
-      })
-      .catch(error => {
-        console.error('Fehler beim SignUp:', error);
-      });
-  }
-  
-  static passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {
+    static passwordsMatchValidator(group: AbstractControl): ValidationErrors | null {
     const pw = group.get('password')?.value;
     const cpw = group.get('confirmPassword')?.value;
     return pw && cpw && pw !== cpw ? { passwordsMismatch: true } : null;

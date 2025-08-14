@@ -24,7 +24,7 @@
     <div class="input-group"
     [class.invalid]="signupForm.get('name')?.invalid && 
     (signupForm.get('name')?.dirty || signupForm.get('name')?.touched)">
-        <input id="name" type="text" placeholder="Name" formControlName="name" 
+        <input id="name" type="text" placeholder="Name" formControlName="name" pattern="^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*(?:\s+[A-Za-zÀ-ÖØ-öø-ÿ]+(?:['--][A-Za-zÀ-ÖØ-öø-ÿ]+)*)+$"
                 [attr.aria-invalid]="signupForm.get('name')?.invalid && (signupForm.get('name')?.dirty || signupForm.get('name')?.touched) ? 'true' : 'false'"
                 aria-describedby="err-name"/>
     <span class="icon"><img src="./assets/icons/person.png" alt="person"></span>

@@ -21,6 +21,10 @@
     align-items: center;
     padding: 2.5rem 3rem;
     margin: 1rem;
+
+    @media(max-width: 575px){
+        padding: 1rem;
+    }
 }
 .logo{
     width: 96px;
@@ -253,7 +257,7 @@
             to   {
                 transform: translate(-50%, -50%); opacity: 1;
             }
-       }
+        }
 
 .footer-content{
     display: flex;
@@ -261,6 +265,11 @@
     padding: 0 0 4rem 0;
     gap: 2rem;
 
+        @media(max-width: 375px){
+        padding: 0 0 6rem 0;
+        margin: 1rem;
+    }
+    
     a{
         color: #00000060;
         text-decoration: none;
